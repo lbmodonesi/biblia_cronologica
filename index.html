@@ -1,0 +1,2232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Bíblia Cronológica — Roteiro de Leitura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:linear-gradient(170deg,#f5f0e8 0%,#e8e0d0 40%,#d8cfc0 100%);font-family:'Crimson Text',Georgia,serif;color:#2c2416;-webkit-tap-highlight-color:transparent;font-size:16px}
+.header{background:linear-gradient(135deg,#2c1810 0%,#4a2c1a 50%,#2c1810 100%);color:#f0e6d4;padding:36px 20px 20px;text-align:center;border-bottom:3px solid #b8860b;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(184,134,11,.15) 0%,transparent 70%);pointer-events:none}
+.header *{position:relative}
+.hsub{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:4px;text-transform:uppercase;opacity:.7;margin-bottom:6px}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,6vw,38px);font-weight:700;line-height:1.15;letter-spacing:1px}
+.hdesc{font-size:15px;opacity:.8;font-style:italic;margin-top:4px}
+.tog{display:flex;justify-content:center;margin-top:16px}
+.tog button{padding:9px 26px;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;letter-spacing:2px;border:2px solid #b8860b;background:transparent;color:#d4c4a0;cursor:pointer;transition:all .25s}
+.tog button:first-child{border-radius:6px 0 0 6px}
+.tog button:last-child{border-radius:0 6px 6px 0}
+.tog button.on{background:#b8860b;color:#1a0f08}
+/* MODE TABS */
+.mode-tabs{display:flex;justify-content:center;margin-top:14px;gap:0}
+.mode-tab{padding:10px 22px;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:1px;border:none;background:rgba(255,255,255,.08);color:rgba(240,230,212,.5);cursor:pointer;transition:all .25s;border-bottom:2px solid transparent}
+.mode-tab:first-child{border-radius:6px 0 0 0}
+.mode-tab:last-child{border-radius:0 6px 0 0}
+.mode-tab.on{color:#f0e6d4;background:rgba(255,255,255,.15);border-bottom:2px solid #e8c84a}
+.mode-desc{font-size:13px;opacity:.6;margin-top:6px;font-style:italic;min-height:16px}
+.wrap{max-width:720px;margin:0 auto;padding:14px 14px 60px}
+.vbox{background:rgba(255,255,255,.6);border-left:4px solid #b8860b;border-radius:0 8px 8px 0;padding:13px 16px;font-size:15px;line-height:1.55;margin-bottom:14px}
+.vbox strong{font-family:'Cormorant Garamond',serif;font-size:17px}
+.vbox .p2{opacity:.7;font-size:14px}
+.vbox em{opacity:.85}
+.pi{display:flex;justify-content:space-between;font-size:14px;opacity:.8;margin-bottom:5px}
+.pb{height:7px;background:rgba(0,0,0,.1);border-radius:4px;overflow:hidden;margin-bottom:14px}
+.pf{height:100%;background:linear-gradient(90deg,#b8860b,#d4a017);border-radius:4px;transition:width .4s}
+.testament-label{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-align:center;padding:10px 0 6px;opacity:.5;margin-top:10px}
+.sec{margin-bottom:8px}
+.sbtn{width:100%;display:flex;align-items:center;gap:14px;padding:16px 16px;cursor:pointer;text-align:left;font-family:'Crimson Text',Georgia,serif;border-radius:8px;border:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.55);color:#2c2416;box-shadow:0 1px 3px rgba(0,0,0,.06);transition:all .25s;font-size:inherit}
+.sec.open .sbtn{border-radius:8px 8px 0 0;border:none;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.sicon{font-size:24px;flex-shrink:0}
+.sinfo{flex:1;min-width:0}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;line-height:1.2}
+.sper{font-size:14px;opacity:.7;margin-top:1px}
+.sarr{font-size:18px;opacity:.5;transition:transform .25s}
+.sec.open .sarr{transform:rotate(180deg)}
+.ilist{background:rgba(255,255,255,.75);border-radius:0 0 8px 8px;border:1px solid rgba(0,0,0,.06);overflow:hidden;display:none}
+.sec.open .ilist{display:block}
+.item{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;cursor:pointer;border-bottom:1px solid rgba(0,0,0,.05);transition:background .2s}
+.item:last-child{border-bottom:none}
+.item.done{background:rgba(184,134,11,.07)}
+.ichk{width:22px;height:22px;flex-shrink:0;border-radius:4px;border:2px solid rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;margin-top:2px;transition:all .2s;color:#fff;font-size:13px;font-weight:700}
+.item.done .ichk{background:var(--pc);border-color:var(--pc)}
+.iref{font-weight:700;font-size:16px;line-height:1.3}
+.item.done .iref{text-decoration:line-through;opacity:.55}
+.itop{font-size:14px;opacity:.65;margin-top:1px;font-style:italic;line-height:1.3}
+.inum{display:inline-block;background:rgba(0,0,0,.08);border-radius:4px;padding:2px 7px;font-size:12px;font-family:'Cormorant Garamond',serif;font-weight:700;margin-right:6px;min-width:28px;text-align:center}
+.item.done .inum{opacity:.5}
+.footer{text-align:center;padding:20px 16px 40px;font-size:13px;opacity:.55;font-style:italic;line-height:1.8}
+.footer a{color:#6a4a2a;text-decoration:none;border-bottom:1px dotted rgba(0,0,0,.3)}
+.footer a:hover{opacity:.8}
+.reset-btn{display:block;margin:10px auto 0;padding:8px 18px;font-family:'Cormorant Garamond',serif;font-size:14px;border:1px solid rgba(0,0,0,.15);background:rgba(255,255,255,.5);border-radius:6px;cursor:pointer;opacity:.6;transition:opacity .2s}
+.reset-btn:hover{opacity:1}
+.find-today{display:block;margin:0 auto 14px;padding:10px 22px;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;border:2px solid #b8860b;background:rgba(184,134,11,.1);color:#5a3a10;border-radius:8px;cursor:pointer;transition:all .2s}
+.find-today:hover{background:#b8860b;color:#fff}
+.hidden{display:none}
+/* HAMBURGER */
+.hamburger{position:absolute;top:18px;left:16px;width:36px;height:36px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;cursor:pointer;z-index:100;background:none;border:none;padding:0}
+.hamburger span{display:block;width:22px;height:2px;background:#d4c4a0;border-radius:2px;transition:all .3s}
+/* OVERLAY */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:998;opacity:0;pointer-events:none;transition:opacity .3s}
+.overlay.show{opacity:1;pointer-events:auto}
+/* SIDEBAR */
+.sidebar{position:fixed;top:0;left:-100%;width:min(88vw,400px);height:100%;background:linear-gradient(170deg,#f5f0e8 0%,#e8e0d0 40%,#d8cfc0 100%);z-index:999;transition:left .35s ease;overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:4px 0 20px rgba(0,0,0,.3)}
+.sidebar.show{left:0}
+.sb-header{background:linear-gradient(135deg,#2c1810,#4a2c1a);color:#f0e6d4;padding:30px 18px 18px;text-align:center;border-bottom:3px solid #b8860b;position:sticky;top:0;z-index:1}
+.sb-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border:none;background:rgba(255,255,255,.1);color:#d4c4a0;font-size:20px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.sb-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;letter-spacing:1px}
+.sb-sub{font-size:14px;opacity:.7;margin-top:4px;font-style:italic}
+.sb-tog{display:flex;justify-content:center;margin-top:14px;gap:0}
+.sb-tog button{padding:8px 24px;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;letter-spacing:2px;border:2px solid #b8860b;background:transparent;color:#d4c4a0;cursor:pointer;transition:all .25s}
+.sb-tog button:first-child{border-radius:6px 0 0 6px}
+.sb-tog button:last-child{border-radius:0 6px 6px 0}
+.sb-tog button.on{background:#b8860b;color:#1a0f08}
+.sb-content{padding:14px}
+.cur-card{background:rgba(255,255,255,.7);border-radius:10px;margin-bottom:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06);box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.cur-head{padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:background .2s}
+.cur-head:hover{background:rgba(184,134,11,.05)}
+.cur-icon{font-size:22px;flex-shrink:0}
+.cur-ref{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;flex:1;line-height:1.2}
+.cur-tag{font-size:11px;background:rgba(184,134,11,.15);color:#6a4a1a;padding:2px 8px;border-radius:10px;font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:1px;flex-shrink:0}
+.cur-arr{font-size:14px;opacity:.4;transition:transform .25s;flex-shrink:0}
+.cur-card.open .cur-arr{transform:rotate(180deg)}
+.cur-body{display:none;padding:0 16px 16px;font-size:16px;line-height:1.7}
+.cur-card.open .cur-body{display:block}
+.cur-body p{margin-bottom:10px}
+.cur-body .highlight{background:rgba(184,134,11,.1);border-left:3px solid #b8860b;padding:10px 14px;border-radius:0 6px 6px 0;margin:12px 0;font-style:italic;font-size:15px;line-height:1.6}
+.cur-body .source{font-size:13px;opacity:.5;margin-top:6px}
+.sb-menu-list{padding:14px}
+.sb-menu-item{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(255,255,255,.6);border-radius:10px;margin-bottom:8px;cursor:pointer;border:1px solid rgba(0,0,0,.06);transition:all .2s}
+.sb-menu-item:hover{background:rgba(255,255,255,.85);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.sb-menu-item .mi-icon{font-size:26px}
+.sb-menu-item .mi-text{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600}
+.sb-menu-item .mi-desc{font-size:14px;opacity:.6;margin-top:2px}
+.sb-back{display:flex;align-items:center;gap:8px;padding:12px 16px;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:#6a4a2a;border:none;background:none;margin-bottom:4px}
+.sb-back:hover{opacity:.7}
+/* TIMELINE */
+.tl-era{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;opacity:.4;margin:20px 0 12px}
+/* CONTEXT NOTE */
+.ctx-note{padding:12px 16px;font-size:14px;line-height:1.6;color:#5a4a2a;background:rgba(184,134,11,.06);border-bottom:1px solid rgba(0,0,0,.06);font-style:italic}
+.ctx-bar{display:flex;justify-content:space-between;align-items:center;padding:8px 16px;background:rgba(0,0,0,.03);border-bottom:1px solid rgba(0,0,0,.05)}
+.ctx-bar .ctx-note-inline{font-size:13px;color:#5a4a2a;font-style:italic;flex:1;line-height:1.4}
+.sel-all-btn{padding:5px 12px;font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:600;border:1px solid rgba(0,0,0,.12);background:rgba(255,255,255,.7);border-radius:5px;cursor:pointer;opacity:.7;transition:all .2s;white-space:nowrap;flex-shrink:0;margin-left:10px}
+.sel-all-btn:hover{opacity:1;background:rgba(184,134,11,.1)}
+/* COMPLETION BANNER */
+.completion{padding:16px;text-align:center;background:linear-gradient(135deg,rgba(184,134,11,.08),rgba(184,134,11,.15));border-top:2px solid rgba(184,134,11,.2)}
+.completion .comp-icon{font-size:28px;margin-bottom:6px}
+.completion .comp-title{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:#6a4a1a;margin-bottom:8px}
+.completion .comp-verse{font-size:15px;font-style:italic;line-height:1.6;color:#4a3a1a;max-width:500px;margin:0 auto}
+.completion .comp-ref{font-size:12px;opacity:.5;margin-top:6px;font-family:'Cormorant Garamond',serif;font-weight:600}
+/* EXPORT/IMPORT */
+.backup-area{display:flex;gap:8px;justify-content:center;margin:12px auto 0;flex-wrap:wrap}
+/* SHARE BUTTON */
+.share-float{position:fixed;bottom:16px;right:16px;z-index:99;display:flex;flex-direction:column-reverse;align-items:flex-end;gap:8px}
+.share-toggle{width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(44,24,16,.6);color:#d4c4a0;box-shadow:0 2px 8px rgba(0,0,0,.2);transition:all .25s}
+.share-toggle:hover{background:rgba(44,24,16,.8)}
+.share-toggle.open{background:#b8860b;color:#fff;transform:rotate(45deg)}
+.share-opts{display:none;flex-direction:column;gap:8px}
+.share-opts.show{display:flex}
+.share-btn{width:42px;height:42px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 2px 8px rgba(0,0,0,.2);transition:transform .2s,opacity .2s;opacity:0;transform:scale(.5)}
+.share-opts.show .share-btn{opacity:1;transform:scale(1)}
+.share-btn:hover{transform:scale(1.1)!important}
+.share-btn.wpp{background:#25D366;color:#fff;transition-delay:.05s}
+.share-btn.copy{background:rgba(184,134,11,.85);color:#fff;transition-delay:.1s}
+/* PROPHECY */
+.prof-card{background:rgba(255,255,255,.7);border-radius:10px;margin-bottom:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+.prof-head{padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px}
+.prof-head:hover{background:rgba(184,134,11,.05)}
+.prof-ref{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;flex:1;line-height:1.2}
+.prof-arr{font-size:14px;opacity:.4;transition:transform .25s;flex-shrink:0}
+.prof-card.open .prof-arr{transform:rotate(180deg)}
+.prof-body{display:none;padding:0 14px 14px}
+.prof-card.open .prof-body{display:block}
+.prof-row{display:flex;gap:12px;margin-bottom:12px}
+.prof-col{flex:1;padding:12px;border-radius:8px;line-height:1.6;font-size:14px}
+.prof-col.at{background:rgba(74,103,65,.08);border-left:3px solid #4a6741}
+.prof-col.nt{background:rgba(184,134,11,.08);border-left:3px solid #b8860b}
+.prof-col .prof-label{font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.5;margin-bottom:6px}
+.prof-col .prof-text{font-style:italic;font-size:14px;line-height:1.6}
+.prof-col .prof-cite{font-size:12px;opacity:.5;margin-top:6px;font-family:'Cormorant Garamond',serif;font-weight:600}
+.prof-note{font-size:13px;opacity:.65;padding:8px 12px;background:rgba(0,0,0,.03);border-radius:6px;line-height:1.5;margin-top:4px}
+.backup-btn{padding:8px 16px;font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;border:1px solid rgba(0,0,0,.15);background:rgba(255,255,255,.5);border-radius:6px;cursor:pointer;opacity:.7;transition:opacity .2s;display:flex;align-items:center;gap:6px}
+.backup-btn:hover{opacity:1}
+.backup-modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.5);align-items:center;justify-content:center}
+.backup-modal.show{display:flex}
+.backup-box{background:#f5f0e8;border-radius:12px;padding:24px;max-width:90vw;width:360px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.backup-box h3{font-family:'Cormorant Garamond',serif;font-size:18px;margin-bottom:12px}
+.backup-box textarea{width:100%;height:80px;border:1px solid rgba(0,0,0,.15);border-radius:6px;padding:10px;font-family:monospace;font-size:11px;resize:none;margin:8px 0}
+.backup-box button{padding:8px 20px;font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;border:2px solid #b8860b;background:#b8860b;color:#fff;border-radius:6px;cursor:pointer;margin:4px}
+.backup-box .btn-secondary{background:transparent;color:#5a3a10}
+.tl-item{position:relative;padding:0 0 0 32px;margin-bottom:0}
+.tl-item::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:rgba(184,134,11,.25)}
+.tl-item:last-child::before{bottom:50%}
+.tl-dot{position:absolute;left:4px;top:16px;width:14px;height:14px;border-radius:50%;border:2px solid #b8860b;background:#f5f0e8;z-index:1}
+.tl-item.major .tl-dot{background:#b8860b;width:16px;height:16px;left:3px}
+.tl-card{background:rgba(255,255,255,.7);border-radius:8px;padding:12px 14px;margin-bottom:10px;border:1px solid rgba(0,0,0,.06)}
+.tl-item.major .tl-card{border-left:3px solid #b8860b;background:rgba(255,255,255,.85)}
+.tl-date{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:700;color:#b8860b;letter-spacing:1px}
+.tl-name{font-weight:700;font-size:16px;margin-top:2px;line-height:1.3}
+.tl-desc{font-size:14px;opacity:.7;margin-top:3px;line-height:1.5;font-style:italic}
+.tl-ref{font-size:12px;opacity:.45;margin-top:4px;font-family:'Cormorant Garamond',serif}
+</style>
+</head>
+<body>
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+<div id="sbView"></div>
+</div>
+<div class="header">
+<button class="hamburger" onclick="toggleSidebar()">
+<span></span><span></span><span></span>
+</button>
+<div class="hsub">Roteiro de Leitura</div>
+<h1>Bíblia Cronológica</h1>
+<div class="hdesc">Todos os livros — na ordem dos acontecimentos</div>
+<div class="tog">
+<button class="on" onclick="setV('ARC')">ARC</button>
+<button onclick="setV('ARA')">ARA</button>
+</div>
+<div class="mode-tabs">
+<button class="mode-tab on" onclick="setMode('prog')">📖 Progressivo</button>
+<button class="mode-tab" onclick="setMode('d365')">📅 Plano Diário</button>
+</div>
+<div class="mode-desc" id="modeDesc">Leitura livre no seu ritmo — marque conforme avança</div>
+</div>
+<div class="wrap">
+<div class="vbox" id="vb"></div>
+<div class="pi"><span>Progresso</span><span id="pt"></span></div>
+<div class="pb"><div class="pf" id="pf"></div></div>
+<div id="todayBtn" class="hidden"><button class="find-today" onclick="goToday()">📖 Ir para o dia de hoje</button></div>
+<div id="main"></div>
+<div class="backup-area">
+<button class="backup-btn" onclick="exportProgress()">📤 Exportar progresso</button>
+<button class="backup-btn" onclick="showImport()">📥 Importar progresso</button>
+<button class="backup-btn" onclick="showReset()">🗑️ Zerar progresso</button>
+</div>
+</div>
+<div class="footer" id="ft"></div>
+
+<!-- SHARE -->
+<div class="share-float">
+<div class="share-opts" id="shareOpts">
+<button class="share-btn copy" onclick="copyLink()" title="Copiar link">🔗</button>
+<button class="share-btn wpp" onclick="shareWhatsApp()" title="WhatsApp">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</button>
+</div>
+<button class="share-toggle" id="shareToggle" onclick="toggleShare()" title="Compartilhar">↑</button>
+</div>
+
+<!-- BACKUP MODAL -->
+<div class="backup-modal" id="backupModal">
+<div class="backup-box" id="backupBox"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+// CURIOSIDADES APOLOGÉTICAS
+// ═══════════════════════════════════════
+const CURIOSIDADES = {
+AT: [
+{ref:"Gênesis 1:1",icon:"🌍",tag:"CRIAÇÃO",title:"\"No princípio\" — o que o hebraico revela",
+text:`<p>A palavra hebraica <em>bara</em> (בָּרָא), usada em Gênesis 1:1 na forma Qal, é reservada exclusivamente para a ação criadora de Deus na Bíblia. Na forma Qal (a forma verbal básica), o sujeito de <em>bara</em> é sempre Deus — nunca um ser humano. Isso indica que a criação é um ato exclusivo e soberano de Deus — algo do nada (<em>creatio ex nihilo</em>).</p>
+<div class="highlight">Diferente de cosmogonias pagãs, que descrevem deuses moldando matéria pré-existente, o relato bíblico afirma que Deus criou tudo do nada — um conceito único no mundo antigo.</div>`},
+
+{ref:"Gênesis 22:1–14",icon:"🐑",tag:"TIPOLOGIA",title:"Moriah — o monte do sacrifício e do Templo",
+text:`<p>Deus ordena que Abraão sacrifique Isaque no Monte Moriah. Abraão diz aos servos: <em>\"Eu e o moço iremos... e voltaremos\"</em> (v.5), e ao filho: <em>\"Deus proverá para si o cordeiro\"</em> (v.8).</p>
+<p>O Monte Moriah é identificado em 2 Crônicas 3:1 como o local onde Salomão construiu o Templo — e a tradição situa o Calvário nessa mesma região.</p>
+<div class="highlight">Assim como Isaque carregou a lenha monte acima, Cristo carregou a cruz. Mas onde Deus proveu um substituto para Isaque, no Calvário o próprio Filho foi o sacrifício definitivo. Abraão profetizou sem saber: \"Deus proverá para si o cordeiro.\"</div>`},
+
+{ref:"Êxodo 12:1–13",icon:"🩸",tag:"TIPOLOGIA",title:"O cordeiro pascal — sangue que protege",
+text:`<p>Na última praga do Egito, Deus instrui cada família a sacrificar um cordeiro sem defeito, aplicar o sangue nos umbrais da porta, e permanecer dentro de casa. O anjo da morte passaria por cima (<em>pesach</em>) das casas marcadas.</p>
+<p>O cordeiro não podia ter ossos quebrados (Êx 12:46). Séculos depois, os soldados romanos não quebraram os ossos de Jesus na cruz (Jo 19:36), cumprindo esta tipologia.</p>
+<div class="highlight">Paulo escreve claramente: \"Cristo, nossa Páscoa, foi sacrificado por nós\" (1 Co 5:7). Cada detalhe do cordeiro pascal — sem defeito, sangue aplicado, ossos intactos — encontra cumprimento em Cristo.</div>`},
+
+{ref:"Levítico 16",icon:"⚖️",tag:"TIPOLOGIA",title:"Dia da Expiação — dois bodes, um só evangelho",
+text:`<p>No Yom Kippur, o sumo sacerdote tomava dois bodes: um era sacrificado como oferta pelo pecado, e sobre o outro ele confessava os pecados do povo antes de enviá-lo ao deserto (o \"bode emissário\", <em>azazel</em>).</p>
+<p>Um bode morria pelo pecado; o outro levava os pecados embora. Ambos eram necessários para completar a expiação.</p>
+<div class="highlight">Cristo cumpriu ambos os papéis simultaneamente: morreu pelos nossos pecados (como o bode sacrificado) e removeu nossa culpa para sempre (como o bode emissário). \"Tão longe quanto o oriente está do ocidente, assim ele afasta de nós as nossas transgressões\" (Sl 103:12).</div>`},
+
+{ref:"Salmo 22",icon:"✝️",tag:"PROFECIA",title:"Crucificação descrita 1000 anos antes de existir",
+text:`<p>Davi escreveu o Salmo 22 por volta de 1000 a.C. A crucificação como método de execução só foi desenvolvida pelos persas séculos depois e popularizada por Roma.</p>
+<p>O salmo descreve: mãos e pés traspassados (v.16), ossos desconjuntados (v.14), sede intensa (v.15), divisão das vestes e sorteio da roupa (v.18) — exatamente o que os Evangelhos narram sobre a crucificação de Jesus.</p>
+<div class="highlight">As primeiras palavras de Jesus na cruz — \"Deus meu, Deus meu, por que me desamparaste?\" (Mt 27:46) — são a citação direta do versículo 1 deste salmo. Jesus estava apontando para esta profecia no momento exato de seu cumprimento.</div>`},
+
+{ref:"Isaías 53",icon:"📜",tag:"PROFECIA",title:"O Servo Sofredor — 700 anos antes do Calvário",
+text:`<p>Isaías 53, escrito aproximadamente 700 a.C., descreve alguém que seria \"desprezado e rejeitado\" (v.3), \"ferido pelas nossas transgressões\" (v.5), levado \"como um cordeiro ao matadouro\" (v.7), morto entre os ímpios mas sepultado com o rico (v.9).</p>
+<p>Jesus foi crucificado entre criminosos e sepultado no túmulo de José de Arimateia, um homem rico (Mt 27:57–60).</p>
+<div class="highlight">Os manuscritos do Mar Morto, descobertos em 1947, contêm cópias de Isaías datadas de pelo menos 150 a.C. — provando que esta profecia existia séculos antes de Jesus, e não foi escrita depois para se encaixar nos eventos.</div>`},
+
+{ref:"Daniel 9:25–26",icon:"📐",tag:"PROFECIA",title:"As 70 semanas — cronologia que aponta para o Messias",
+text:`<p>Daniel recebe uma profecia de \"setenta semanas\" (hebraico: <em>shavuim</em>, períodos de sete anos = 490 anos) contadas a partir do decreto para restaurar Jerusalém.</p>
+<p>Após 69 semanas (483 anos), o \"Ungido\" seria \"cortado\" (morto). O decreto de Artaxerxes para Neemias (445 a.C.), contando 483 anos proféticos, leva aproximadamente ao período do ministério e morte de Jesus (por volta de 30–33 d.C.).</p>
+<div class="highlight">Esta profecia não apenas prediz a vinda do Messias, mas fornece um cronograma. Após sua morte, Daniel prediz que \"o povo do príncipe que há de vir destruirá a cidade e o santuário\" — exatamente o que os romanos fizeram em 70 d.C.</div>`},
+
+{ref:"Josué 6",icon:"🏚️",tag:"ARQUEOLOGIA",title:"Jericó — muros que caíram para fora",
+text:`<p>O relato bíblico afirma que os muros de Jericó \"caíram rente ao chão\" (Js 6:20). Escavações arqueológicas em Tell es-Sultan (Jericó) revelaram que as muralhas de fato colapsaram para fora — algo incomum, pois muros de cidades sitiadas normalmente caem para dentro quando aríetes os derrubam.</p>
+<p>Também foram encontradas grandes quantidades de grãos carbonizados, indicando que a cidade foi destruída na época da colheita (consistente com a narrativa, logo após a Páscoa) e que não houve saque prolongado — o texto diz que a cidade foi consagrada ao Senhor.</p>
+<div class="highlight">A queda para fora dos muros é consistente com o relato de uma intervenção divina, não de uma técnica militar convencional.</div>`},
+
+{ref:"2 Reis 18–19",icon:"🏛️",tag:"ARQUEOLOGIA",title:"Prisma de Senaqueribe — o cerco que fracassou",
+text:`<p>O Prisma de Taylor (c. 691 a.C.), hoje no Museu Britânico, registra a campanha do rei assírio contra Judá. Ele se gaba de ter encurralado Ezequias \"como um pássaro em gaiola\" em Jerusalém.</p>
+<p>Curiosamente, o prisma nunca menciona a conquista de Jerusalém — algo que os assírios sempre registravam com detalhes. A Bíblia explica: o anjo do Senhor feriu 185 mil soldados assírios, e Senaqueribe recuou (2 Rs 19:35–36).</p>
+<div class="highlight">É notável que um registro assírio, feito para glorificar o rei, confirme indiretamente o relato bíblico: Senaqueribe cercou Jerusalém, mas nunca a conquistou. A omissão é tão eloquente quanto uma confissão.</div>`},
+
+{ref:"Salmo 90",icon:"⏳",tag:"AUTORIA",title:"O salmo mais antigo da Bíblia",
+text:`<p>O Salmo 90 é atribuído a Moisés, tornando-o possivelmente o poema mais antigo do Saltério (c. 1400 a.C.). Ele reflete sobre a eternidade de Deus em contraste com a brevidade da vida humana — temas que Moisés vivenciou ao ver uma geração inteira morrer no deserto durante os 40 anos de peregrinação.</p>
+<div class="highlight">\"Ensina-nos a contar os nossos dias, para que alcancemos coração sábio\" (v.12). Moisés, que viveu 120 anos e viu uma nação inteira perecer por incredulidade, tinha autoridade singular para escrever sobre a brevidade da vida.</div>`}
+],
+
+NT: [
+{ref:"João 2:1–11",icon:"🍷",tag:"CONTEXTO",title:"Vasos de pedra — Jesus substitui o sistema de purificação",
+text:`<p>Nas bodas de Caná, Jesus ordena que encham de água seis vasos de pedra. O texto faz questão de dizer que eram vasos \"segundo a purificação dos judeus\" (Jo 2:6). Esses vasos eram usados exclusivamente para rituais de lavagem cerimonial prescritos pela tradição rabínica.</p>
+<p>Eram de pedra (não barro) porque a lei oral judaica ensinava que vasos de pedra não contraíam impureza ritual. Cada um comportava 80 a 120 litros.</p>
+<div class="highlight">O simbolismo é profundo: Jesus toma os recipientes do sistema de purificação cerimonial judaica e os transforma em veículos de celebração e alegria. A água da Lei se torna o vinho do Evangelho. O mestre-sala confirma: o melhor vinho veio por último — a Nova Aliança supera a antiga.</div>`},
+
+{ref:"João 11:1–44",icon:"💀",tag:"CONTEXTO",title:"Lázaro de 4 dias — por que o detalhe importa",
+text:`<p>Quando Jesus chega a Betânia, Lázaro já está morto há quatro dias. Marta protesta: \"Senhor, já cheira mal\" (Jo 11:39). O detalhe dos quatro dias não é acidental.</p>
+<p>A tradição rabínica (registrada no Genesis Rabbah e Leviticus Rabbah) ensinava que a alma permanecia perto do corpo por três dias, com esperança de retorno. No quarto dia, a decomposição tornava a morte absolutamente irreversível — a alma partia definitivamente.</p>
+<div class="highlight">Jesus esperou deliberadamente até o quarto dia. Ele não ressuscitou alguém \"quase morto\" ou em \"morte aparente\". Pela teologia judaica da época, Lázaro estava irrevogavelmente morto. Isso torna a declaração \"Eu sou a ressurreição e a vida\" (v.25) não apenas uma afirmação teológica, mas uma demonstração de poder sobre a morte definitiva.</div>`},
+
+{ref:"Marcos 2:1–12",icon:"⚡",tag:"TEOLOGIA",title:"\"Quem pode perdoar pecados?\" — divindade reconhecida",
+text:`<p>Quando Jesus diz ao paralítico \"Filho, perdoados estão os teus pecados\", os escribas reagem imediatamente: \"Por que este assim fala blasfêmias? Quem pode perdoar pecados senão Deus?\" (v.7).</p>
+<p>A reação dos escribas mostra que eles entenderam perfeitamente a reivindicação: Jesus estava se colocando no lugar de Deus. Na teologia judaica, somente Deus pode perdoar pecados cometidos contra Ele.</p>
+<div class="highlight">Jesus não corrige a lógica deles. Ao contrário, prova sua autoridade curando o paralítico: \"Para que saibais que o Filho do homem tem autoridade na terra para perdoar pecados...\" (v.10). A cura visível valida a autoridade invisível. Os escribas raciocinaram corretamente — apenas erraram ao negar que Jesus era quem alegava ser.</div>`},
+
+{ref:"Mateus 27:51",icon:"⛪",tag:"TEOLOGIA",title:"Véu do Templo rasgado — de cima para baixo",
+text:`<p>No momento da morte de Jesus, \"o véu do Templo se rasgou em dois, de alto a baixo\" (Mt 27:51). O véu separava o Santo dos Santos — a presença de Deus — do restante do Templo. Somente o sumo sacerdote podia entrar, uma vez por ano, no Dia da Expiação.</p>
+<p>O véu tinha aproximadamente 18 metros de altura e, segundo fontes rabínicas, era espesso como a palma da mão (um tefach, cerca de 8 cm). Era tecido com grande trabalho e exigia considerável esforço para ser manuseado.</p>
+<div class="highlight">O rasgo veio \"de cima para baixo\" — ou seja, a iniciativa foi de Deus, não dos homens. O acesso à presença de Deus, antes restrito a um homem, um dia por ano, agora está aberto a todos, por meio de Cristo. \"Temos ousadia para entrar no Santo dos Santos pelo sangue de Jesus, pelo novo e vivo caminho que ele nos abriu através do véu\" (Hb 10:19–20).</div>`},
+
+{ref:"João 19:34–36",icon:"🦴",tag:"TIPOLOGIA",title:"Nenhum osso quebrado — três profecias em um ato",
+text:`<p>Os soldados romanos quebravam as pernas dos crucificados para acelerar a morte (crurifragium). Mas ao chegarem a Jesus, Ele já estava morto, e não lhe quebraram os ossos. Em vez disso, um soldado perfurou seu lado com uma lança, e saiu \"sangue e água\" (Jo 19:34).</p>
+<p>João cita: \"Nenhum dos seus ossos será quebrado\" — cumprindo simultaneamente Êxodo 12:46 (o cordeiro pascal), Números 9:12, e Salmo 34:20.</p>
+<div class="highlight">A saída de sangue e água é medicamente consistente com derrame pericárdico — líquido acumulado ao redor do coração, separando-se do sangue coagulado após a morte. O detalhe médico confirma que Jesus estava de fato morto, afastando qualquer teoria de \"desmaio\".</div>`},
+
+{ref:"Atos 2:1–4",icon:"🔥",tag:"CONTEXTO",title:"Pentecostes — a Lei escrita no coração",
+text:`<p>O derramamento do Espírito Santo acontece exatamente no dia de Pentecostes (<em>Shavuot</em>), a Festa das Semanas. No calendário judaico, esta festa celebrava dois eventos: a colheita do trigo e, mais importante, a entrega da Lei (Torah) no Monte Sinai.</p>
+<p>A tradição rabínica ensinava que no Sinai a voz de Deus se dividiu em 70 línguas para que todas as nações ouvissem. Em Atos 2, os discípulos falam em diversas línguas, e pessoas de muitas nações ouvem em seus próprios idiomas.</p>
+<div class="highlight">A conexão é teológica e proposital: no Sinai, Deus escreveu a Lei em tábuas de pedra. No Pentecostes, Deus escreve a Lei no coração pelo Espírito — exatamente como Jeremias havia profetizado: \"Porei a minha lei no seu interior e a escreverei no seu coração\" (Jr 31:33). O paralelo não é coincidência: é cumprimento.</div>`},
+
+{ref:"Lucas 2:1–2",icon:"📋",tag:"ARQUEOLOGIA",title:"Censo de Quirino — confirmação romana",
+text:`<p>Lucas registra que Jesus nasceu durante \"o primeiro recenseamento feito quando Quirino era governador da Síria\" (Lc 2:2). Críticos questionaram este dado por anos, até que inscrições romanas confirmaram que Quirino exerceu autoridade na Síria em dois períodos distintos.</p>
+<p>Um papiro egípcio (P.Lond. 904) também confirma a prática romana de censos periódicos que exigiam retorno à cidade de origem — exatamente o que Lucas descreve com José indo a Belém.</p>
+<div class="highlight">Lucas, que se apresenta como historiador cuidadoso (Lc 1:1–4), demonstra precisão em detalhes verificáveis — nomes de governadores, datas, práticas administrativas. Quando um autor é confiável nos detalhes que podemos verificar, isso fortalece a confiança nos relatos que não podemos.</div>`},
+
+{ref:"Atos 18:12–17",icon:"🏛️",tag:"ARQUEOLOGIA",title:"Inscrição de Delfos — datando Paulo em Corinto",
+text:`<p>Lucas menciona que Paulo foi levado perante Gálio, procônsul da Acaia, durante sua estadia em Corinto (At 18:12). Uma inscrição fragmentária encontrada em Delfos, na Grécia, menciona Gálio como procônsul durante o reinado de Cláudio, datando seu mandato por volta de 51–52 d.C.</p>
+<div class="highlight">Esta inscrição é uma das âncoras cronológicas mais importantes do Novo Testamento. Ela permite datar a estadia de Paulo em Corinto — e, a partir daí, reconstruir toda a cronologia de suas viagens missionárias e epístolas. A precisão de Lucas como historiador é confirmada mais uma vez por evidência externa.</div>`},
+
+{ref:"Mateus 28:11–15",icon:"🪦",tag:"EVIDÊNCIA",title:"O túmulo vazio — o argumento que ninguém contestou",
+text:`<p>Após a ressurreição, os líderes judaicos subornaram os soldados para dizerem que os discípulos roubaram o corpo enquanto eles dormiam (Mt 28:11–15). Mateus observa que \"esta história se divulgou entre os judeus até o dia de hoje\".</p>
+<p>Note o que esta narrativa revela: os opositores de Jesus nunca negaram que o túmulo estava vazio. Eles apenas propuseram uma explicação alternativa.</p>
+<div class="highlight">Se o corpo ainda estivesse no túmulo, bastaria mostrá-lo para encerrar o cristianismo em seu nascimento. O fato de que mesmo os inimigos de Jesus admitiram o túmulo vazio — e precisaram inventar uma história para explicá-lo — é uma das evidências mais fortes da ressurreição. A disputa nunca foi \"o túmulo está vazio?\", mas sim \"por que está vazio?\".</div>`},
+
+{ref:"1 Coríntios 15:3–8",icon:"👥",tag:"EVIDÊNCIA",title:"O credo mais antigo — testemunhas vivas",
+text:`<p>Paulo cita aqui um credo que ele \"recebeu\" — linguagem técnica rabínica para transmissão formal de tradição. Estudiosos datam este credo entre 2 a 5 anos após a crucificação, tornando-o o registro mais antigo da fé cristã.</p>
+<p>Paulo lista testemunhas da ressurreição: Pedro, os Doze, mais de 500 irmãos de uma vez (\"dos quais a maioria ainda vive\", diz Paulo, convidando à verificação), Tiago, todos os apóstolos, e o próprio Paulo.</p>
+<div class="highlight">Quando Paulo escreve \"dos quais a maioria ainda vive\" (v.6), ele está essencialmente dizendo: \"Não confiem apenas na minha palavra — vão perguntar a eles.\" Este é o tipo de afirmação que ninguém faria se as testemunhas pudessem desmentir. A proximidade temporal e a abundância de testemunhas vivas distinguem a ressurreição de Cristo de qualquer lenda antiga.</div>`}
+]
+};
+
+let sbOpen=false, sbPage='menu', sbTest='AT', openCur=null;
+
+function toggleSidebar(){
+  sbOpen=!sbOpen;
+  document.getElementById('sidebar').classList.toggle('show',sbOpen);
+  document.getElementById('overlay').classList.toggle('show',sbOpen);
+  if(sbOpen){sbPage='menu';renderSidebar()}
+}
+function closeSidebar(){
+  sbOpen=false;
+  document.getElementById('sidebar').classList.remove('show');
+  document.getElementById('overlay').classList.remove('show');
+}
+function sbGoTo(page){sbPage=page;openCur=null;renderSidebar()}
+function setSbTest(t){sbTest=t;openCur=null;renderSidebar()}
+function togCur(i){openCur=openCur===i?null:i;renderSidebar()}
+
+function renderSidebar(){
+  const sb=document.getElementById('sbView');
+  if(sbPage==='menu'){
+    sb.innerHTML=`
+    <div class="sb-header">
+      <button class="sb-close" onclick="closeSidebar()">✕</button>
+      <div class="sb-title">Menu</div>
+    </div>
+    <div class="sb-menu-list">
+      <div class="sb-menu-item" onclick="sbGoTo('evangelho')">
+        <span class="mi-icon">❤️</span>
+        <div><div class="mi-text">A Mensagem da Bíblia</div><div class="mi-desc">O que toda a Bíblia está dizendo — em uma página</div></div>
+      </div>
+      <div class="sb-menu-item" onclick="sbGoTo('comecar')">
+        <span class="mi-icon">🚀</span>
+        <div><div class="mi-text">Por Onde Começar?</div><div class="mi-desc">Guia para quem nunca leu ou quer retomar</div></div>
+      </div>
+      <div class="sb-menu-item" onclick="sbGoTo('curiosidades')">
+        <span class="mi-icon">💡</span>
+        <div><div class="mi-text">Curiosidades Bíblicas</div><div class="mi-desc">Contexto histórico, arqueologia e apologética</div></div>
+      </div>
+      <div class="sb-menu-item" onclick="sbGoTo('profecias')">
+        <span class="mi-icon">🎯</span>
+        <div><div class="mi-text">Profecias Cumpridas</div><div class="mi-desc">O que o AT profetizou e o NT confirmou</div></div>
+      </div>
+      <div class="sb-menu-item" onclick="sbGoTo('verificacao')">
+        <span class="mi-icon">🔍</span>
+        <div><div class="mi-text">Verificação dos Fatos</div><div class="mi-desc">Evidências externas, Strobel e a coerência da Bíblia</div></div>
+      </div>
+      <div class="sb-menu-item" onclick="sbGoTo('timeline')">
+        <span class="mi-icon">⏳</span>
+        <div><div class="mi-text">Linha do Tempo</div><div class="mi-desc">Principais eventos bíblicos em ordem cronológica</div></div>
+      </div>
+      <div class="sb-menu-item" onclick="sbGoTo('remedios')">
+        <span class="mi-icon">💊</span>
+        <div><div class="mi-text">Remédios da Bíblia</div><div class="mi-desc">O que a Escritura diz sobre o que você está sentindo</div></div>
+      </div>
+      <div class="sb-menu-item" onclick="sbGoTo('sobre')">
+        <span class="mi-icon">ℹ️</span>
+        <div><div class="mi-text">Sobre</div><div class="mi-desc">Sobre este roteiro de leitura</div></div>
+      </div>
+    </div>`;
+  } else if(sbPage==='evangelho'){
+    sb.innerHTML=`
+    <div class="sb-header">
+      <button class="sb-close" onclick="closeSidebar()">✕</button>
+      <div class="sb-title">❤️ A Mensagem da Bíblia</div>
+      <div class="sb-sub">O que toda a Escritura está dizendo</div>
+    </div>
+    <div style="padding:4px 0 0"><button class="sb-back" onclick="sbGoTo('menu')">← Menu</button></div>
+    <div class="sb-content">
+
+      <div class="cur-card open">
+        <div class="cur-body" style="display:block">
+          <p>A Bíblia é composta por 66 livros, escritos ao longo de 1.500 anos — mas conta uma única história. É a história de Deus buscando o homem. Aqui está ela, resumida.</p>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===200?' open':''}">
+        <div class="cur-head" onclick="togCur(200)">
+          <span class="cur-icon">🌍</span>
+          <div class="cur-ref">1. Criação — Deus fez tudo bom</div>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>No princípio, Deus criou os céus, a terra e tudo o que neles há. Ele criou o homem e a mulher à sua imagem, para viverem em comunhão com Ele. Tudo era bom. Não havia dor, morte, medo ou separação.</p>
+          <div class="highlight">\"E viu Deus tudo quanto tinha feito, e eis que era muito bom.\" — Gênesis 1:31</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===201?' open':''}">
+        <div class="cur-head" onclick="togCur(201)">
+          <span class="cur-icon">💔</span>
+          <div class="cur-ref">2. Queda — O pecado separou o homem de Deus</div>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Adão e Eva escolheram desobedecer a Deus, e o pecado entrou no mundo. Com ele vieram a culpa, a vergonha, o sofrimento e a morte. A partir desse momento, toda a humanidade nasce separada de Deus — não por falha de Deus, mas por escolha humana.</p>
+          <p>Esse é o problema que toda a Bíblia busca resolver: como um Deus santo pode se reconciliar com uma humanidade que se afastou dele?</p>
+          <div class="highlight">\"Porque todos pecaram e destituídos estão da glória de Deus.\" — Romanos 3:23</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===202?' open':''}">
+        <div class="cur-head" onclick="togCur(202)">
+          <span class="cur-icon">📜</span>
+          <div class="cur-ref">3. Promessa — Deus não desistiu</div>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Logo após a Queda, Deus faz a primeira promessa: um descendente da mulher esmagaria a cabeça da serpente (Gênesis 3:15). Essa promessa é o fio condutor de toda a Bíblia.</p>
+          <p>Deus escolhe Abraão e promete que por meio dele todas as nações seriam abençoadas. Liberta Israel do Egito. Dá a Lei para mostrar seu padrão de santidade — e para mostrar que ninguém consegue cumpri-la perfeitamente. Envia profetas que anunciam um Salvador que viria.</p>
+          <p>Todo o Antigo Testamento aponta para alguém que resolveria o problema do pecado de forma definitiva.</p>
+          <div class="highlight">\"Mas ele foi ferido pelas nossas transgressões e moído pelas nossas iniquidades; o castigo que nos traz a paz estava sobre ele, e pelas suas pisaduras fomos sarados.\" — Isaías 53:5 (escrito ~700 anos antes de Cristo)</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===203?' open':''}">
+        <div class="cur-head" onclick="togCur(203)">
+          <span class="cur-icon">✝️</span>
+          <div class="cur-ref">4. Cristo — Deus veio pessoalmente</div>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Jesus Cristo é o cumprimento de tudo o que o Antigo Testamento prometeu. Deus não enviou apenas um mensageiro — Ele veio pessoalmente.</p>
+          <p>Jesus viveu a vida perfeita que nós não conseguimos viver. Depois, morreu na cruz a morte que nós merecíamos — levando sobre si o castigo pelo pecado de toda a humanidade. No terceiro dia, ressuscitou, vencendo a morte de forma definitiva.</p>
+          <p>A cruz não é um acidente ou uma tragédia. É o plano de Deus desde o princípio — o Cordeiro sacrificado desde a fundação do mundo.</p>
+          <div class="highlight">\"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.\" — João 3:16</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===204?' open':''}">
+        <div class="cur-head" onclick="togCur(204)">
+          <span class="cur-icon">🎁</span>
+          <div class="cur-ref">5. Graça — Um presente, não um pagamento</div>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>A salvação não é algo que se conquista por mérito, boas obras ou religiosidade. É um presente gratuito de Deus, recebido pela fé.</p>
+          <p>Isso não significa que boas obras são irrelevantes — significa que elas são fruto da salvação, não a causa dela. Quem é salvo pela graça é transformado por dentro, e essa transformação se manifesta por fora.</p>
+          <div class="highlight">\"Porque pela graça sois salvos, por meio da fé; e isto não vem de vós, é dom de Deus. Não vem das obras, para que ninguém se glorie.\" — Efésios 2:8–9</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===205?' open':''}">
+        <div class="cur-head" onclick="togCur(205)">
+          <span class="cur-icon">🔄</span>
+          <div class="cur-ref">6. Resposta — O que fazer com isso?</div>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>A Bíblia apresenta um convite, não uma imposição. Deus respeita a liberdade humana — mas não esconde as consequências.</p>
+          <p>A resposta que Ele pede é simples:</p>
+          <p><strong>Reconhecer</strong> que somos pecadores e que não podemos nos salvar.</p>
+          <p><strong>Crer</strong> que Jesus Cristo morreu e ressuscitou para nos reconciliar com Deus.</p>
+          <p><strong>Receber</strong> esse presente pela fé, entregando sua vida a Ele.</p>
+          <div class="highlight">\"Se com a tua boca confessares ao Senhor Jesus, e em teu coração creres que Deus o ressuscitou dos mortos, serás salvo.\" — Romanos 10:9</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===206?' open':''}">
+        <div class="cur-head" onclick="togCur(206)">
+          <span class="cur-icon">🌅</span>
+          <div class="cur-ref">7. Esperança — A história não acabou</div>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>A Bíblia termina com uma promessa: Jesus voltará. Haverá um novo céu e uma nova terra, sem dor, sem morte, sem lágrimas. A comunhão entre Deus e o homem, perdida no Éden, será restaurada para sempre.</p>
+          <p>Toda a Bíblia — de Gênesis a Apocalipse — conta essa história: um Deus que criou, amou, prometeu, cumpriu, salvou e voltará.</p>
+          <div class="highlight">\"E Deus limpará de seus olhos toda a lágrima; e não haverá mais morte, nem pranto, nem clamor, nem dor; porque já as primeiras coisas são passadas.\" — Apocalipse 21:4</div>
+          <p style="text-align:center;margin-top:16px;font-size:15px;opacity:.7">Essa é a mensagem. Toda a Bíblia conta essa história.<br>O roteiro cronológico te ajuda a acompanhá-la do início ao fim.</p>
+        </div>
+      </div>
+
+    </div>`;
+  } else if(sbPage==='comecar'){
+    sb.innerHTML=`
+    <div class="sb-header">
+      <button class="sb-close" onclick="closeSidebar()">✕</button>
+      <div class="sb-title">🚀 Por Onde Começar?</div>
+      <div class="sb-sub">Guia prático para a sua leitura</div>
+    </div>
+    <div style="padding:4px 0 0"><button class="sb-back" onclick="sbGoTo('menu')">← Menu</button></div>
+    <div class="sb-content">
+
+      <div class="cur-card open">
+        <div class="cur-body" style="display:block">
+          <p>A Bíblia tem 1.189 capítulos. Isso pode parecer intimidante, mas com o caminho certo, qualquer pessoa consegue lê-la inteira. Aqui estão três sugestões, dependendo do seu momento.</p>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===210?' open':''}">
+        <div class="cur-head" onclick="togCur(210)">
+          <span class="cur-icon">🌱</span>
+          <div class="cur-ref">Nunca li a Bíblia — por onde começo?</div>
+          <span class="cur-tag">INICIANTE</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Comece pelo <strong>Evangelho de João</strong>. Ele foi escrito exatamente para isso — para que você conheça quem é Jesus e creia nEle.</p>
+          <div class="highlight">\"Estes, porém, foram escritos para que creiais que Jesus é o Cristo, o Filho de Deus, e para que, crendo, tenhais vida em seu nome.\" — João 20:31</div>
+          <p>João tem 21 capítulos. Se ler 1 por dia, em 3 semanas você terá lido um livro inteiro da Bíblia — e terá uma visão clara de quem Jesus é, o que Ele disse e por que isso importa.</p>
+          <p><strong>Depois de João, leia nesta ordem:</strong></p>
+          <p>📖 <strong>Gênesis</strong> — para entender o começo de tudo: criação, queda, promessa.</p>
+          <p>📖 <strong>Lucas + Atos</strong> — o mesmo autor conta a vida de Jesus e o nascimento da Igreja. São dois livros que se leem como uma história contínua.</p>
+          <p>📖 <strong>Romanos</strong> — Paulo explica sistematicamente o evangelho. É o livro mais teologicamente completo do NT.</p>
+          <p>A partir daí, você já terá base para seguir o roteiro cronológico com confiança.</p>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===211?' open':''}">
+        <div class="cur-head" onclick="togCur(211)">
+          <span class="cur-icon">📖</span>
+          <div class="cur-ref">Já li partes — quero ler tudo de forma organizada</div>
+          <span class="cur-tag">INTERMEDIÁRIO</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Use o <strong>modo Progressivo</strong> deste site. Ele organiza toda a Bíblia em ordem cronológica, agrupada por período histórico. Você lê no seu ritmo e marca o progresso.</p>
+          <p>A vantagem da leitura cronológica é que tudo faz mais sentido: os Salmos aparecem durante a vida de Davi, os profetas aparecem durante os reis que eles confrontaram, e as epístolas de Paulo aparecem durante as viagens descritas em Atos.</p>
+          <p><strong>Dica prática:</strong> Leia 2–3 capítulos por dia. Nesse ritmo, você completa a Bíblia inteira em aproximadamente 12–14 meses.</p>
+          <div class="highlight">\"Lâmpada para os meus pés é a tua palavra, e luz para o meu caminho.\" — Salmo 119:105</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===212?' open':''}">
+        <div class="cur-head" onclick="togCur(212)">
+          <span class="cur-icon">📅</span>
+          <div class="cur-ref">Quero disciplina — um plano diário com prazo</div>
+          <span class="cur-tag">COMPROMETIDO</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Use o <strong>modo Plano Diário</strong> deste site. São 370 leituras, com 3–4 capítulos por dia. Em pouco mais de um ano, você terá lido toda a Bíblia.</p>
+          <p>O plano tem um botão <strong>\"Ir para o dia de hoje\"</strong> que calcula automaticamente em que leitura você deveria estar, baseado no dia que você começou.</p>
+          <p><strong>Dica:</strong> Escolha um horário fixo do dia — manhã cedo ou antes de dormir. A consistência importa mais que a quantidade. É melhor ler pouco todos os dias do que muito de vez em quando.</p>
+          <div class="highlight">\"Bem-aventurado o homem que não anda segundo o conselho dos ímpios... antes tem o seu prazer na lei do Senhor, e na sua lei medita de dia e de noite.\" — Salmo 1:1–2</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===213?' open':''}">
+        <div class="cur-head" onclick="togCur(213)">
+          <span class="cur-icon">💡</span>
+          <div class="cur-ref">Dicas para aproveitar melhor a leitura</div>
+          <span class="cur-tag">DICAS</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p><strong>Ore antes de ler.</strong> Peça a Deus que abra seu entendimento. A Bíblia não é apenas um livro — é a Palavra de Deus, e Ele promete iluminar quem busca com sinceridade.</p>
+          <p><strong>Não se preocupe em entender tudo de primeira.</strong> Há partes difíceis — genealogias, leis cerimoniais, profecias complexas. Está tudo bem. Leia, siga em frente, e volte depois. A compreensão cresce com a releitura.</p>
+          <p><strong>Preste atenção ao contexto.</strong> A leitura cronológica ajuda muito nisso: quando você sabe o que estava acontecendo na história, as palavras dos profetas e salmistas ganham vida.</p>
+          <p><strong>Anote o que te impacta.</strong> Versículos que chamam sua atenção, perguntas que surgem, conexões que você percebe. A Bíblia recompensa quem presta atenção.</p>
+          <p><strong>Não leia sozinho se puder.</strong> Compartilhe este roteiro com alguém e leiam juntos. Conversar sobre o que leu aprofunda o entendimento e fortalece a fé.</p>
+          <div class="highlight">\"Examinais as Escrituras, porque vós cuidais ter nelas a vida eterna, e são elas que de mim testificam.\" — João 5:39</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===214?' open':''}">
+        <div class="cur-head" onclick="togCur(214)">
+          <span class="cur-icon">📋</span>
+          <div class="cur-ref">Qual tradução usar — ARC ou ARA?</div>
+          <span class="cur-tag">VERSÕES</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Ambas são traduções confiáveis de João Ferreira de Almeida, a tradução protestante mais usada no Brasil.</p>
+          <p><strong>ARC (Almeida Revista e Corrigida)</strong> — linguagem mais tradicional e solene. É a versão mais usada em cultos, especialmente em igrejas históricas e pentecostais. Se você cresceu ouvindo a Bíblia na igreja, provavelmente ouviu a ARC.</p>
+          <p><strong>ARA (Almeida Revista e Atualizada)</strong> — linguagem mais fluida e atualizada, com maior precisão textual. Preferida em seminários e estudos acadêmicos. Boa escolha se você quer clareza na primeira leitura.</p>
+          <p><strong>Recomendação:</strong> Escolha a que você se sentir mais confortável lendo. As diferenças são de estilo, não de conteúdo doutrinário. O importante é ler.</p>
+          <div class="highlight">\"A palavra de Deus é viva e eficaz, e mais penetrante do que espada alguma de dois gumes.\" — Hebreus 4:12</div>
+        </div>
+      </div>
+
+    </div>`;
+  } else if(sbPage==='curiosidades'){
+    const items=CURIOSIDADES[sbTest];
+    let cards='';
+    items.forEach((c,i)=>{
+      const isO=openCur===i;
+      cards+=`<div class="cur-card${isO?' open':''}">
+        <div class="cur-head" onclick="togCur(${i})">
+          <span class="cur-icon">${c.icon}</span>
+          <div class="cur-ref">${c.title}</div>
+          <span class="cur-tag">${c.tag}</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <div style="font-size:14px;opacity:.5;margin-bottom:8px;font-family:'Cormorant Garamond',serif;font-weight:600">${c.ref}</div>
+          ${c.text}
+        </div>
+      </div>`;
+    });
+    sb.innerHTML=`
+    <div class="sb-header">
+      <button class="sb-close" onclick="closeSidebar()">✕</button>
+      <div class="sb-title">💡 Curiosidades Bíblicas</div>
+      <div class="sb-sub">Contexto, arqueologia e apologética</div>
+      <div class="sb-tog">
+        <button class="${sbTest==='AT'?'on':''}" onclick="setSbTest('AT')">AT</button>
+        <button class="${sbTest==='NT'?'on':''}" onclick="setSbTest('NT')">NT</button>
+      </div>
+    </div>
+    <div style="padding:4px 0 0"><button class="sb-back" onclick="sbGoTo('menu')">← Menu</button></div>
+    <div class="sb-content">${cards}</div>`;
+  } else if(sbPage==='profecias'){
+    const profs=[
+      {tema:"Local de nascimento do Messias",at:"E tu, Belém Efrata, posto que pequena entre milhares de Judá, de ti me sairá o que será Senhor em Israel.",atRef:"Miquéias 5:2 (~700 a.C.)",nt:"E, tendo nascido Jesus em Belém de Judeia, no tempo do rei Herodes...",ntRef:"Mateus 2:1",nota:"Belém era uma aldeia insignificante. Nenhum líder político escolheria nascer ali para ganhar credibilidade."},
+      {tema:"Nascido de uma virgem",at:"Eis que a virgem conceberá e dará à luz um filho, e chamará o seu nome Emanuel.",atRef:"Isaías 7:14 (~735 a.C.)",nt:"Ora, o nascimento de Jesus Cristo foi assim: Que estando Maria, sua mãe, desposada com José, antes de se ajuntarem, achou-se ter concebido do Espírito Santo.",ntRef:"Mateus 1:18",nota:"A palavra hebraica 'almah' gerou debates, mas a Septuaginta (tradução grega pré-cristã) já usou 'parthenos' (virgem)."},
+      {tema:"Da tribo de Judá",at:"O cetro não se arredará de Judá, nem o legislador dentre seus pés, até que venha Siló; e a ele se congregarão os povos.",atRef:"Gênesis 49:10 (~1800 a.C.)",nt:"Jesus Cristo, filho de Davi, filho de Abraão... Judá gerou a Perez...",ntRef:"Mateus 1:1–3",nota:"A linhagem de Jesus é rastreada até Judá em ambas as genealogias (Mateus e Lucas)."},
+      {tema:"Descendente de Davi",at:"A tua casa e o teu reino serão firmados para sempre diante de ti; teu trono será firme para sempre.",atRef:"2 Samuel 7:16 (~1000 a.C.)",nt:"Livro da geração de Jesus Cristo, filho de Davi...",ntRef:"Mateus 1:1",nota:"Jesus é chamado 'Filho de Davi' repetidamente nos Evangelhos — os próprios contemporâneos reconheciam essa linhagem."},
+      {tema:"Entrada triunfal em Jerusalém montado em jumento",at:"Eis que o teu rei virá a ti, justo e salvo, pobre, e montado sobre um jumento, e sobre um jumentinho, filho de jumenta.",atRef:"Zacarias 9:9 (~520 a.C.)",nt:"E trouxeram o jumentinho a Jesus, e lançaram sobre ele as suas vestes, e assentou-se sobre ele.",ntRef:"Marcos 11:7",nota:"Reis conquistadores entravam em cavalos de guerra. Um jumento simbolizava paz — o Messias veio como Príncipe da Paz."},
+      {tema:"Traído por um amigo",at:"Até o meu próprio amigo íntimo, em quem eu tanto confiava, que comia do meu pão, levantou contra mim o seu calcanhar.",atRef:"Salmo 41:9 (~1000 a.C.)",nt:"E logo, dirigindo-se a Jesus, disse: Eu te saúdo, Rabi. E beijou-o.",ntRef:"Mateus 26:49",nota:"Judas compartilhou a mesa com Jesus por 3 anos antes de traí-lo — exatamente como o salmo descreve."},
+      {tema:"Traído por 30 moedas de prata",at:"E eu lhes disse: Se parece bem aos vossos olhos, dai-me o meu salário; e, se não, deixai-o. E pesaram o meu salário, trinta moedas de prata.",atRef:"Zacarias 11:12 (~520 a.C.)",nt:"Que me quereis dar, e eu vo-lo entregarei? E eles lhe pesaram trinta moedas de prata.",ntRef:"Mateus 26:15",nota:"O valor exato — 30 moedas — era o preço de um escravo ferido por um boi (Êx 21:32). O Messias foi avaliado como um escravo."},
+      {tema:"Dinheiro da traição devolvido e usado para campo do oleiro",at:"E o Senhor me disse: Arroja isso ao oleiro, esse belo preço em que fui avaliado por eles. E tomei as trinta moedas de prata, e as arrojei ao oleiro, na casa do Senhor.",atRef:"Zacarias 11:13 (~520 a.C.)",nt:"E ele, atirando para o templo as moedas de prata, retirou-se... E, tendo deliberado em conselho, compraram com elas o campo do oleiro.",ntRef:"Mateus 27:5–7",nota:"Dois detalhes específicos cumpridos: o dinheiro devolvido no Templo e usado para comprar o campo do oleiro."},
+      {tema:"Silêncio diante dos acusadores",at:"Ele foi oprimido e afligido, mas não abriu a sua boca; como um cordeiro foi levado ao matadouro, e como a ovelha muda perante os seus tosquiadores, assim ele não abriu a sua boca.",atRef:"Isaías 53:7 (~700 a.C.)",nt:"E, sendo acusado pelos príncipes dos sacerdotes e pelos anciãos, nada respondeu... Jesus não lhe respondeu nem uma palavra.",ntRef:"Mateus 27:12–14",nota:"A reação natural de um acusado inocente é defender-se. O silêncio de Jesus foi deliberado — cumprindo a profecia."},
+      {tema:"Mãos e pés traspassados",at:"Traspassaram-me as mãos e os pés.",atRef:"Salmo 22:16 (~1000 a.C.)",nt:"E, quando chegaram ao lugar chamado a Caveira, ali o crucificaram.",ntRef:"Lucas 23:33",nota:"Davi escreveu isso ~1000 a.C. A crucificação só foi inventada pelos persas séculos depois e popularizada por Roma."},
+      {tema:"Crucificado entre criminosos",at:"Foi contado com os transgressores.",atRef:"Isaías 53:12 (~700 a.C.)",nt:"E foram crucificados com ele dois salteadores, um à direita, e outro à esquerda.",ntRef:"Mateus 27:38",nota:"A escolha de crucificá-lo entre criminosos não foi de Jesus — mas cumpriu o que Isaías escreveu 700 anos antes."},
+      {tema:"Sortearam suas roupas",at:"Repartem entre si as minhas vestes, e lançam sortes sobre a minha roupa.",atRef:"Salmo 22:18 (~1000 a.C.)",nt:"E, havendo-o crucificado, repartiram as suas vestes, lançando sortes.",ntRef:"Mateus 27:35",nota:"Um detalhe trivial para um profeta inventar — mas verificável por testemunhas oculares."},
+      {tema:"Nenhum osso quebrado",at:"Ele lhe guarda todos os seus ossos; nem sequer um deles se quebra.",atRef:"Salmo 34:20 + Êxodo 12:46",nt:"Mas, vindo a Jesus, e vendo-o já morto, não lhe quebraram as pernas.",ntRef:"João 19:33",nota:"Os soldados quebraram as pernas dos outros dois crucificados, mas não as de Jesus — cumprindo ao mesmo tempo a tipologia do cordeiro pascal e o Salmo 34."},
+      {tema:"Lado perfurado",at:"E olharão para mim, a quem traspassaram.",atRef:"Zacarias 12:10 (~520 a.C.)",nt:"Um dos soldados lhe furou o lado com uma lança, e logo saiu sangue e água.",ntRef:"João 19:34",nota:"Zacarias profetizou que Deus seria traspassado — uma afirmação que só faz sentido se o Messias é Deus encarnado."},
+      {tema:"Sepultado com o rico",at:"E puseram a sua sepultura com os ímpios, e com o rico na sua morte.",atRef:"Isaías 53:9 (~700 a.C.)",nt:"Um homem rico, de Arimateia, por nome José... pediu o corpo de Jesus... e o pôs no seu sepulcro novo.",ntRef:"Mateus 27:57–60",nota:"Jesus morreu como criminoso, mas foi sepultado como rico — duas condições normalmente incompatíveis, cumpridas simultaneamente."},
+      {tema:"Ressurreição predita",at:"Porque não deixarás a minha alma no inferno, nem permitirás que o teu Santo veja corrupção.",atRef:"Salmo 16:10 (~1000 a.C.)",nt:"Ao qual Deus ressuscitou, soltas as ânsias da morte, pois não era possível que fosse retido por ela.",ntRef:"Atos 2:24",nota:"Pedro cita este salmo no Pentecostes como prova de que Davi profetizou a ressurreição de Cristo — não a dele próprio, pois o túmulo de Davi estava ali com eles."},
+    ];
+    let cards='';
+    profs.forEach((p,i)=>{
+      const isO=openCur===(400+i);
+      cards+=`<div class="prof-card${isO?' open':''}">
+        <div class="prof-head" onclick="togCur(${400+i})">
+          <span style="font-size:20px;flex-shrink:0">🎯</span>
+          <div class="prof-ref">${p.tema}</div>
+          <span class="prof-arr">▼</span>
+        </div>
+        <div class="prof-body">
+          <div class="prof-row">
+            <div class="prof-col at">
+              <div class="prof-label">📜 Profecia (AT)</div>
+              <div class="prof-text">"${p.at}"</div>
+              <div class="prof-cite">${p.atRef}</div>
+            </div>
+            <div class="prof-col nt">
+              <div class="prof-label">✝️ Cumprimento (NT)</div>
+              <div class="prof-text">"${p.nt}"</div>
+              <div class="prof-cite">${p.ntRef}</div>
+            </div>
+          </div>
+          <div class="prof-note">💡 ${p.nota}</div>
+        </div>
+      </div>`;
+    });
+    sb.innerHTML=`
+    <div class="sb-header">
+      <button class="sb-close" onclick="closeSidebar()">✕</button>
+      <div class="sb-title">🎯 Profecias Cumpridas</div>
+      <div class="sb-sub">O que o AT profetizou e o NT confirmou</div>
+    </div>
+    <div style="padding:4px 0 0"><button class="sb-back" onclick="sbGoTo('menu')">← Menu</button></div>
+    <div class="sb-content">
+      <div class="cur-card open"><div class="cur-body" style="display:block">
+        <p>A Bíblia contém mais de 300 profecias messiânicas escritas ao longo de mil anos por diferentes autores. Jesus cumpriu todas. Aqui estão 16 das mais específicas — com a profecia original e o cumprimento lado a lado.</p>
+        <div class="highlight">O matemático Peter Stoner calculou: a probabilidade de uma pessoa cumprir apenas 8 dessas profecias por acaso é de 1 em 10¹⁷ (100 quatrilhões). Para 16, a probabilidade é incalculável.</div>
+      </div></div>
+      ${cards}
+      <div class="cur-card open" style="margin-top:16px"><div class="cur-body" style="display:block;text-align:center">
+        <p style="font-style:italic;opacity:.7">"Examinais as Escrituras, porque vós cuidais ter nelas a vida eterna, e são elas que de mim testificam."</p>
+        <p style="font-size:13px;opacity:.5;font-family:'Cormorant Garamond',serif;font-weight:600">— João 5:39 (palavras de Jesus)</p>
+      </div></div>
+    </div>`;
+  } else if(sbPage==='verificacao'){
+    sb.innerHTML=`
+    <div class="sb-header">
+      <button class="sb-close" onclick="closeSidebar()">✕</button>
+      <div class="sb-title">🔍 Verificação dos Fatos</div>
+      <div class="sb-sub">A Bíblia resiste ao escrutínio</div>
+    </div>
+    <div style="padding:4px 0 0"><button class="sb-back" onclick="sbGoTo('menu')">← Menu</button></div>
+    <div class="sb-content">
+
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;opacity:.4;margin:6px 0 10px">Lee Strobel — Em Defesa de Cristo</div>
+
+      <div class="cur-card${openCur===100?' open':''}">
+        <div class="cur-head" onclick="togCur(100)">
+          <span class="cur-icon">📰</span>
+          <div class="cur-ref">De ateu a apologista — quem é Lee Strobel?</div>
+          <span class="cur-tag">CONTEXTO</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Lee Strobel era jornalista investigativo do <em>Chicago Tribune</em>, ateu convicto e formado em Direito por Yale. Quando sua esposa se converteu ao cristianismo, ele iniciou uma investigação de quase dois anos para desmontar a fé cristã — entrevistando os maiores especialistas em história, medicina, psicologia e arqueologia bíblica.</p>
+          <p>O resultado foi o oposto do que ele esperava. As evidências o levaram à conversão. Ele compilou suas entrevistas no best-seller <em>Em Defesa de Cristo</em> (<em>The Case for Christ</em>, 1998).</p>
+          <div class="highlight">\"Eu era convicto de que a fé cristã era absurda. Mas quando apliquei o mesmo rigor que usava no jornalismo investigativo, as evidências apontaram para uma conclusão que eu não queria aceitar.\"</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===101?' open':''}">
+        <div class="cur-head" onclick="togCur(101)">
+          <span class="cur-icon">📋</span>
+          <div class="cur-ref">Confiabilidade dos manuscritos do NT</div>
+          <span class="cur-tag">MANUSCRITOS</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Strobel entrevistou o Dr. Bruce Metzger (Princeton), uma das maiores autoridades mundiais em manuscritos do Novo Testamento. Metzger destacou que possuímos mais de <strong>5.800 manuscritos gregos</strong> do NT — incomparavelmente mais do que qualquer outro texto da antiguidade.</p>
+          <p>Para comparação: temos 7 cópias de Platão, 10 de César, 49 de Aristóteles. Do NT, temos milhares — e os mais antigos datam de poucas décadas após os originais.</p>
+          <div class="highlight">Metzger afirmou a Strobel: \"A quantidade e a antiguidade dos manuscritos do Novo Testamento são tão superiores a qualquer outro texto antigo que, se alguém duvidar da transmissão do NT, deveria descartar toda a literatura clássica da antiguidade — pois nenhuma tem evidência textual comparável.\"</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===102?' open':''}">
+        <div class="cur-head" onclick="togCur(102)">
+          <span class="cur-icon">🩺</span>
+          <div class="cur-ref">Evidência médica da crucificação</div>
+          <span class="cur-tag">MEDICINA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Strobel entrevistou o Dr. Alexander Metherell, médico e Ph.D. em engenharia, sobre os aspectos médicos da crucificação. Metherell descreveu a hematidrose (suor de sangue em Getsêmani, Lc 22:44), a flagelação romana que expunha tecido muscular, e a asfixia progressiva da crucificação.</p>
+          <p>Sobre a lança que perfurou o lado de Jesus: a saída de \"sangue e água\" (Jo 19:34) é consistente com derrame pericárdico e pleural — líquido acumulado ao redor do coração e pulmões. Isso é evidência médica de morte por insuficiência cardíaca e respiratória.</p>
+          <div class="highlight">Metherell concluiu: \"Não há absolutamente nenhuma possibilidade de que Jesus estivesse vivo quando foi retirado da cruz. A teoria do desmaio é uma impossibilidade médica. Os romanos eram profissionais em execução — era o trabalho deles garantir a morte.\"</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===103?' open':''}">
+        <div class="cur-head" onclick="togCur(103)">
+          <span class="cur-icon">🪦</span>
+          <div class="cur-ref">O túmulo vazio — três fatos incontestáveis</div>
+          <span class="cur-tag">EVIDÊNCIA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Strobel entrevistou o Dr. William Lane Craig, filósofo e historiador. Craig apresentou três fatos que a maioria dos historiadores — cristãos e não cristãos — aceita:</p>
+          <p><strong>1.</strong> O túmulo de Jesus foi encontrado vazio por mulheres seguidoras. No século I, o testemunho feminino não tinha valor legal — se a história fosse inventada, usariam homens como testemunhas.</p>
+          <p><strong>2.</strong> Múltiplas pessoas, em ocasiões e locais diferentes, relataram ter visto Jesus vivo após a crucificação — incluindo céticos como Tiago (meio-irmão de Jesus) e perseguidores como Paulo.</p>
+          <p><strong>3.</strong> Os discípulos acreditaram na ressurreição a ponto de morrerem por isso. Pessoas morrem por algo que acreditam ser verdade — mas ninguém morre por algo que sabe ser mentira.</p>
+          <div class="highlight">Craig argumentou: \"Quando colocamos esses três fatos juntos — o túmulo vazio, as aparições e a transformação dos discípulos — a ressurreição é a melhor explicação. Qualquer teoria alternativa falha em explicar todos os três simultaneamente.\"</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===104?' open':''}">
+        <div class="cur-head" onclick="togCur(104)">
+          <span class="cur-icon">⏰</span>
+          <div class="cur-ref">Testemunho precoce demais para ser lenda</div>
+          <span class="cur-tag">CRONOLOGIA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Strobel explorou a questão: quanto tempo uma lenda precisa para se desenvolver? O historiador A.N. Sherwin-White (Oxford) demonstrou que lendas na antiguidade precisavam de pelo menos duas gerações (60+ anos) para suplantar um núcleo histórico sólido.</p>
+          <p>O credo citado por Paulo em 1 Coríntios 15:3–8 é datado por historiadores entre 2 a 5 anos após a crucificação. Os Evangelhos foram escritos entre 30 e 60 anos depois, quando testemunhas oculares ainda estavam vivas e podiam contestar erros.</p>
+          <div class="highlight">Strobel concluiu: \"O intervalo de tempo entre os eventos e os primeiros registros é curto demais para permitir o desenvolvimento de uma lenda. As testemunhas oculares ainda estavam vivas. Se Pedro ou Paulo estivessem mentindo, centenas de pessoas poderiam desmentir.\"</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===105?' open':''}">
+        <div class="cur-head" onclick="togCur(105)">
+          <span class="cur-icon">🏛️</span>
+          <div class="cur-ref">Arqueologia confirma, não contradiz</div>
+          <span class="cur-tag">ARQUEOLOGIA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Strobel entrevistou o Dr. John McRay, arqueólogo e autor de <em>Archaeology and the New Testament</em>. McRay destacou que nenhuma descoberta arqueológica jamais contradisse uma referência bíblica verificável.</p>
+          <p>Exemplos: a Piscina de Betesda (Jo 5) foi encontrada com os cinco pórticos descritos por João. O Governador Pôncio Pilatos foi confirmado pela Pedra de Pilatos encontrada em Cesareia (1961). O Politarca mencionado por Lucas em Atos 17:6 — um título que não aparecia em nenhum outro texto antigo — foi confirmado por inscrições encontradas em Tessalônica.</p>
+          <div class="highlight">McRay afirmou: \"A arqueologia não provou nenhum relato bíblico falso. Ao contrário, a cada nova descoberta, a precisão dos autores bíblicos — especialmente Lucas — é reforçada. Lucas cita 32 países, 54 cidades e 9 ilhas sem cometer um único erro geográfico verificável.\"</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===106?' open':''}">
+        <div class="cur-head" onclick="togCur(106)">
+          <span class="cur-icon">🔄</span>
+          <div class="cur-ref">Profecias cumpridas — o argumento probabilístico</div>
+          <span class="cur-tag">PROFECIA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Strobel dialogou com Louis Lapides, judeu convertido que estudou as profecias messiânicas. O AT contém mais de 300 referências ao Messias, escritas ao longo de mil anos por diferentes autores.</p>
+          <p>O matemático Peter Stoner calculou a probabilidade de uma pessoa cumprir apenas 8 dessas profecias por acaso: 1 em 10<sup>17</sup> (100 quatrilhões). Para 48 profecias, a probabilidade cai para 1 em 10<sup>157</sup>.</p>
+          <div class="highlight">Lapides disse a Strobel: \"As profecias sobre o Messias especificam sua linhagem (Judá), local de nascimento (Belém), modo de entrada em Jerusalém (montado em jumento), preço da traição (30 moedas de prata), tipo de morte (traspassado), e sepultamento (com o rico). Ninguém poderia orquestrar o cumprimento de todas essas profecias — especialmente as circunstâncias de sua própria morte e sepultamento.\"</div>
+        </div>
+      </div>
+
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;opacity:.4;margin:24px 0 10px">C.S. Lewis — Cristianismo Puro e Simples</div>
+
+      <div class="cur-card${openCur===110?' open':''}">
+        <div class="cur-head" onclick="togCur(110)">
+          <span class="cur-icon">🔱</span>
+          <div class="cur-ref">O Trilema — Lunático, Mentiroso ou Senhor</div>
+          <span class="cur-tag">LÓGICA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>C.S. Lewis foi professor de literatura em Oxford e Cambridge, ateu convicto durante anos. Sua conversão veio pelo peso dos argumentos, não pela emoção. Em <em>Cristianismo Puro e Simples</em>, ele apresenta o argumento mais famoso da apologética moderna.</p>
+          <p>Jesus fez afirmações que nenhum mero \"bom mestre\" faria: perdoou pecados (prerrogativa exclusiva de Deus), disse \"Eu e o Pai somos um\" (Jo 10:30) e \"antes que Abraão existisse, EU SOU\" (Jo 8:58) — usando o nome divino revelado a Moisés.</p>
+          <div class="highlight">Lewis escreveu: \"Estou tentando impedir que alguém diga a coisa mais tola que as pessoas costumam dizer sobre Ele: 'Estou disposto a aceitar Jesus como um grande mestre moral, mas não aceito a Sua pretensão de ser Deus.' Isso é algo que não devemos dizer. Um homem que fosse apenas um homem e dissesse o tipo de coisas que Jesus disse não seria um grande mestre moral — seria um lunático, no mesmo nível de alguém que diz ser um ovo cozido, ou seria o próprio Diabo do inferno. Você precisa fazer sua escolha. Ou este homem era, e é, o Filho de Deus — ou é um louco, ou algo pior.\"</div>
+          <p>Não existe a opção \"apenas um bom professor\". Suas próprias palavras eliminam essa possibilidade.</p>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===111?' open':''}">
+        <div class="cur-head" onclick="togCur(111)">
+          <span class="cur-icon">⚖️</span>
+          <div class="cur-ref">O Argumento Moral — a lei que todos conhecem</div>
+          <span class="cur-tag">FILOSOFIA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Lewis observou que todas as civilizações, em todas as épocas, possuem uma noção inata de certo e errado — mesmo quando discordam nos detalhes. Ninguém diz que trair quem confia em você é admirável. Nenhuma cultura celebra a covardia.</p>
+          <p>Ele argumentou: se o universo é apenas matéria e energia sem propósito, de onde vem essa \"lei\" moral universal? Processos evolutivos explicam comportamento, mas não explicam a percepção de <em>obrigação</em> moral — o sentimento de que certas coisas <em>devem</em> ser feitas, quer nos beneficiem ou não.</p>
+          <div class="highlight">Lewis escreveu: \"Se não existe inteligência por trás do universo, ninguém projetou meu cérebro para o propósito de pensar. Nesse caso, não tenho razão para confiar em meu cérebro quando ele me diz sobre o ateísmo. Se não existe Deus, não há razão para confiar em nenhum pensamento — incluindo o pensamento de que Deus não existe.\"</div>
+        </div>
+      </div>
+
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;opacity:.4;margin:24px 0 10px">Josh McDowell — Evidência que Exige um Veredito</div>
+
+      <div class="cur-card${openCur===112?' open':''}">
+        <div class="cur-head" onclick="togCur(112)">
+          <span class="cur-icon">💀</span>
+          <div class="cur-ref">De covardes a mártires — a transformação impossível</div>
+          <span class="cur-tag">EVIDÊNCIA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Josh McDowell era agnóstico e tentou refutar o cristianismo para humilhar amigos cristãos. Após anos de pesquisa, converteu-se e escreveu uma das obras apologéticas mais completas da história.</p>
+          <p>McDowell destaca a transformação radical dos discípulos como uma das evidências mais poderosas. Na noite da prisão de Jesus, todos fugiram. Pedro negou três vezes. Eles se trancaram em um quarto por medo.</p>
+          <p>Semanas depois, esses mesmos homens pregavam publicamente a ressurreição diante das autoridades que haviam executado Jesus — e aceitavam prisão, tortura e morte por isso.</p>
+          <div class="highlight">McDowell argumenta: \"Pessoas morrem por algo que acreditam ser verdade, mas não por algo que sabem ser mentira. Se os discípulos inventaram a ressurreição, eles saberiam que era mentira. Nenhuma teoria psicológica explica por que doze homens aceitariam morrer — separadamente, em momentos e locais diferentes — por uma mentira que eles mesmos criaram, sem que nenhum jamais se retratasse.\"</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===113?' open':''}">
+        <div class="cur-head" onclick="togCur(113)">
+          <span class="cur-icon">📝</span>
+          <div class="cur-ref">O critério do embaraço — por que inventores não escreveriam assim</div>
+          <span class="cur-tag">MANUSCRITOS</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>McDowell observa que os Evangelhos contêm uma quantidade surpreendente de material constrangedor para os próprios autores e para os heróis da fé — algo que inventores nunca incluiriam.</p>
+          <p>Pedro, o líder, é chamado de \"Satanás\" por Jesus (Mc 8:33) e nega o Mestre três vezes. Os discípulos falham repetidamente em entender os ensinamentos. As primeiras testemunhas da ressurreição são mulheres — cujo testemunho não tinha valor legal no judaísmo do século I. Tiago, irmão de Jesus, é descrito como incrédulo durante o ministério.</p>
+          <div class="highlight">Em historiografia, o \"critério do embaraço\" é uma ferramenta reconhecida: se um autor inclui algo que prejudica sua própria causa, a probabilidade de ser verdade aumenta enormemente. Ninguém inventa uma mentira e a preenche com detalhes que enfraquecem sua credibilidade. Os Evangelhos leem como testemunho honesto — não como propaganda.</div>
+        </div>
+      </div>
+
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;opacity:.4;margin:24px 0 10px">Geisler & Turek — Não Tenho Fé Suficiente para Ser Ateu</div>
+
+      <div class="cur-card${openCur===114?' open':''}">
+        <div class="cur-head" onclick="togCur(114)">
+          <span class="cur-icon">🎯</span>
+          <div class="cur-ref">O ajuste fino do universo — precisão impossível</div>
+          <span class="cur-tag">CIÊNCIA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Norman Geisler e Frank Turek apresentam o argumento do ajuste fino: as constantes fundamentais do universo (força gravitacional, força nuclear forte, taxa de expansão do universo, etc.) estão calibradas com uma precisão absurda para permitir a existência de vida.</p>
+          <p>Se a força gravitacional fosse alterada em 1 parte em 10<sup>40</sup>, estrelas não se formariam. Se a força nuclear forte variasse 2%, não haveria átomos. A taxa de expansão do universo é precisa em 1 parte em 10<sup>55</sup>.</p>
+          <div class="highlight">Turek ilustra: \"Imagine um painel de controle com dezenas de botões giratórios, cada um podendo ser ajustado entre bilhões de posições. Todos estão na posição exata para permitir vida. O ateísmo nos pede para acreditar que cada botão girou para a posição certa por acaso. A fé no acaso cósmico requer muito mais credulidade do que a fé em um Criador inteligente.\"</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===115?' open':''}">
+        <div class="cur-head" onclick="togCur(115)">
+          <span class="cur-icon">💥</span>
+          <div class="cur-ref">O universo teve um início — e isso muda tudo</div>
+          <span class="cur-tag">COSMOLOGIA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Geisler e Turek argumentam a partir da ciência moderna: o Big Bang demonstra que o universo teve um início. Tudo o que começa a existir tem uma causa. O universo começou a existir. Portanto, o universo tem uma causa.</p>
+          <p>Essa causa precisa ser exterior ao universo (transcendente), anterior ao tempo (eterna), imaterial (pois a matéria foi criada), e inimaginavelmente poderosa.</p>
+          <div class="highlight">Turek observa: \"Ateus como Bertrand Russell diziam 'o universo simplesmente existe'. Mas a ciência refutou isso — o universo não é eterno, ele começou. Ironicamente, a ciência que muitos usam contra Deus acabou confirmando exatamente o que Gênesis 1:1 diz há 3.400 anos: 'No princípio, Deus criou os céus e a terra.'\"</div>
+        </div>
+      </div>
+
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;opacity:.4;margin:24px 0 10px">William Lane Craig — Em Guarda</div>
+
+      <div class="cur-card${openCur===116?' open':''}">
+        <div class="cur-head" onclick="togCur(116)">
+          <span class="cur-icon">🧠</span>
+          <div class="cur-ref">O Argumento Kalam — a causa primeira</div>
+          <span class="cur-tag">FILOSOFIA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>William Lane Craig, considerado um dos maiores filósofos cristãos vivos, formalizou o Argumento Cosmológico Kalam em três premissas simples:</p>
+          <p><strong>1.</strong> Tudo que começa a existir tem uma causa.<br>
+          <strong>2.</strong> O universo começou a existir.<br>
+          <strong>3.</strong> Portanto, o universo tem uma causa.</p>
+          <p>A premissa 1 nunca foi refutada — nada surge do nada sem causa. A premissa 2 é confirmada pela expansão do universo, pela radiação cósmica de fundo, e pela segunda lei da termodinâmica (o universo está se esgotando, logo não pode ser eterno).</p>
+          <div class="highlight">Craig argumenta: \"A causa do universo precisa ser não-causada, eterna, imaterial, pessoal e incrivelmente poderosa. Pessoal porque escolheu criar — uma causa impessoal eterna produziria um efeito eterno, não um início temporal. Isso se parece muito com o que os teístas sempre chamaram de 'Deus'.\"</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===117?' open':''}">
+        <div class="cur-head" onclick="togCur(117)">
+          <span class="cur-icon">🗣️</span>
+          <div class="cur-ref">\"Se Deus não existe, valores morais objetivos não existem\"</div>
+          <span class="cur-tag">MORAL</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Craig apresenta o argumento moral de forma contundente: se não existe Deus, não existe fundamento objetivo para a moralidade. Sem um legislador transcendente, \"certo\" e \"errado\" são apenas preferências culturais — como preferir chocolate a baunilha.</p>
+          <p>Mas nós sabemos que o Holocausto foi objetivamente errado — não apenas \"culturalmente desaprovado\". Torturar crianças por diversão não é apenas impopular — é mau. Essa percepção de mal objetivo exige um padrão objetivo de bem.</p>
+          <div class="highlight">Craig afirma: \"Se alguém realmente acredita que sem Deus não há diferença moral entre amar uma criança e torturá-la, então algo está profundamente errado — não com o argumento, mas com a pessoa. Nossa percepção moral aponta para uma realidade moral que transcende a opinião humana. E uma lei moral transcendente requer um legislador moral transcendente.\"</div>
+        </div>
+      </div>
+
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;opacity:.4;margin:24px 0 10px">Gary Habermas — A Ressurreição como Fato Histórico</div>
+
+      <div class="cur-card${openCur===118?' open':''}">
+        <div class="cur-head" onclick="togCur(118)">
+          <span class="cur-icon">📊</span>
+          <div class="cur-ref">O Método dos Fatos Mínimos — o que até céticos aceitam</div>
+          <span class="cur-tag">HISTÓRIA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Gary Habermas é a maior autoridade mundial em evidências históricas da ressurreição. Ele analisou mais de 3.400 publicações acadêmicas (de autores cristãos, agnósticos e ateus) sobre o Jesus histórico e identificou fatos aceitos pela esmagadora maioria dos historiadores:</p>
+          <p><strong>1.</strong> Jesus morreu por crucificação.<br>
+          <strong>2.</strong> Os discípulos acreditaram ter visto Jesus ressuscitado.<br>
+          <strong>3.</strong> O perseguidor Paulo se converteu após relatar um encontro com o Cristo ressurreto.<br>
+          <strong>4.</strong> O cético Tiago (meio-irmão de Jesus) se converteu após relatar uma aparição.<br>
+          <strong>5.</strong> O túmulo estava vazio.</p>
+          <div class="highlight">Habermas argumenta: \"Estes fatos são aceitos por aproximadamente 75% dos estudiosos que publicam sobre o tema — incluindo céticos, agnósticos e ateus. Não estou pedindo que aceitem a Bíblia como Palavra de Deus. Estou usando apenas o que os próprios críticos admitem, e mostrando que a ressurreição é a única explicação que dá conta de todos esses fatos simultaneamente.\"</div>
+        </div>
+      </div>
+
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;opacity:.4;margin:24px 0 10px">F.F. Bruce — São Fidedignos os Documentos do NT?</div>
+
+      <div class="cur-card${openCur===119?' open':''}">
+        <div class="cur-head" onclick="togCur(119)">
+          <span class="cur-icon">🏺</span>
+          <div class="cur-ref">Os Evangelhos como testemunho ocular</div>
+          <span class="cur-tag">MANUSCRITOS</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>F.F. Bruce foi professor de Crítica e Exegese Bíblica na Universidade de Manchester e um dos maiores especialistas em manuscritos do Novo Testamento do século XX.</p>
+          <p>Bruce demonstrou que os Evangelhos passam nos três testes clássicos de historiografia: o <strong>teste bibliográfico</strong> (quantidade e antiguidade dos manuscritos), o <strong>teste da evidência interna</strong> (os autores são confiáveis?) e o <strong>teste da evidência externa</strong> (outros autores antigos confirmam?).</p>
+          <p>Escritores pagãos como Tácito, Plínio o Jovem, Josefo e Suetônio mencionam Jesus, os cristãos e eventos descritos no NT — sem nenhuma motivação para favorecer o cristianismo.</p>
+          <div class="highlight">Bruce escreveu: \"Se o Novo Testamento fosse uma coleção de escritos seculares, sua autenticidade seria considerada acima de qualquer dúvida. É curioso que o padrão de prova exigido para os textos bíblicos seja tão mais rigoroso do que o aplicado a qualquer outro documento da antiguidade. Se aplicássemos aos clássicos o mesmo ceticismo, não teríamos certeza de praticamente nada sobre o mundo antigo.\"</div>
+        </div>
+      </div>
+
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;opacity:.4;margin:24px 0 10px">A Coerência Interna da Bíblia</div>
+
+      <div class="cur-card${openCur===107?' open':''}">
+        <div class="cur-head" onclick="togCur(107)">
+          <span class="cur-icon">🌈</span>
+          <div class="cur-ref">63.779 conexões — o \"arco-íris\" da Bíblia</div>
+          <span class="cur-tag">VISUALIZAÇÃO</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>Em 2007, o professor <strong>Chris Harrison</strong> (Carnegie Mellon University), em colaboração com o Pastor Christoph Römhild, criou uma das visualizações de dados mais impactantes da história: um diagrama de arco que mapeia todas as <strong>63.779 referências cruzadas</strong> encontradas na Bíblia.</p>
+          <p>Na base do gráfico, cada barra representa um capítulo da Bíblia (de Gênesis a Apocalipse). Cada arco conecta dois capítulos que se referenciam mutuamente. A cor de cada arco varia conforme a distância entre os capítulos — criando o icônico efeito visual de arco-íris.</p>
+          <div class="highlight">O resultado visual é impressionante: uma teia densa e multicolorida que revela o nível extraordinário de interconexão da Bíblia. São 66 livros, escritos por cerca de 40 autores, ao longo de aproximadamente 1.500 anos, em 3 idiomas, em 3 continentes — e mesmo assim formam uma narrativa unificada com milhares de conexões internas.</div>
+          <p>Jordan Peterson incluiu esta visualização em suas palestras, descrevendo a Bíblia como \"possivelmente o primeiro livro com hiperlinks\" — cada referência cruzada funciona como um link que conecta uma parte do texto a outra, formando uma rede coerente.</p>
+          <p style="margin-top:12px"><strong>Veja a visualização completa:</strong><br>
+          <a href="https://www.chrisharrison.net/index.php/visualizations/BibleViz" target="_blank" style="color:#6a4a2a;font-weight:700">chrisharrison.net/BibleViz</a></p>
+          <div class="source">© Chris Harrison / Carnegie Mellon University</div>
+        </div>
+      </div>
+
+      <div class="cur-card${openCur===108?' open':''}">
+        <div class="cur-head" onclick="togCur(108)">
+          <span class="cur-icon">🧩</span>
+          <div class="cur-ref">40 autores, 1.500 anos, uma só mensagem</div>
+          <span class="cur-tag">COERÊNCIA</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p>A Bíblia foi escrita por aproximadamente 40 autores de origens radicalmente diferentes: pastores (Amós), reis (Davi, Salomão), médicos (Lucas), pescadores (Pedro, João), um cobrador de impostos (Mateus), um fariseu erudito (Paulo), um copeiro (Neemias), um general (Josué), e um criador de gado e agricultor (Moisés antes do chamado).</p>
+          <p>Esses autores escreveram em três idiomas (hebraico, aramaico, grego), em três continentes (Ásia, África, Europa), ao longo de pelo menos 1.500 anos — muitos sem conhecer uns aos outros ou ter acesso aos textos dos demais.</p>
+          <div class="highlight">Apesar dessa diversidade extrema, a Bíblia apresenta uma narrativa coerente do início ao fim: criação, queda, promessa de redenção, cumprimento em Cristo, e restauração final. Temas como sacrifício, aliança, redenção e reino permeiam todo o texto. Nenhum outro livro na história da humanidade foi composto de forma similar e manteve tal unidade.</div>
+        </div>
+      </div>
+
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-align:center;opacity:.4;margin:24px 0 10px">Leitura Recomendada</div>
+
+      <div class="cur-card${openCur===109?' open':''}">
+        <div class="cur-head" onclick="togCur(109)">
+          <span class="cur-icon">📚</span>
+          <div class="cur-ref">Obras essenciais de apologética cristã</div>
+          <span class="cur-tag">RECURSOS</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <p><strong>Para quem está começando:</strong></p>
+          <p>• <em>Mais que um Carpinteiro</em> — Josh McDowell. Curto, direto, ideal para presentear alguém com dúvidas.</p>
+          <p>• <em>Cristianismo Puro e Simples</em> — C.S. Lewis. A defesa mais elegante do cristianismo básico já escrita. Sem viés denominacional.</p>
+          <p>• <em>Saiba por que Você Crê</em> — Paul E. Little. Responde as objeções mais comuns de forma prática e acessível.</p>
+          <p style="margin-top:12px"><strong>Investigação e evidências:</strong></p>
+          <p>• <em>Em Defesa de Cristo</em> — Lee Strobel. Jornalista ateu investiga a fé e se converte pelas evidências.</p>
+          <p>• <em>Em Defesa da Fé</em> — Lee Strobel. Enfrenta as objeções mais difíceis ao cristianismo.</p>
+          <p>• <em>Evidência que Exige um Veredito</em> — Josh McDowell. Enciclopédia de provas históricas, proféticas e arqueológicas.</p>
+          <p>• <em>São Fidedignos os Documentos do NT?</em> — F.F. Bruce. Referência acadêmica sobre confiabilidade dos manuscritos.</p>
+          <p style="margin-top:12px"><strong>Filosofia e argumentação:</strong></p>
+          <p>• <em>Não Tenho Fé Suficiente para Ser Ateu</em> — Norman Geisler & Frank Turek. Da cosmologia à confiabilidade bíblica.</p>
+          <p>• <em>Em Guarda</em> — William Lane Craig. Os melhores argumentos filosóficos para a fé, de forma acessível.</p>
+          <p>• <em>A Razão da Fé</em> — Timothy Keller. Responde objeções intelectuais com respeito e profundidade.</p>
+          <p style="margin-top:12px"><strong>Visualização:</strong></p>
+          <p>• <a href="https://www.chrisharrison.net/index.php/visualizations/BibleViz" target="_blank" style="color:#6a4a2a;font-weight:700">BibleViz — Chris Harrison</a> — As 63.779 referências cruzadas da Bíblia em um diagrama visual.</p>
+          <div class="highlight">\"Sempre estejam preparados para responder a qualquer pessoa que pedir a razão da esperança que há em vocês. Mas façam isso com mansidão e respeito.\" — 1 Pedro 3:15</div>
+        </div>
+      </div>
+
+    </div>`;
+  } else if(sbPage==='timeline'){
+    sb.innerHTML=`
+    <div class="sb-header">
+      <button class="sb-close" onclick="closeSidebar()">✕</button>
+      <div class="sb-title">⏳ Linha do Tempo</div>
+      <div class="sb-sub">Marcos da história bíblica</div>
+    </div>
+    <div style="padding:4px 0 0"><button class="sb-back" onclick="sbGoTo('menu')">← Menu</button></div>
+    <div class="sb-content">
+
+      <div class="tl-era">── Antigo Testamento ──</div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">No princípio</div>
+          <div class="tl-name">🌍 Criação do mundo</div>
+          <div class="tl-desc">Deus cria os céus, a terra, os seres vivos e o homem à sua imagem.</div>
+          <div class="tl-ref">Gênesis 1–2</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">Após a Criação</div>
+          <div class="tl-name">🍎 Queda do homem</div>
+          <div class="tl-desc">Adão e Eva desobedecem a Deus. Entra o pecado e a morte no mundo. Deus promete um redentor (Gn 3:15).</div>
+          <div class="tl-ref">Gênesis 3</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">Período antediluviano</div>
+          <div class="tl-name">🌊 O Dilúvio</div>
+          <div class="tl-desc">Deus purifica a terra pela água. Noé e sua família são preservados na arca. Aliança do arco-íris.</div>
+          <div class="tl-ref">Gênesis 6–9</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">Pós-Dilúvio</div>
+          <div class="tl-name">🏗️ Torre de Babel</div>
+          <div class="tl-desc">A humanidade tenta construir uma torre até o céu. Deus confunde as línguas e dispersa os povos.</div>
+          <div class="tl-ref">Gênesis 11:1–9</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 2000 a.C.</div>
+          <div class="tl-name">🏕️ Chamado de Abraão</div>
+          <div class="tl-desc">Deus chama Abrão de Ur dos Caldeus e promete fazer dele uma grande nação. Início da aliança abraâmica.</div>
+          <div class="tl-ref">Gênesis 12:1–3</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 2000 a.C.</div>
+          <div class="tl-name">🔪 Sacrifício de Isaque</div>
+          <div class="tl-desc">Deus prova Abraão pedindo seu filho. No Monte Moriah, Deus provê um substituto — prefiguração de Cristo.</div>
+          <div class="tl-ref">Gênesis 22</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 1876 a.C.</div>
+          <div class="tl-name">🏛️ José no Egito</div>
+          <div class="tl-desc">José, vendido pelos irmãos, é exaltado como governador do Egito. A família de Jacó migra para o Egito.</div>
+          <div class="tl-ref">Gênesis 37–50</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 1446 a.C.</div>
+          <div class="tl-name">🩸 O Êxodo</div>
+          <div class="tl-desc">Deus liberta Israel da escravidão no Egito por meio de Moisés. As 10 pragas, a Páscoa e a travessia do Mar Vermelho.</div>
+          <div class="tl-ref">Êxodo 1–15</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 1446 a.C.</div>
+          <div class="tl-name">📜 A Lei no Monte Sinai</div>
+          <div class="tl-desc">Deus entrega os Dez Mandamentos e estabelece a aliança mosaica. Instruções para o Tabernáculo.</div>
+          <div class="tl-ref">Êxodo 19–40</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 1446–1406 a.C.</div>
+          <div class="tl-name">🏜️ 40 anos no deserto</div>
+          <div class="tl-desc">Israel peregrina por incredulidade. Uma geração inteira morre. Moisés morre vendo a Terra Prometida, mas sem entrar.</div>
+          <div class="tl-ref">Números · Deuteronômio 34</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 1406 a.C.</div>
+          <div class="tl-name">⚔️ Conquista de Canaã</div>
+          <div class="tl-desc">Josué lidera Israel na conquista da Terra Prometida. Queda de Jericó. Distribuição das terras às tribos.</div>
+          <div class="tl-ref">Josué</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 1350–1050 a.C.</div>
+          <div class="tl-name">⚖️ Período dos Juízes</div>
+          <div class="tl-desc">Ciclos de pecado, opressão, clamor e livramento. Líderes como Débora, Gideão, Sansão e Samuel governam Israel.</div>
+          <div class="tl-ref">Juízes · Rute · 1 Samuel 1–7</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 1050 a.C.</div>
+          <div class="tl-name">👑 Primeiro rei — Saul</div>
+          <div class="tl-desc">Israel rejeita a teocracia e pede um rei. Saul é ungido, mas é rejeitado por desobediência.</div>
+          <div class="tl-ref">1 Samuel 8–15</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 1010–970 a.C.</div>
+          <div class="tl-name">🎵 Reinado de Davi</div>
+          <div class="tl-desc">Davi unifica Israel, conquista Jerusalém e recebe a promessa do trono eterno (aliança davídica). Autor de muitos Salmos.</div>
+          <div class="tl-ref">2 Samuel · 1 Crônicas · Salmos</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 966 a.C.</div>
+          <div class="tl-name">🏛️ Construção do Templo</div>
+          <div class="tl-desc">Salomão constrói o Templo em Jerusalém. A glória de Deus enche a casa. Centro da adoração de Israel.</div>
+          <div class="tl-ref">1 Reis 5–8 · 2 Crônicas 2–7</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">931 a.C.</div>
+          <div class="tl-name">⚡ Divisão do Reino</div>
+          <div class="tl-desc">Após Salomão, o reino se divide: Israel (10 tribos, norte) e Judá (2 tribos, sul). Idolatria se espalha no norte.</div>
+          <div class="tl-ref">1 Reis 12</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 870 a.C.</div>
+          <div class="tl-name">🔥 Elias no Monte Carmelo</div>
+          <div class="tl-desc">Elias confronta 450 profetas de Baal. Fogo do céu consome o sacrifício. O povo reconhece: \"O Senhor é Deus!\"</div>
+          <div class="tl-ref">1 Reis 18</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">722 a.C.</div>
+          <div class="tl-name">💔 Queda de Samaria</div>
+          <div class="tl-desc">A Assíria conquista o Reino do Norte (Israel). As 10 tribos são deportadas e dispersas. Nunca retornaram como nação.</div>
+          <div class="tl-ref">2 Reis 17</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 622 a.C.</div>
+          <div class="tl-name">📖 Reforma de Josias</div>
+          <div class="tl-desc">O Livro da Lei é redescoberto no Templo. O rei Josias promove a última grande reforma espiritual de Judá.</div>
+          <div class="tl-ref">2 Reis 22–23 · 2 Crônicas 34–35</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">586 a.C.</div>
+          <div class="tl-name">🔥 Destruição de Jerusalém e do Templo</div>
+          <div class="tl-desc">Nabucodonosor destrói Jerusalém e o Templo de Salomão. O povo de Judá é levado cativo para a Babilônia.</div>
+          <div class="tl-ref">2 Reis 25 · Jeremias 52 · Lamentações</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">586–538 a.C.</div>
+          <div class="tl-name">⛓️ Exílio na Babilônia</div>
+          <div class="tl-desc">Daniel na cova dos leões. Sadraque, Mesaque e Abede-Nego na fornalha. Ezequiel profetiza restauração. O vale dos ossos secos ganha vida.</div>
+          <div class="tl-ref">Daniel · Ezequiel</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">538 a.C.</div>
+          <div class="tl-name">🕊️ Decreto de Ciro — Retorno</div>
+          <div class="tl-desc">Ciro, rei da Pérsia, autoriza o retorno dos judeus — cumprindo a profecia de Isaías (Is 44:28–45:1). Início da reconstrução.</div>
+          <div class="tl-ref">Esdras 1 · Isaías 44–45</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">515 a.C.</div>
+          <div class="tl-name">🏗️ Segundo Templo concluído</div>
+          <div class="tl-desc">Sob a liderança de Zorobabel e o incentivo dos profetas Ageu e Zacarias, o Templo é reconstruído.</div>
+          <div class="tl-ref">Esdras 6 · Ageu · Zacarias</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">445 a.C.</div>
+          <div class="tl-name">🧱 Neemias reconstrói os muros</div>
+          <div class="tl-desc">Muros de Jerusalém reconstruídos em 52 dias. Esdras lê a Lei publicamente. O povo renova a aliança com Deus.</div>
+          <div class="tl-ref">Neemias</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 430 a.C.</div>
+          <div class="tl-name">📢 Malaquias — o último profeta</div>
+          <div class="tl-desc">\"Eis que envio o meu mensageiro\" (Ml 3:1). Após Malaquias, 400 anos de silêncio profético até João Batista.</div>
+          <div class="tl-ref">Malaquias</div>
+        </div>
+      </div>
+
+      <div class="tl-era">── 400 anos de silêncio ──</div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 400–5 a.C.</div>
+          <div class="tl-name">🤫 Período intertestamentário</div>
+          <div class="tl-desc">Sem profetas. Domínio persa, grego (Alexandre) e romano. Os Macabeus. Tradução da Septuaginta. Surgem fariseus, saduceus e essênios.</div>
+          <div class="tl-ref">Fontes históricas (Josefo, Macabeus)</div>
+        </div>
+      </div>
+
+      <div class="tl-era">── Novo Testamento ──</div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 6–4 a.C.</div>
+          <div class="tl-name">⭐ Nascimento de Jesus</div>
+          <div class="tl-desc">O Verbo se faz carne. Nasce em Belém, conforme profetizado por Miquéias (Mq 5:2). Anjo anuncia aos pastores. Magos visitam.</div>
+          <div class="tl-ref">Lucas 1–2 · Mateus 1–2</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 27 d.C.</div>
+          <div class="tl-name">💧 Batismo de Jesus</div>
+          <div class="tl-desc">João Batista batiza Jesus no Jordão. O Espírito desce como pomba. A voz do Pai: \"Este é o meu Filho amado.\"</div>
+          <div class="tl-ref">Mateus 3 · Marcos 1 · Lucas 3</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 27–30 d.C.</div>
+          <div class="tl-name">✋ Ministério público de Jesus</div>
+          <div class="tl-desc">Cerca de 3 anos: parábolas, milagres, ensinos. Escolha dos 12 apóstolos. Sermão do Monte. Transfiguração.</div>
+          <div class="tl-ref">Mateus · Marcos · Lucas · João</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 30 d.C. (sexta-feira)</div>
+          <div class="tl-name">✝️ Crucificação</div>
+          <div class="tl-desc">Jesus é preso, julgado, crucificado e sepultado. O véu do Templo se rasga de cima para baixo. \"Está consumado.\"</div>
+          <div class="tl-ref">Mateus 26–27 · Marcos 14–15 · Lucas 22–23 · João 18–19</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 30 d.C. (domingo)</div>
+          <div class="tl-name">🌅 Ressurreição</div>
+          <div class="tl-desc">O túmulo está vazio. Jesus aparece aos discípulos por 40 dias. \"Eu sou a ressurreição e a vida.\" A morte é vencida.</div>
+          <div class="tl-ref">Mateus 28 · Marcos 16 · Lucas 24 · João 20–21</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 30 d.C. (40 dias após)</div>
+          <div class="tl-name">☁️ Ascensão de Jesus</div>
+          <div class="tl-desc">Jesus sobe ao céu diante dos discípulos. \"Recebereis poder quando descer sobre vós o Espírito Santo.\"</div>
+          <div class="tl-ref">Atos 1:1–11</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 30 d.C. (Pentecostes)</div>
+          <div class="tl-name">🔥 Pentecostes — nasce a Igreja</div>
+          <div class="tl-desc">O Espírito Santo desce sobre os discípulos. Pedro prega e 3.000 se convertem. A Igreja começa a crescer.</div>
+          <div class="tl-ref">Atos 2</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 34 d.C.</div>
+          <div class="tl-name">⚡ Conversão de Saulo/Paulo</div>
+          <div class="tl-desc">O perseguidor dos cristãos encontra Cristo no caminho de Damasco. Torna-se o maior missionário da história.</div>
+          <div class="tl-ref">Atos 9</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 48–57 d.C.</div>
+          <div class="tl-name">⛵ Viagens missionárias de Paulo</div>
+          <div class="tl-desc">Três viagens pela Ásia Menor e Europa. Fundação de igrejas em Filipos, Tessalônica, Corinto, Éfeso. Escrita das epístolas.</div>
+          <div class="tl-ref">Atos 13–20 · Epístolas paulinas</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 49 d.C.</div>
+          <div class="tl-name">🤝 Concílio de Jerusalém</div>
+          <div class="tl-desc">Os apóstolos decidem que gentios convertidos não precisam seguir a Lei mosaica. A graça é para todos.</div>
+          <div class="tl-ref">Atos 15</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 60–62 d.C.</div>
+          <div class="tl-name">⛓️ Paulo preso em Roma</div>
+          <div class="tl-desc">Paulo é preso e levado a Roma após naufrágio. Da prisão, escreve Efésios, Filipenses, Colossenses e Filemom.</div>
+          <div class="tl-ref">Atos 27–28 · Epístolas da prisão</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 67 d.C.</div>
+          <div class="tl-name">✉️ Último testemunho de Paulo</div>
+          <div class="tl-desc">\"Combati o bom combate, acabei a carreira, guardei a fé.\" Paulo escreve sua última carta (2 Timóteo) antes do martírio.</div>
+          <div class="tl-ref">2 Timóteo 4:7</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">70 d.C.</div>
+          <div class="tl-name">🔥 Destruição do Segundo Templo</div>
+          <div class="tl-desc">Os romanos sob Tito destroem Jerusalém e o Templo — cumprindo a profecia de Jesus: \"Não ficará pedra sobre pedra\" (Mt 24:2). O Templo nunca mais foi reconstruído.</div>
+          <div class="tl-ref">Mateus 24:1–2 · Evento histórico (Josefo, Guerras dos Judeus)</div>
+        </div>
+      </div>
+
+      <div class="tl-item major">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-date">c. 95 d.C.</div>
+          <div class="tl-name">🌟 Apocalipse — a revelação final</div>
+          <div class="tl-desc">João, exilado na ilha de Patmos, recebe a visão do Cristo glorificado, dos juízos finais, e da Nova Jerusalém. \"Eis que faço novas todas as coisas.\"</div>
+          <div class="tl-ref">Apocalipse 1–22</div>
+        </div>
+      </div>
+
+    </div>`;
+  } else if(sbPage==='remedios'){
+    const remedios=[
+      {icon:"😰",problema:"Ansiedade",ref:"Filipenses 4:6–7",verso:"Não estejais inquietos por coisa alguma; antes, as vossas petições sejam em tudo conhecidas diante de Deus, pela oração e súplicas, com ação de graças. E a paz de Deus, que excede todo o entendimento, guardará os vossos corações e os vossos sentimentos em Cristo Jesus."},
+      {icon:"😨",problema:"Medo",ref:"2 Timóteo 1:7",verso:"Porque Deus não nos deu o espírito de temor, mas de fortaleza, e de amor, e de moderação."},
+      {icon:"😢",problema:"Tristeza profunda",ref:"Salmo 34:18",verso:"Perto está o Senhor dos que têm o coração quebrantado, e salva os contritos de espírito."},
+      {icon:"😔",problema:"Desânimo",ref:"Isaías 41:10",verso:"Não temas, porque eu sou contigo; não te assombres, porque eu sou teu Deus; eu te fortaleço, e te ajudo, e te sustento com a destra da minha justiça."},
+      {icon:"🌫️",problema:"Confusão mental",ref:"Isaías 26:3",verso:"Tu conservarás em paz aquele cuja mente está firme em ti; porque ele confia em ti."},
+      {icon:"😞",problema:"Culpa",ref:"Romanos 8:1",verso:"Portanto, agora nenhuma condenação há para os que estão em Cristo Jesus, que não andam segundo a carne, mas segundo o Espírito."},
+      {icon:"💫",problema:"Fraqueza",ref:"2 Coríntios 12:9",verso:"E disse-me: A minha graça te basta, porque o meu poder se aperfeiçoa na fraqueza. De boa vontade, pois, me gloriarei nas minhas fraquezas, para que em mim habite o poder de Cristo."},
+      {icon:"🫣",problema:"Insegurança",ref:"Salmo 27:1",verso:"O Senhor é a minha luz e a minha salvação; a quem temerei? O Senhor é a força da minha vida; de quem me recearei?"},
+      {icon:"🧭",problema:"Falta de direção",ref:"Provérbios 3:5–6",verso:"Confia no Senhor de todo o teu coração, e não te estribes no teu próprio entendimento. Reconhece-o em todos os teus caminhos, e ele endireitará as tuas veredas."},
+      {icon:"🏋️",problema:"Coração sobrecarregado",ref:"Mateus 11:28–30",verso:"Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei. Tomai sobre vós o meu jugo, e aprendei de mim, que sou manso e humilde de coração; e encontrareis descanso para as vossas almas. Porque o meu jugo é suave e o meu fardo é leve."},
+      {icon:"🚶",problema:"Solidão",ref:"Salmo 23:4",verso:"Ainda que eu andasse pelo vale da sombra da morte, não temeria mal algum, porque tu estás comigo; a tua vara e o teu cajado me consolam."},
+      {icon:"😤",problema:"Raiva e amargura",ref:"Efésios 4:31–32",verso:"Toda a amargura, e ira, e cólera, e gritaria, e blasfêmia e toda a malícia sejam tiradas dentre vós. Antes sede uns para com os outros benignos, misericordiosos, perdoando-vos uns aos outros, como também Deus vos perdoou em Cristo."},
+      {icon:"🔥",problema:"Tentação",ref:"1 Coríntios 10:13",verso:"Não veio sobre vós tentação, senão humana; mas fiel é Deus, que não vos deixará tentar acima do que podeis, antes com a tentação dará também o escape, para que a possais suportar."},
+      {icon:"🖤",problema:"Luto e perda",ref:"João 11:25–26",verso:"Disse-lhe Jesus: Eu sou a ressurreição e a vida; quem crê em mim, ainda que esteja morto, viverá; e todo aquele que vive, e crê em mim, nunca morrerá. Crês tu isto?"},
+      {icon:"🚫",problema:"Rejeição",ref:"Romanos 8:31",verso:"Que diremos, pois, a estas coisas? Se Deus é por nós, quem será contra nós?"},
+      {icon:"😶",problema:"Vergonha",ref:"Romanos 10:11",verso:"Porque a Escritura diz: Todo aquele que nele crer não será confundido."},
+      {icon:"👀",problema:"Inveja",ref:"Salmo 37:3–4",verso:"Confia no Senhor e faze o bem; habitarás na terra, e verdadeiramente serás alimentado. Deleita-te também no Senhor, e te concederá os desejos do teu coração."},
+      {icon:"⏰",problema:"Impaciência",ref:"Salmo 27:14",verso:"Espera no Senhor, tem bom ânimo, e fortifique-se o teu coração; espera, pois, no Senhor."},
+      {icon:"🪞",problema:"Sentir-se indigno",ref:"Efésios 2:10",verso:"Porque somos feitura sua, criados em Cristo Jesus para as boas obras, as quais Deus preparou para que andássemos nelas."},
+      {icon:"❓",problema:"Dúvida na fé",ref:"Marcos 9:24",verso:"E logo o pai do menino, clamando, com lágrimas, disse: Eu creio, Senhor! Ajuda a minha incredulidade."},
+      {icon:"🫠",problema:"Cansaço espiritual",ref:"Isaías 40:31",verso:"Mas os que esperam no Senhor renovarão as suas forças; subirão com asas como águias; correrão, e não se cansarão; caminharão, e não se fatigarão."},
+      {icon:"💰",problema:"Preocupação financeira",ref:"Filipenses 4:19",verso:"O meu Deus, segundo as suas riquezas, suprirá todas as vossas necessidades em glória, por Cristo Jesus."},
+      {icon:"⚔️",problema:"Perseguição e injustiça",ref:"Mateus 5:10–12",verso:"Bem-aventurados os que sofrem perseguição por causa da justiça, porque deles é o reino dos céus. Bem-aventurados sois vós, quando vos injuriarem e perseguirem... Exultai e alegrai-vos, porque é grande o vosso galardão nos céus."},
+      {icon:"🕊️",problema:"Falta de paz",ref:"João 14:27",verso:"Deixo-vos a paz, a minha paz vos dou; não vo-la dou como o mundo a dá. Não se turbe o vosso coração, nem se atemorize."},
+      {icon:"🔁",problema:"Pecado recorrente",ref:"1 João 1:9",verso:"Se confessarmos os nossos pecados, ele é fiel e justo para nos perdoar os pecados, e nos purificar de toda a injustiça."},
+    ];
+    let cards='';
+    remedios.forEach((r,i)=>{
+      const isO=openCur===(300+i);
+      cards+=`<div class="cur-card${isO?' open':''}">
+        <div class="cur-head" onclick="togCur(${300+i})">
+          <span class="cur-icon">${r.icon}</span>
+          <div class="cur-ref">${r.problema}</div>
+          <span class="cur-tag" style="font-size:10px">${r.ref.split(' ')[0]}</span>
+          <span class="cur-arr">▼</span>
+        </div>
+        <div class="cur-body">
+          <div style="font-size:14px;opacity:.5;margin-bottom:8px;font-family:'Cormorant Garamond',serif;font-weight:600">${r.ref}</div>
+          <div class="highlight">"${r.verso}"</div>
+        </div>
+      </div>`;
+    });
+    sb.innerHTML=`
+    <div class="sb-header">
+      <button class="sb-close" onclick="closeSidebar()">✕</button>
+      <div class="sb-title">💊 Remédios da Bíblia</div>
+      <div class="sb-sub">O que a Escritura diz sobre o que você está sentindo</div>
+    </div>
+    <div style="padding:4px 0 0"><button class="sb-back" onclick="sbGoTo('menu')">← Menu</button></div>
+    <div class="sb-content">
+      <div class="cur-card open"><div class="cur-body" style="display:block">
+        <p>A Bíblia não é apenas um livro de teologia — é um guia para a vida real. Para cada dor, medo ou luta que você enfrenta, Deus já deixou uma palavra.</p>
+        <p>Encontre abaixo o que você está sentindo e descubra o que Ele tem a dizer.</p>
+      </div></div>
+      ${cards}
+      <div class="cur-card open" style="margin-top:16px"><div class="cur-body" style="display:block;text-align:center">
+        <p style="font-style:italic;opacity:.7">\"Ele sara os quebrantados de coração e lhes pensa as feridas.\"</p>
+        <p style="font-size:13px;opacity:.5;font-family:'Cormorant Garamond',serif;font-weight:600">— Salmo 147:3</p>
+      </div></div>
+    </div>`;
+  } else if(sbPage==='sobre'){
+    sb.innerHTML=`
+    <div class="sb-header">
+      <button class="sb-close" onclick="closeSidebar()">✕</button>
+      <div class="sb-title">ℹ️ Sobre</div>
+    </div>
+    <div style="padding:4px 0 0"><button class="sb-back" onclick="sbGoTo('menu')">← Menu</button></div>
+    <div class="sb-content">
+      <div class="cur-card open"><div class="cur-body" style="display:block">
+        <p>Este roteiro foi criado para guiar o leitor por toda a Bíblia na ordem cronológica dos acontecimentos, cobrindo todos os 66 livros e 1.189 capítulos.</p>
+        <p><strong>Dois modos de leitura:</strong></p>
+        <p>📖 <strong>Progressivo</strong> — leitura livre no seu ritmo, organizada em seções temáticas.</p>
+        <p>📅 <strong>Plano Diário</strong> — 370 leituras com ~3–4 capítulos por dia.</p>
+        <p>O progresso é salvo no seu navegador. Cada dispositivo mantém seu próprio progresso.</p>
+        <div class="highlight">\"Lâmpada para os meus pés é a tua palavra, e luz para o meu caminho.\" — Salmo 119:105</div>
+        <p style="margin-top:16px"><strong>Desenvolvido por Lucas Modonesi</strong><br><a href="https://instagram.com/lbmodonesi" target="_blank" style="color:#6a4a2a">@lbmodonesi</a><br><span style="opacity:.6">Com auxílio de Claude (Anthropic)</span></p>
+      </div></div>
+    </div>`;
+  }
+}
+
+// ═══════════════════════════════════════
+// DADOS COMPARTILHADOS
+// ═══════════════════════════════════════
+const VS={ARC:{f:"Almeida Revista e Corrigida",p:"Sociedade Bíblica do Brasil / JFA (João Ferreira de Almeida)",n:"Linguagem mais tradicional e solene, amplamente usada em igrejas históricas e pentecostais."},ARA:{f:"Almeida Revista e Atualizada",p:"Sociedade Bíblica do Brasil",n:"Linguagem atualizada com maior precisão textual, preferida em seminários e estudos acadêmicos."}};
+
+// ═══════════════════════════════════════
+// MODO PROGRESSIVO (roteiro livre)
+// ═══════════════════════════════════════
+const PROG=[
+{testament:"AT",id:1,title:"Criação e Patriarcas",period:"c. 4000–1800 a.C.",color:"#4a6741",accent:"#8fb383",icon:"🌿",items:[
+{r:"Gênesis 1–3",t:"Criação, Queda, Éden"},
+{r:"Gênesis 4–5",t:"Caim e Abel, genealogia de Adão a Noé"},
+{r:"Gênesis 6–9",t:"Corrupção da terra, o Dilúvio, aliança com Noé"},
+{r:"Gênesis 10–11",t:"Tabela das nações, Torre de Babel"},
+{r:"Jó 1–5",t:"Catástrofes de Jó, primeiro ciclo de diálogos (início)"},
+{r:"Jó 6–10",t:"Respostas de Jó a Elifaz e Bildade"},
+{r:"Jó 11–15",t:"Zofar fala; segundo ciclo (início)"},
+{r:"Jó 16–21",t:"Segundo ciclo de diálogos (continuação)"},
+{r:"Jó 22–28",t:"Terceiro ciclo de diálogos"},
+{r:"Jó 29–31",t:"Defesa final de Jó"},
+{r:"Jó 32–37",t:"Discursos de Eliú"},
+{r:"Jó 38–42",t:"Deus responde, restauração de Jó"},
+{r:"Gênesis 12–15",t:"Chamado de Abrão, Ló, aliança das partes"},
+{r:"Gênesis 16–19",t:"Agar e Ismael, Sodoma e Gomorra"},
+{r:"Gênesis 20–23",t:"Nascimento de Isaque, sacrifício, morte de Sara"},
+{r:"Gênesis 24–26",t:"Casamento de Isaque, Esaú e Jacó, Isaque em Gerar"},
+{r:"Gênesis 27–30",t:"Bênção de Jacó, fuga, Labão, Lia e Raquel"},
+{r:"Gênesis 31–34",t:"Retorno de Jacó, luta em Peniel, Siquém"},
+{r:"Gênesis 35–37",t:"Betel, morte de Raquel, José vendido"},
+{r:"Gênesis 38–41",t:"Judá e Tamar, José na prisão e exaltação"},
+{r:"Gênesis 42–45",t:"Irmãos de José no Egito, reconciliação"},
+{r:"Gênesis 46–50",t:"Jacó no Egito, bênçãos, morte de Jacó e José"}
+]},
+{testament:"AT",id:2,title:"Êxodo e a Lei",period:"c. 1446–1406 a.C.",color:"#8b5e3c",accent:"#d4a574",icon:"📜",items:[
+{r:"Êxodo 1–4",t:"Escravidão, nascimento e chamado de Moisés"},
+{r:"Êxodo 5–8",t:"Confronto com Faraó, primeiras pragas"},
+{r:"Êxodo 9–11",t:"Pragas continuam, endurecimento de Faraó"},
+{r:"Êxodo 12–14",t:"Páscoa, saída do Egito, travessia do Mar Vermelho"},
+{r:"Êxodo 15–18",t:"Cântico de Moisés, maná, água da rocha, Jetro"},
+{r:"Êxodo 19–21",t:"Sinai, Dez Mandamentos, leis civis"},
+{r:"Êxodo 22–24",t:"Código da aliança, confirmação da aliança"},
+{r:"Êxodo 25–28",t:"Instruções para o Tabernáculo, vestes sacerdotais"},
+{r:"Êxodo 29–31",t:"Consagração dos sacerdotes, artesãos, sábado"},
+{r:"Êxodo 32–34",t:"Bezerro de ouro, intercessão, renovação da aliança"},
+{r:"Êxodo 35–37",t:"Construção do Tabernáculo (oferta, estrutura)"},
+{r:"Êxodo 38–40",t:"Conclusão e consagração do Tabernáculo"},
+{r:"Levítico 1–4",t:"Ofertas: holocausto, cereais, pacífica, pecado"},
+{r:"Levítico 5–7",t:"Oferta pela culpa, instruções sacerdotais"},
+{r:"Levítico 8–10",t:"Consagração de Arão, morte de Nadabe e Abiú"},
+{r:"Levítico 11–13",t:"Leis de pureza alimentar, diagnóstico de lepra"},
+{r:"Levítico 14–16",t:"Purificação de lepra, Dia da Expiação (Yom Kippur)"},
+{r:"Levítico 17–20",t:"Código de santidade: sangue, moralidade sexual"},
+{r:"Levítico 21–23",t:"Regras sacerdotais, festas do Senhor"},
+{r:"Levítico 24–27",t:"Blasfêmia, ano sabático, jubileu, votos"},
+{r:"Números 1–2",t:"Primeiro censo, organização do acampamento"},
+{r:"Números 3–4",t:"Censo e deveres dos levitas"},
+{r:"Números 5–6",t:"Lei dos ciúmes, voto nazireu, bênção sacerdotal"},
+{r:"Números 7",t:"Ofertas dos líderes para o Tabernáculo"},
+{r:"Números 8–10",t:"Consagração dos levitas, Páscoa, partida do Sinai"},
+{r:"Números 11–13",t:"Murmurações, codornizes, espias em Canaã"},
+{r:"Números 14–16",t:"Rebelião do povo, castigo dos 40 anos, revolta de Corá"},
+{r:"Números 17–19",t:"Vara de Arão, deveres levíticos, novilha vermelha"},
+{r:"Números 20–22",t:"Águas de Meribá, morte de Arão, serpente de bronze, Balaão"},
+{r:"Números 23–25",t:"Oráculos de Balaão, pecado em Baal-Peor"},
+{r:"Números 26–27",t:"Segundo censo, herança das filhas de Zelofeade, Josué nomeado"},
+{r:"Números 28–30",t:"Calendário de ofertas e festas, lei dos votos"},
+{r:"Números 31–33",t:"Guerra contra Midiã, tribos do leste do Jordão, jornadas"},
+{r:"Números 34–36",t:"Fronteiras de Canaã, cidades levíticas, herança feminina"},
+{r:"Salmo 90",t:"Oração de Moisés — \"Senhor, tu tens sido o nosso refúgio\""},
+{r:"Deuteronômio 1–3",t:"Primeiro discurso de Moisés: revisão histórica"},
+{r:"Deuteronômio 4–6",t:"Obediência, Dez Mandamentos repetidos, Shemá"},
+{r:"Deuteronômio 7–9",t:"Promessas da conquista, advertências contra o orgulho"},
+{r:"Deuteronômio 10–12",t:"Circuncisão do coração, o lugar escolhido por Deus"},
+{r:"Deuteronômio 13–16",t:"Falsos profetas, alimentos, festas anuais"},
+{r:"Deuteronômio 17–20",t:"Lei do rei, sacerdotes, profetas, regras de guerra"},
+{r:"Deuteronômio 21–24",t:"Leis civis, matrimoniais e sociais"},
+{r:"Deuteronômio 25–27",t:"Justiça, primícias, bênçãos e maldições no Ebal e Gerizim"},
+{r:"Deuteronômio 28–30",t:"Bênçãos e maldições, chamado à decisão, restauração futura"},
+{r:"Deuteronômio 31–34",t:"Cântico de Moisés, bênção às tribos, morte de Moisés"}
+]},
+{testament:"AT",id:3,title:"Conquista e Juízes",period:"c. 1406–1050 a.C.",color:"#6b4c3b",accent:"#c4956a",icon:"⚔️",items:[
+{r:"Josué 1–4",t:"Comissão de Josué, Raabe, travessia do Jordão"},
+{r:"Josué 5–8",t:"Circuncisão, Jericó, pecado de Acã, conquista de Ai"},
+{r:"Josué 9–11",t:"Engano dos gibeonitas, campanhas ao sul e norte"},
+{r:"Josué 12–15",t:"Lista de reis derrotados, herança de Judá e Calebe"},
+{r:"Josué 16–19",t:"Herança de Efraim, Manassés e demais tribos"},
+{r:"Josué 20–22",t:"Cidades de refúgio, cidades levíticas, altar transjordânico"},
+{r:"Josué 23–24",t:"Discursos finais, aliança em Siquém, morte de Josué"},
+{r:"Juízes 1–3",t:"Conquista incompleta; Otniel, Eúde, Sangar"},
+{r:"Juízes 4–5",t:"Débora e Baraque, cântico de vitória"},
+{r:"Juízes 6–8",t:"Chamado de Gideão, vitória sobre Midiã"},
+{r:"Juízes 9–10",t:"Abimeleque em Siquém; Tola e Jair"},
+{r:"Juízes 11–12",t:"Jefté e seu voto; Ibsã, Elom, Abdom"},
+{r:"Juízes 13–16",t:"Nascimento, façanhas e queda de Sansão"},
+{r:"Juízes 17–18",t:"Ídolo de Mica, migração da tribo de Dã"},
+{r:"Juízes 19–21",t:"Crime em Gibeá, guerra civil contra Benjamim"},
+{r:"Rute 1–4",t:"Noemi e Rute, Boaz como resgatador, linhagem de Davi"}
+]},
+{testament:"AT",id:4,title:"Monarquia Unida — Samuel e Davi",period:"c. 1050–970 a.C.",color:"#5c4a8a",accent:"#a48fd4",icon:"👑",items:[
+{r:"1 Samuel 1–3",t:"Ana, nascimento e chamado de Samuel"},
+{r:"1 Samuel 4–7",t:"Arca capturada, devolvida; Samuel como juiz"},
+{r:"1 Samuel 8–10",t:"Israel pede um rei, unção e proclamação de Saul"},
+{r:"1 Samuel 11–13",t:"Vitória de Saul, desobediência em Gilgal"},
+{r:"1 Samuel 14–15",t:"Jônatas em Micmás, rejeição de Saul (Agague)"},
+{r:"1 Samuel 16",t:"Unção de Davi, Davi toca harpa para Saul"},
+{r:"Salmo 23",t:"\"O Senhor é o meu pastor\" — Davi como pastor"},
+{r:"1 Samuel 17–18",t:"Davi e Golias, amizade com Jônatas, ciúme de Saul"},
+{r:"Salmos 9; 11",t:"Louvor e confiança de Davi"},
+{r:"1 Samuel 19–20",t:"Saul tenta matar Davi, aliança com Jônatas"},
+{r:"Salmo 59",t:"\"Livra-me dos meus inimigos\" — fuga de Saul"},
+{r:"1 Samuel 21–22",t:"Davi em Nobe, caverna de Adulão, massacre dos sacerdotes"},
+{r:"Salmos 34; 52; 56",t:"Davi em fuga: diante de Abimeleque/Aquis, perseguido por Doegue"},
+{r:"1 Samuel 23–24",t:"Davi em Zife e En-Gedi, poupa Saul"},
+{r:"Salmos 54; 57; 142",t:"Orações nas cavernas e desertos"},
+{r:"1 Samuel 25–26",t:"Nabal e Abigail, Davi poupa Saul novamente"},
+{r:"1 Samuel 27–29",t:"Davi entre os filisteus em Ziclague"},
+{r:"1 Samuel 30–31",t:"Ziclague destruída, morte de Saul e Jônatas no Gilboa"},
+{r:"2 Samuel 1–3",t:"Lamento por Saul e Jônatas, Davi rei em Hebrom"},
+{r:"1 Crônicas 1–3",t:"Genealogias: Adão a Davi, filhos de Davi"},
+{r:"1 Crônicas 4–5",t:"Genealogias: Judá, Simeão, Rúben, Gade, meia tribo de Manassés"},
+{r:"1 Crônicas 6",t:"Genealogia de Levi, cidades levíticas"},
+{r:"1 Crônicas 7–8",t:"Genealogias: Issacar, Benjamim, Naftali, Efraim, Aser"},
+{r:"1 Crônicas 9–10",t:"Habitantes pós-exílio de Jerusalém (flash-forward), morte de Saul"},
+{r:"2 Samuel 4–5 · 1 Crônicas 11–12",t:"Davi rei sobre todo Israel, conquista de Jerusalém, valentes"},
+{r:"2 Samuel 6 · 1 Crônicas 13–16",t:"Transporte da arca, Uzá, arca em Jerusalém"},
+{r:"Salmos 15; 24; 68; 132",t:"Salmos de entrada e procissão da arca"},
+{r:"Salmos 96; 105; 106",t:"Cânticos de louvor da entronização da arca (cf. 1 Cr 16)"},
+{r:"2 Samuel 7 · 1 Crônicas 17",t:"Aliança davídica — promessa do trono eterno"},
+{r:"Salmo 89",t:"Celebração da aliança com Davi"},
+{r:"2 Samuel 8–10 · 1 Crônicas 18–20",t:"Vitórias militares de Davi, bondade a Mefibosete"},
+{r:"Salmo 60",t:"Oração após batalhas no vale do Sal"},
+{r:"2 Samuel 11–12",t:"Pecado com Bate-Seba, confronto com Natã"},
+{r:"Salmos 32; 51",t:"Arrependimento de Davi"},
+{r:"2 Samuel 13–15",t:"Amnon e Tamar, revolta de Absalão"},
+{r:"Salmos 3; 55; 63",t:"Orações de Davi durante a fuga de Absalão"},
+{r:"2 Samuel 16–18",t:"Aitofel, Husai, morte de Absalão"},
+{r:"Salmo 7",t:"Oração contra perseguidores"},
+{r:"2 Samuel 19–20",t:"Restauração de Davi, revolta de Seba"},
+{r:"2 Samuel 21",t:"Fome, gibeonitas, gigantes filisteus"},
+{r:"2 Samuel 22–23",t:"Cântico final de Davi, últimas palavras, lista de valentes"},
+{r:"Salmo 18",t:"Paralelo de 2 Samuel 22 — louvor pela libertação"},
+{r:"2 Samuel 24 · 1 Crônicas 21–22",t:"Censo, peste, eira de Araúna, preparação do Templo"},
+{r:"1 Crônicas 23–26",t:"Divisões dos levitas, cantores, porteiros, tesoureiros"},
+{r:"1 Crônicas 27–29",t:"Oficiais do reino, instrução a Salomão, ofertas para o Templo"}
+]},
+{testament:"AT",id:5,title:"Salmos Davídicos e do Culto no Templo",period:"Período da monarquia unida",color:"#6a5c8a",accent:"#b8a4d4",icon:"🎵",items:[
+{r:"Salmos 1–2",t:"O justo e o ungido do Senhor (introdução ao Saltério)"},
+{r:"Salmos 4–6; 8; 10",t:"Orações noturnas, majestade divina, clamor"},
+{r:"Salmos 12–14",t:"Contra a corrupção, \"Diz o néscio: Não há Deus\""},
+{r:"Salmo 53",t:"\"Diz o néscio...\" (paralelo do Sl 14 — ao mestre de canto, Mahalate)"},
+{r:"Salmos 16–17",t:"Confiança em Deus, oração por proteção"},
+{r:"Salmos 19–22",t:"Os céus declaram a glória; \"Deus meu, por que me desamparaste?\""},
+{r:"Salmos 25–28",t:"Oração por direção, confiança, clamor ao Senhor"},
+{r:"Salmos 29–31; 33",t:"A voz do Senhor, louvor, confiança"},
+{r:"Salmos 35–38",t:"Clamor contra inimigos, fragilidade humana"},
+{r:"Salmos 39–41",t:"Brevidade da vida, o Senhor sustém o justo"},
+{r:"Salmos 42–49",t:"Filhos de Corá — sede de Deus, refúgio, louvor"},
+{r:"Salmo 50",t:"Asafe — Deus é juiz, culto verdadeiro"},
+{r:"Salmos 58; 61–62; 64–67",t:"Justiça divina, refúgio em Deus, louvor das nações"},
+{r:"Salmos 69–71",t:"Clamor do sofredor, louvor ao Senhor desde a juventude"},
+{r:"Salmos 73–78",t:"Asafe — o ímpio e o justo, história da redenção"},
+{r:"Salmos 79–85",t:"Asafe/Corá — lamento nacional, restauração"},
+{r:"Salmo 86",t:"Oração de Davi por misericórdia"},
+{r:"Salmos 101; 103; 108–110",t:"O rei justo, misericórdia do Senhor, \"Disse o Senhor ao meu Senhor\""},
+{r:"Salmos 138–145",t:"Últimos salmos de Davi — louvor, onisciência de Deus (Sl 139)"}
+]},
+{testament:"AT",id:6,title:"Salomão — Reinado e Sabedoria",period:"c. 970–931 a.C.",color:"#8a7a2e",accent:"#d4c44a",icon:"🏛️",items:[
+{r:"1 Reis 1–2 · 2 Crônicas 1",t:"Salomão se torna rei, sabedoria concedida por Deus"},
+{r:"Salmo 72",t:"\"Ó Deus, dá ao rei os teus juízos\" — salmo salomônico"},
+{r:"1 Reis 3–4",t:"Julgamento sábio, administração do reino"},
+{r:"Provérbios 1–3",t:"Início da sabedoria, confiança no Senhor"},
+{r:"Provérbios 4–6",t:"Instruções do pai, advertências contra a preguiça e adultério"},
+{r:"Provérbios 7–9",t:"A mulher alheia, Sabedoria personificada convida"},
+{r:"Provérbios 10–13",t:"Provérbios de Salomão — coleção principal (início)"},
+{r:"Provérbios 14–16",t:"Provérbios de Salomão (continuação)"},
+{r:"Provérbios 17–19",t:"Provérbios de Salomão (continuação)"},
+{r:"Provérbios 20–22",t:"Provérbios de Salomão (continuação) + palavras dos sábios (início)"},
+{r:"Provérbios 23–24",t:"Palavras dos sábios (conclusão)"},
+{r:"Provérbios 25–27",t:"Provérbios copiados pelos homens de Ezequias"},
+{r:"Provérbios 28–29",t:"Provérbios copiados pelos homens de Ezequias (conclusão)"},
+{r:"Provérbios 30–31",t:"Palavras de Agur, palavras de Lemuel, mulher virtuosa"},
+{r:"Cantares 1–4",t:"O amor do esposo e da esposa"},
+{r:"Cantares 5–8",t:"Busca, reencontro, sela do amor"},
+{r:"Eclesiastes 1–4",t:"Vaidade das vaidades, tempo para tudo"},
+{r:"Eclesiastes 5–8",t:"Votos, injustiça, sabedoria"},
+{r:"Eclesiastes 9–12",t:"Morte, velhice, conclusão: \"Teme a Deus\""},
+{r:"1 Reis 5–7 · 2 Crônicas 2–4",t:"Construção do Templo de Salomão"},
+{r:"1 Reis 8 · 2 Crônicas 5–7",t:"Dedicação do Templo, oração de Salomão"},
+{r:"Salmo 136",t:"\"Porque a sua misericórdia dura para sempre\" — louvor litúrgico"},
+{r:"1 Reis 9–10 · 2 Crônicas 8–9",t:"Glória de Salomão, Rainha de Sabá"},
+{r:"Salmo 127",t:"\"Se o Senhor não edificar a casa\" — salmo de Salomão"},
+{r:"1 Reis 11",t:"Mulheres estrangeiras, idolatria, queda de Salomão"}
+]},
+{testament:"AT",id:7,title:"Reino Dividido",period:"c. 931–722 a.C.",color:"#8a4a4a",accent:"#d48f8f",icon:"⚡",items:[
+{r:"1 Reis 12–14 · 2 Crônicas 10–12",t:"Divisão do reino: Roboão (Judá), Jeroboão (Israel)"},
+{r:"1 Reis 15 · 2 Crônicas 13–16",t:"Abias, Asa (Judá); Nadabe, Baasa (Israel)"},
+{r:"1 Reis 16",t:"Ela, Zinri, Onri, início de Acabe (Israel)"},
+{r:"1 Reis 17–19",t:"Elias: seca, corvos, viúva, confronto no Carmelo, fuga ao Horebe"},
+{r:"1 Reis 20–22 · 2 Crônicas 17–20",t:"Guerras de Acabe, Josafá (Judá), Micaías, morte de Acabe"},
+{r:"Obadias 1",t:"Juízo contra Edom por trair Judá"},
+{r:"2 Reis 1–3",t:"Morte de Acazias (Israel), Elias levado ao céu, Eliseu começa"},
+{r:"2 Reis 4–6",t:"Milagres de Eliseu: azeite, sunamita, Naamã, machado"},
+{r:"2 Reis 7–8 · 2 Crônicas 21",t:"Fim da fome em Samaria; Jeorão de Judá, Acazias"},
+{r:"Joel 1–3",t:"Praga de gafanhotos, Dia do Senhor, derramamento do Espírito"},
+{r:"2 Reis 9–10",t:"Unção de Jeú, extermínio da casa de Acabe"},
+{r:"2 Reis 11–12 · 2 Crônicas 22–24",t:"Atalia usurpa, Joás restaurado e restaura o Templo"},
+{r:"Jonas 1–4",t:"Fuga, grande peixe, pregação em Nínive, ira e graça"},
+{r:"2 Reis 13–14 · 2 Crônicas 25",t:"Jeoás e Jeroboão II (Israel), Amazias (Judá)"},
+{r:"Amós 1–4",t:"Juízos contra as nações, acusação contra Israel"},
+{r:"Amós 5–9",t:"\"Buscai-me e vivei\", visões do juízo, restauração futura"},
+{r:"Oséias 1–7",t:"Casamento de Oséias, infidelidade de Israel, amor de Deus"},
+{r:"Oséias 8–14",t:"Juízo e promessa: \"Eu os remirei da morte\""},
+{r:"2 Reis 15 · 2 Crônicas 26–27",t:"Azarias/Uzias (lepra), Jotão; reis de Israel até queda iminente"},
+{r:"Isaías 1–4",t:"Acusação contra Judá, visão do futuro, ramo do Senhor"},
+{r:"Isaías 5–8",t:"Cântico da vinha, chamado de Isaías (cap. 6), Emanuel"},
+{r:"Isaías 9–12",t:"\"Um menino nos nasceu\", juízo sobre Assíria, raiz de Jessé"},
+{r:"Isaías 13–17",t:"Oráculos contra Babilônia, Moabe, Damasco, Etiópia"},
+{r:"Isaías 18–22",t:"Oráculos contra Egito, deserto, Duma, Jerusalém"},
+{r:"Isaías 23–27",t:"Oráculo contra Tiro, apocalipse de Isaías, cântico da vinha"},
+{r:"Isaías 28–31",t:"Ais contra Efraim e Judá, pedra angular em Sião"},
+{r:"Isaías 32–35",t:"Rei justo, juízo de Edom, alegria dos remidos"},
+{r:"Miquéias 1–4",t:"Juízo sobre Samaria e Judá, \"De ti, Belém, me sairá...\""},
+{r:"Miquéias 5–7",t:"Governante de Belém, \"Que é que o Senhor pede de ti?\""},
+{r:"2 Reis 16–17 · 2 Crônicas 28",t:"Acaz (Judá), queda de Samaria (722 a.C.) — fim de Israel (norte)"}
+]},
+{testament:"AT",id:8,title:"Judá Sobrevivente e Exílio",period:"c. 722–538 a.C.",color:"#3d5a80",accent:"#7da4c9",icon:"🔗",items:[
+{r:"2 Reis 18–19 · 2 Crônicas 29–31",t:"Reforma de Ezequias, invasão de Senaqueribe"},
+{r:"Isaías 36–39",t:"Paralelo: Senaqueribe, doença de Ezequias, embaixada babilônica"},
+{r:"Salmos 46; 48; 76",t:"Deus é nosso refúgio — cânticos de Sião"},
+{r:"2 Reis 20 · 2 Crônicas 32",t:"Doença e recuperação de Ezequias, tesouro mostrado"},
+{r:"Salmos 87; 120; 121–125",t:"Glória de Sião, cânticos de romagem (I)"},
+{r:"Salmos 126–131; 133–134",t:"Cânticos de romagem (II)"},
+{r:"2 Reis 21 · 2 Crônicas 33",t:"Manassés (idolatria extrema, arrependimento tardio), Amom"},
+{r:"Naum 1–3",t:"Oráculo contra Nínive — destruição da capital assíria"},
+{r:"Sofonias 1–3",t:"Dia do Senhor, juízo e restauração do remanescente"},
+{r:"2 Reis 22–23 · 2 Crônicas 34–35",t:"Reforma de Josias, descoberta do Livro da Lei, Páscoa"},
+{r:"Habacuque 1–3",t:"\"Até quando, Senhor?\", \"O justo viverá pela fé\""},
+{r:"Jeremias 1–3",t:"Chamado de Jeremias, acusação contra Judá"},
+{r:"Jeremias 4–6",t:"Invasão do norte, lamento por Jerusalém"},
+{r:"Jeremias 7–9",t:"Sermão do Templo, vale de Hinom, lamento"},
+{r:"Jeremias 10–13",t:"Ídolos vs. Deus vivo, cinto de linho, seca"},
+{r:"Jeremias 14–17",t:"Oração na seca, rejeição, coração enganoso"},
+{r:"Jeremias 18–20",t:"Oleiro, vaso quebrado, confissão de Jeremias"},
+{r:"Jeremias 21–24",t:"Contra reis e profetas, figos bons e maus"},
+{r:"Jeremias 25–27",t:"70 anos de exílio, cálice da ira, jugo"},
+{r:"Jeremias 28–30",t:"Hananias, carta aos exilados, restauração prometida"},
+{r:"Jeremias 31–33",t:"Nova Aliança (31:31–34), compra do campo, promessas"},
+{r:"Jeremias 34–37",t:"Sítio de Jerusalém, recabitas, Jeremias preso"},
+{r:"Jeremias 38–40",t:"Cisterna, queda de Jerusalém, Gedalias governador"},
+{r:"Jeremias 41–44",t:"Assassinato de Gedalias, fuga ao Egito"},
+{r:"Jeremias 45–48",t:"Oráculo a Baruque, contra Egito, Moabe"},
+{r:"Jeremias 49–50",t:"Contra Amom, Edom, Damasco, Elão, Babilônia (I)"},
+{r:"Jeremias 51–52",t:"Contra Babilônia (II), queda de Jerusalém (resumo histórico)"},
+{r:"2 Reis 24–25 · 2 Crônicas 36",t:"Deportações, destruição do Templo (586 a.C.), Gedalias"},
+{r:"Lamentações 1–2",t:"Luto pela destruição de Jerusalém"},
+{r:"Lamentações 3–5",t:"\"As misericórdias do Senhor não têm fim\", oração final"},
+{r:"Salmos 74; 79; 88; 102; 137",t:"Lamentos nacionais, \"Junto aos rios da Babilônia\""},
+{r:"Ezequiel 1–3",t:"Visão do trono-carruagem, chamado do profeta"},
+{r:"Ezequiel 4–7",t:"Sinais proféticos do cerco, juízo sobre Israel"},
+{r:"Ezequiel 8–11",t:"Idolatria no Templo, glória de Deus parte"},
+{r:"Ezequiel 12–15",t:"Sinais do exílio, falsos profetas, videira inútil"},
+{r:"Ezequiel 16–17",t:"Jerusalém como esposa infiel, parábola das águias"},
+{r:"Ezequiel 18–20",t:"Responsabilidade individual, história de rebelião"},
+{r:"Ezequiel 21–23",t:"Espada do Senhor, Oolá e Oolibá"},
+{r:"Ezequiel 24–26",t:"Panela fervente, morte da esposa, contra Tiro"},
+{r:"Ezequiel 27–28",t:"Lamento por Tiro, contra o rei de Tiro"},
+{r:"Ezequiel 29–32",t:"Oráculos contra o Egito"},
+{r:"Ezequiel 33–35",t:"Atalaia, pastores de Israel, contra Edom"},
+{r:"Ezequiel 36–37",t:"Restauração de Israel, vale dos ossos secos"},
+{r:"Ezequiel 38–39",t:"Gogue e Magogue"},
+{r:"Ezequiel 40–43",t:"Visão do novo Templo (I)"},
+{r:"Ezequiel 44–46",t:"Visão do novo Templo (II): sacerdotes, príncipe"},
+{r:"Ezequiel 47–48",t:"Rio do Templo, nova divisão da terra"},
+{r:"Isaías 40–43",t:"\"Consolai o meu povo\", incomparabilidade de Deus, servo"},
+{r:"Isaías 44–48",t:"Ciro nomeado, queda de Babilônia, \"Eu sou o primeiro e o último\""},
+{r:"Isaías 49–53",t:"Cânticos do Servo Sofredor — \"Ele foi ferido pelas nossas transgressões\""},
+{r:"Isaías 54–58",t:"Restauração de Sião, convite gratuito, jejum verdadeiro"},
+{r:"Isaías 59–63",t:"Redentor em Sião, glória futura, \"Eu pisei o lagar sozinho\""},
+{r:"Isaías 64–66",t:"Novos céus e nova terra"},
+{r:"Daniel 1–3",t:"Exílio na Babilônia, sonho de Nabucodonosor, fornalha"},
+{r:"Daniel 4–6",t:"Loucura de Nabucodonosor, escrita na parede, cova dos leões"},
+{r:"Daniel 7–9",t:"Quatro bestas, o Filho do Homem, setenta semanas"},
+{r:"Daniel 10–12",t:"Última visão, conflito celestial, tempo do fim"}
+]},
+{testament:"AT",id:9,title:"Retorno e Restauração",period:"c. 538–400 a.C.",color:"#2a6041",accent:"#5eb37e",icon:"🕊️",items:[
+{r:"Esdras 1–3",t:"Decreto de Ciro, retorno sob Zorobabel, altar e fundação do Templo"},
+{r:"Salmos 107; 126",t:"Ação de graças pelo retorno, \"Quando o Senhor restaurou...\""},
+{r:"Esdras 4–6",t:"Oposição, obra parada, retomada e conclusão do 2º Templo (515 a.C.)"},
+{r:"Ageu 1–2",t:"\"Edificai a casa\" — exortação a reconstruir o Templo"},
+{r:"Zacarias 1–4",t:"Visões noturnas: cavaleiros, chifres, candelabro"},
+{r:"Zacarias 5–8",t:"Visões: rolo, efa, carros; justiça e misericórdia"},
+{r:"Zacarias 9–11",t:"Rei humilde montado em jumento, pastor rejeitado"},
+{r:"Zacarias 12–14",t:"\"Olharão para mim, a quem traspassaram\", Dia do Senhor"},
+{r:"Ester 1–4",t:"Ester rainha, Hamã planeja genocídio, Mordecai pede ajuda"},
+{r:"Ester 5–7",t:"Banquetes de Ester, Hamã honra Mordecai, queda de Hamã"},
+{r:"Ester 8–10",t:"Decreto revertido, festa de Purim, exaltação de Mordecai"},
+{r:"Esdras 7–10",t:"Segundo retorno sob Esdras, crise dos casamentos mistos"},
+{r:"Neemias 1–3",t:"Oração de Neemias, retorno, início da reconstrução do muro"},
+{r:"Neemias 4–6",t:"Oposição de Sambalate e Tobias, muro concluído em 52 dias"},
+{r:"Neemias 7–8",t:"Lista dos retornados, leitura pública da Lei por Esdras"},
+{r:"Neemias 9–10",t:"Oração de confissão, renovação da aliança"},
+{r:"Neemias 11–13",t:"Repovoamento de Jerusalém, dedicação do muro, reformas finais"},
+{r:"Malaquias 1–2",t:"Amor de Deus, repreensão aos sacerdotes, infidelidade conjugal"},
+{r:"Malaquias 3–4",t:"Mensageiro da aliança, dízimos, Dia do Senhor, Elias virá"}
+]},
+{testament:"AT",id:10,title:"Salmos Restantes — Louvor e Torah",period:"Diversos períodos",color:"#5a4a3a",accent:"#a89878",icon:"📖",items:[
+{r:"Salmos 91–95",t:"Abrigo do Altíssimo, o Senhor reina, cântico novo"},
+{r:"Salmos 97–100",t:"O Senhor reina, \"Celebrai com júbilo ao Senhor\""},
+{r:"Salmo 104",t:"Hino à criação — majestade de Deus na natureza"},
+{r:"Salmos 111–118",t:"Hallel — louvor litúrgico, \"Este é o dia que o Senhor fez\""},
+{r:"Salmo 119:1–88",t:"A grandeza da Palavra de Deus (I)"},
+{r:"Salmo 119:89–176",t:"A grandeza da Palavra de Deus (II)"},
+{r:"Salmo 135",t:"Louvai o Senhor — poder de Deus sobre ídolos"},
+{r:"Salmos 146–150",t:"Hallel final — \"Louvai ao Senhor!\" (encerramento do Saltério)"}
+]},
+// NT
+{testament:"NT",id:11,title:"Vida de Cristo — Nascimento e Início",period:"c. 6 a.C.–27 d.C.",color:"#b8860b",accent:"#e8c84a",icon:"✝️",items:[
+{r:"Lucas 1",t:"Anunciação a Zacarias e a Maria, Magnificat"},
+{r:"Lucas 2",t:"Nascimento de Jesus, pastores, apresentação no Templo, Jesus aos 12 anos"},
+{r:"Mateus 1–2",t:"Genealogia, nascimento, magos, fuga ao Egito"},
+{r:"Marcos 1:1–13 · Mateus 3–4:11 · Lucas 3–4:13",t:"João Batista, batismo e tentação de Jesus"},
+{r:"João 1",t:"Prólogo: o Verbo, testemunho de João, primeiros discípulos"},
+{r:"João 2–3",t:"Bodas de Caná, purificação do Templo, Nicodemos"},
+{r:"João 4",t:"Mulher samaritana, cura do filho do oficial"}
+]},
+{testament:"NT",id:12,title:"Ministério na Galileia",period:"c. 27–29 d.C.",color:"#8a6e2e",accent:"#d4b44a",icon:"🐟",items:[
+{r:"Marcos 1:14–45 · Lucas 4:14–5:16",t:"Início na Galileia, rejeição em Nazaré, chamado dos primeiros discípulos, curas"},
+{r:"Marcos 2–3 · Mateus 9:1–17 · Lucas 5:17–6:11",t:"Controvérsias: paralítico, Levi, jejum, sábado, escolha dos Doze"},
+{r:"Mateus 5–7",t:"Sermão do Monte — Bem-aventuranças, Pai Nosso, casa na rocha"},
+{r:"Lucas 6:12–49",t:"Escolha dos Doze, Sermão da Planície"},
+{r:"Mateus 8:1–9:38 · Lucas 7:1–50",t:"Centurião, filho da viúva, João Batista pergunta, pecadora ungindo"},
+{r:"Mateus 10",t:"Envio dos Doze: instruções missionárias, perseguição, \"Não temais\""},
+{r:"Mateus 11",t:"João Batista pergunta, ais sobre cidades, \"Vinde a mim... e eu vos aliviarei\""},
+{r:"Mateus 12",t:"Controvérsias do sábado, Beelzebul, sinal de Jonas, família verdadeira"},
+{r:"Marcos 4:1–34 · Mateus 13",t:"Parábolas: semeador, joio, grão de mostarda, pérola"},
+{r:"Marcos 4:35–5:43 · Lucas 8:22–56",t:"Tempestade acalmada, endemoninhado gadareno, Jairo"},
+{r:"Marcos 6 · Mateus 14 · Lucas 9:1–17",t:"Rejeição em Nazaré, envio dos Doze, morte de João Batista, 5 mil alimentados"},
+{r:"João 5–6",t:"Cura no tanque, pão da vida, \"Eu sou o pão que desceu do céu\""},
+{r:"Marcos 7–8 · Mateus 15–16",t:"Tradição, mulher siro-fenícia, 4 mil alimentados, confissão de Pedro"},
+{r:"Marcos 9 · Mateus 17 · Lucas 9:18–50",t:"Transfiguração, cura do menino, quem é o maior"},
+{r:"João 7–8",t:"Festa dos Tabernáculos, \"Eu sou a luz do mundo\", mulher adúltera"}
+]},
+{testament:"NT",id:13,title:"Ministério Final e Caminho a Jerusalém",period:"c. 29–30 d.C.",color:"#8a5e2e",accent:"#d49e4a",icon:"🛤️",items:[
+{r:"João 9–10",t:"Cego de nascença, Bom Pastor, \"Eu e o Pai somos um\""},
+{r:"Lucas 10–11",t:"Setenta enviados, bom samaritano, Maria e Marta, Pai Nosso"},
+{r:"Lucas 12–13",t:"Avareza, figueira estéril, porta estreita"},
+{r:"Lucas 14–16",t:"Banquete, ovelha perdida, filho pródigo, rico e Lázaro"},
+{r:"Lucas 17–18",t:"Dez leprosos, vinda do Reino, juiz iníquo, fariseu e publicano"},
+{r:"Mateus 18–20 · Marcos 10",t:"Perdão, casamento e divórcio, jovem rico, trabalhadores na vinha, pedido de Tiago e João"},
+{r:"João 11",t:"Ressurreição de Lázaro — \"Eu sou a ressurreição e a vida\""},
+{r:"Lucas 19:1–27 · Mateus 19:1–20:16",t:"Zaqueu, parábola das minas/talentos"}
+]},
+{testament:"NT",id:14,title:"Semana da Paixão",period:"c. 30 d.C.",color:"#6a1a1a",accent:"#c44a4a",icon:"🩸",items:[
+{r:"Mateus 21:1–22 · Marcos 11:1–25 · Lucas 19:28–48 · João 12",t:"Entrada triunfal, purificação do Templo, unção em Betânia"},
+{r:"Mateus 21:23–22:46 · Marcos 11:27–12:44 · Lucas 20",t:"Autoridade questionada, parábolas de juízo, impostos a César, maior mandamento"},
+{r:"Mateus 23",t:"Ais contra escribas e fariseus"},
+{r:"Mateus 24–25 · Marcos 13 · Lucas 21",t:"Discurso no Monte das Oliveiras: sinais do fim, virgens, talentos, ovelhas e bodes"},
+{r:"João 13–14",t:"Lava-pés, \"Eu sou o caminho\", promessa do Consolador"},
+{r:"João 15–17",t:"Videira, ódio do mundo, Espírito da verdade, oração sacerdotal"},
+{r:"Mateus 26 · Marcos 14 · Lucas 22",t:"Última Ceia, Getsêmani, prisão, julgamento judaico"},
+{r:"Mateus 27 · Marcos 15 · Lucas 23 · João 18–19",t:"Pilatos, crucificação, morte, sepultamento"}
+]},
+{testament:"NT",id:15,title:"Ressurreição e Aparições",period:"c. 30 d.C.",color:"#2a7041",accent:"#5ec37e",icon:"🌅",items:[
+{r:"Mateus 28",t:"Sepulcro vazio, Grande Comissão"},
+{r:"Marcos 16",t:"Ressurreição, aparições, ascensão"},
+{r:"Lucas 24",t:"Emaús, aparição aos discípulos, ascensão"},
+{r:"João 20–21",t:"Tomé, pesca milagrosa, restauração de Pedro"}
+]},
+{testament:"NT",id:16,title:"Igreja Primitiva — Atos (Parte I)",period:"c. 30–49 d.C.",color:"#b05020",accent:"#e08050",icon:"🔥",items:[
+{r:"Atos 1–2",t:"Ascensão, Pentecostes, primeira pregação de Pedro"},
+{r:"Atos 3–4",t:"Cura do coxo, Pedro e João perante o Sinédrio"},
+{r:"Atos 5–7",t:"Ananias e Safira, prisão dos apóstolos, Estêvão"},
+{r:"Atos 8–9",t:"Filipe e o eunuco, conversão de Saulo"},
+{r:"Atos 10–12",t:"Cornélio, Antioquia, Herodes mata Tiago, Pedro preso e liberto"},
+{r:"Tiago 1–5",t:"Fé e obras, língua, sabedoria — provável 1ª epístola do NT"}
+]},
+{testament:"NT",id:17,title:"Viagens Missionárias de Paulo",period:"c. 48–57 d.C.",color:"#6a3d7d",accent:"#b88fd4",icon:"⛵",items:[
+{r:"Atos 13–14",t:"1ª viagem: Chipre, Antioquia da Pisídia, Listra, Derbe"},
+{r:"Gálatas 1–3",t:"Evangelho de Paulo, justificação pela fé, não pela Lei"},
+{r:"Gálatas 4–6",t:"Liberdade em Cristo, fruto do Espírito"},
+{r:"Atos 15",t:"Concílio de Jerusalém — gentios e a Lei"},
+{r:"Atos 16–17",t:"2ª viagem: Filipos (Lídia, carcereiro), Tessalônica, Atenas"},
+{r:"1 Tessalonicenses 1–5",t:"Elogio à fé, volta de Cristo, \"como ladrão de noite\""},
+{r:"2 Tessalonicenses 1–3",t:"Homem da iniquidade, perseverança"},
+{r:"Atos 18",t:"Corinto (Áquila e Priscila), Éfeso brevemente"},
+{r:"1 Coríntios 1–4",t:"Divisões na igreja, sabedoria da cruz"},
+{r:"1 Coríntios 5–8",t:"Imoralidade, litígios, casamento, carne sacrificada"},
+{r:"1 Coríntios 9–11",t:"Direitos apostólicos, Ceia do Senhor"},
+{r:"1 Coríntios 12–14",t:"Dons espirituais, \"O amor é paciente\" (cap. 13), profecia e línguas"},
+{r:"1 Coríntios 15–16",t:"Ressurreição dos mortos, saudações"},
+{r:"Atos 19",t:"3ª viagem: Éfeso (2 anos), tumulto de Demétrio"},
+{r:"2 Coríntios 1–5",t:"Consolação, ministério do novo pacto, vaso de barro"},
+{r:"2 Coríntios 6–9",t:"Templo do Deus vivo, generosidade"},
+{r:"2 Coríntios 10–13",t:"Defesa do apostolado, espinho na carne, \"Basta-te a minha graça\""},
+{r:"Atos 20",t:"Macedônia, Trôade (Êutico), discurso aos presbíteros de Éfeso"},
+{r:"Romanos 1–4",t:"Todos pecaram, justificação pela fé, Abraão"},
+{r:"Romanos 5–8",t:"Paz com Deus, morte ao pecado, vida no Espírito, nada nos separará"},
+{r:"Romanos 9–11",t:"Israel e o plano de Deus, enxerto da oliveira"},
+{r:"Romanos 12–16",t:"Sacrifício vivo, amor, autoridades, saudações"}
+]},
+{testament:"NT",id:18,title:"Prisão de Paulo e Epístolas da Prisão",period:"c. 57–62 d.C.",color:"#4a5a7a",accent:"#7a9ac9",icon:"⛓️",items:[
+{r:"Atos 21–23",t:"Paulo em Jerusalém, preso no Templo, perante o Sinédrio"},
+{r:"Atos 24–26",t:"Julgamento perante Félix, Festo, defesa perante Agripa"},
+{r:"Atos 27–28",t:"Naufrágio, chegada a Roma, pregação em prisão domiciliar"},
+{r:"Efésios 1–3",t:"Bênçãos em Cristo, salvação pela graça, mistério revelado"},
+{r:"Efésios 4–6",t:"Unidade, nova vida, armadura de Deus"},
+{r:"Filipenses 1–4",t:"Alegria na prisão, humilhação de Cristo (2:5–11), \"Tudo posso\""},
+{r:"Colossenses 1–4",t:"Supremacia de Cristo, mortos e ressuscitados com Ele"},
+{r:"Filemom 1",t:"Apelo em favor de Onésimo, escravo convertido"}
+]},
+{testament:"NT",id:19,title:"Epístolas Pastorais e Finais de Paulo",period:"c. 62–67 d.C.",color:"#5a3d5d",accent:"#a87daa",icon:"✉️",items:[
+{r:"1 Timóteo 1–3",t:"Advertência contra falsos mestres, qualificações de líderes"},
+{r:"1 Timóteo 4–6",t:"Piedade, viúvas, \"Combate o bom combate da fé\""},
+{r:"Tito 1–3",t:"Presbíteros em Creta, sã doutrina, boas obras"},
+{r:"2 Timóteo 1–4",t:"Último testemunho de Paulo: \"Combati o bom combate, guardei a fé\""}
+]},
+{testament:"NT",id:20,title:"Epístolas Gerais",period:"c. 60–95 d.C.",color:"#3a6a5a",accent:"#6ab09a",icon:"📨",items:[
+{r:"Hebreus 1–4",t:"Cristo superior aos anjos e a Moisés, descanso de Deus"},
+{r:"Hebreus 5–7",t:"Sacerdócio de Melquisedeque"},
+{r:"Hebreus 8–10",t:"Nova aliança superior, sacrifício único e definitivo"},
+{r:"Hebreus 11–13",t:"Galeria da fé, corrida, cidade futura"},
+{r:"1 Pedro 1–2",t:"Esperança viva, pedras vivas, sacerdócio real"},
+{r:"1 Pedro 3–5",t:"Sofrimento por Cristo, pastorear o rebanho"},
+{r:"2 Pedro 1–3",t:"Crescimento na fé, falsos mestres, dia do Senhor"},
+{r:"Judas 1",t:"Contenda pela fé, falsos mestres, doxologia"},
+{r:"1 João 1–3",t:"Deus é luz, propiciação, filhos de Deus"},
+{r:"1 João 4–5",t:"\"Deus é amor\", fé que vence o mundo"},
+{r:"2 João 1",t:"Andar na verdade e no amor"},
+{r:"3 João 1",t:"Gaio, Diótrefes, Demétrio"}
+]},
+{testament:"NT",id:21,title:"Consumação — Apocalipse",period:"c. 95 d.C.",color:"#1a1a2e",accent:"#e0c97f",icon:"🌟",items:[
+{r:"Apocalipse 1",t:"Visão do Cristo glorificado"},
+{r:"Apocalipse 2–3",t:"Cartas às sete igrejas da Ásia"},
+{r:"Apocalipse 4–5",t:"Trono celestial, o Cordeiro digno de abrir o livro"},
+{r:"Apocalipse 6–7",t:"Seis selos, 144 mil selados"},
+{r:"Apocalipse 8–9",t:"Sétimo selo, seis trombetas"},
+{r:"Apocalipse 10–11",t:"Anjo forte, livrinho, duas testemunhas, sétima trombeta"},
+{r:"Apocalipse 12–14",t:"Mulher e dragão, bestas, Cordeiro no Sião, ceifa"},
+{r:"Apocalipse 15–16",t:"Sete taças da ira de Deus"},
+{r:"Apocalipse 17–18",t:"Queda da grande Babilônia"},
+{r:"Apocalipse 19–20",t:"Bodas do Cordeiro, volta de Cristo, milênio, juízo final"},
+{r:"Apocalipse 21–22",t:"Novo céu e nova terra, Nova Jerusalém, \"Vem, Senhor Jesus!\""}
+]}
+];
+
+// ═══════════════════════════════════════
+// MODO 365 DIAS (plano diário)
+// ═══════════════════════════════════════
+const D365=[
+{d:1,r:"Gênesis 1–3",t:"Criação do mundo, Queda"},{d:2,r:"Gênesis 4–6",t:"Caim, genealogia, corrupção"},{d:3,r:"Gênesis 7–9",t:"Dilúvio, aliança com Noé"},{d:4,r:"Gênesis 10–12",t:"Nações, Babel, chamado de Abrão"},{d:5,r:"Gênesis 13–16",t:"Ló, aliança, Agar e Ismael"},{d:6,r:"Gênesis 17–19",t:"Circuncisão, Sodoma destruída"},{d:7,r:"Gênesis 20–22",t:"Isaque nasce, sacrifício"},{d:8,r:"Gênesis 23–25",t:"Morte de Sara, Esaú e Jacó"},{d:9,r:"Gênesis 26–28",t:"Isaque, bênção de Jacó, Betel"},{d:10,r:"Gênesis 29–31",t:"Labão, Lia e Raquel"},{d:11,r:"Gênesis 32–34",t:"Peniel, Esaú, Siquém"},{d:12,r:"Gênesis 35–37",t:"Betel, José vendido"},{d:13,r:"Gênesis 38–40",t:"Judá e Tamar, José preso"},{d:14,r:"Gênesis 41–42",t:"Sonhos de Faraó, irmãos"},{d:15,r:"Gênesis 43–45",t:"Revelação de José"},{d:16,r:"Gênesis 46–48",t:"Jacó no Egito"},{d:17,r:"Gênesis 49–50",t:"Bênçãos, mortes de Jacó e José"},
+{d:18,r:"Jó 1–3",t:"Catástrofes, lamento"},{d:19,r:"Jó 4–7",t:"Elifaz, resposta de Jó"},{d:20,r:"Jó 8–10",t:"Bildade, resposta"},{d:21,r:"Jó 11–13",t:"Zofar, resposta"},{d:22,r:"Jó 14–17",t:"Brevidade, segundo ciclo"},{d:23,r:"Jó 18–20",t:"Segundo ciclo (cont.)"},{d:24,r:"Jó 21–24",t:"Terceiro ciclo"},{d:25,r:"Jó 25–28",t:"Sabedoria"},{d:26,r:"Jó 29–31",t:"Defesa final"},{d:27,r:"Jó 32–34",t:"Eliú (início)"},{d:28,r:"Jó 35–37",t:"Eliú (fim)"},{d:29,r:"Jó 38–39",t:"Deus responde"},{d:30,r:"Jó 40–42",t:"Restauração"},
+{d:31,r:"Êxodo 1–3",t:"Escravidão, sarça ardente"},{d:32,r:"Êxodo 4–6",t:"Chamado, Faraó"},{d:33,r:"Êxodo 7–9",t:"Pragas I"},{d:34,r:"Êxodo 10–12",t:"Pragas II, Páscoa"},{d:35,r:"Êxodo 13–15",t:"Saída, Mar Vermelho, cântico"},{d:36,r:"Êxodo 16–18",t:"Maná, rocha, Jetro"},{d:37,r:"Êxodo 19–21",t:"Sinai, Dez Mandamentos"},{d:38,r:"Êxodo 22–24",t:"Código da aliança"},{d:39,r:"Êxodo 25–27",t:"Tabernáculo: instruções"},{d:40,r:"Êxodo 28–29",t:"Vestes, consagração"},{d:41,r:"Êxodo 30–32",t:"Incenso, bezerro de ouro"},{d:42,r:"Êxodo 33–35",t:"Glória, renovação, oferta"},{d:43,r:"Êxodo 36–38",t:"Construção"},{d:44,r:"Êxodo 39–40",t:"Conclusão do Tabernáculo"},
+{d:45,r:"Levítico 1–3",t:"Holocausto, cereais, paz"},{d:46,r:"Levítico 4–6",t:"Pecado, culpa"},{d:47,r:"Levítico 7–9",t:"Instruções, consagração"},{d:48,r:"Levítico 10–12",t:"Nadabe e Abiú, alimentos"},{d:49,r:"Levítico 13–14",t:"Lepra"},{d:50,r:"Levítico 15–17",t:"Impurezas, Yom Kippur"},{d:51,r:"Levítico 18–20",t:"Santidade"},{d:52,r:"Levítico 21–23",t:"Sacerdotes, festas"},{d:53,r:"Levítico 24–25",t:"Blasfêmia, jubileu"},{d:54,r:"Levítico 26–27",t:"Bênçãos, maldições, votos"},
+{d:55,r:"Números 1–2",t:"Censo, acampamento"},{d:56,r:"Números 3–4",t:"Levitas"},{d:57,r:"Números 5–6",t:"Ciúmes, nazireu, bênção"},{d:58,r:"Números 7",t:"Ofertas dos líderes"},{d:59,r:"Números 8–10",t:"Levitas, Páscoa, partida"},{d:60,r:"Números 11–13",t:"Murmurações, espias"},{d:61,r:"Números 14–15",t:"Rebelião, 40 anos"},{d:62,r:"Números 16–17",t:"Corá, vara de Arão"},{d:63,r:"Números 18–20",t:"Levitas, Meribá, morte de Arão"},{d:64,r:"Números 21–22",t:"Serpente, Balaão"},{d:65,r:"Números 23–25",t:"Oráculos, Baal-Peor"},{d:66,r:"Números 26–27",t:"Censo, Zelofeade, Josué"},{d:67,r:"Números 28–30",t:"Festas, votos"},{d:68,r:"Números 31–32",t:"Midiã, tribos do leste"},{d:69,r:"Números 33–34",t:"Jornadas, fronteiras"},{d:70,r:"Números 35–36",t:"Refúgio, herança"},
+{d:71,r:"Deuteronômio 1–3",t:"Revisão histórica"},{d:72,r:"Deuteronômio 4–5",t:"Obediência, Decálogo"},{d:73,r:"Deuteronômio 6–8",t:"Shemá, advertência"},{d:74,r:"Deuteronômio 9–11",t:"Bezerro, circuncisão do coração"},{d:75,r:"Deuteronômio 12–14",t:"Lugar escolhido, alimentos"},{d:76,r:"Deuteronômio 15–17",t:"Remissão, festas, rei"},{d:77,r:"Deuteronômio 18–20",t:"Profeta, refúgio, guerra"},{d:78,r:"Deuteronômio 21–23",t:"Leis civis"},{d:79,r:"Deuteronômio 24–26",t:"Leis sociais, primícias"},{d:80,r:"Deuteronômio 27–28",t:"Bênçãos e maldições"},{d:81,r:"Deuteronômio 29–31",t:"Aliança, Josué"},{d:82,r:"Deuteronômio 32–34 · Salmo 90",t:"Cântico, morte de Moisés"},
+{d:83,r:"Josué 1–3",t:"Comissão, Raabe, Jordão"},{d:84,r:"Josué 4–6",t:"Pedras, Jericó"},{d:85,r:"Josué 7–9",t:"Acã, Ai, gibeonitas"},{d:86,r:"Josué 10–12",t:"Campanhas, reis"},{d:87,r:"Josué 13–15",t:"Terras: Judá, Calebe"},{d:88,r:"Josué 16–19",t:"Tribos restantes"},{d:89,r:"Josué 20–22",t:"Refúgio, levitas, altar"},{d:90,r:"Josué 23–24",t:"Discursos, Siquém"},
+{d:91,r:"Juízes 1–3",t:"Conquista incompleta, Otniel, Eúde"},{d:92,r:"Juízes 4–5",t:"Débora, cântico"},{d:93,r:"Juízes 6–7",t:"Gideão"},{d:94,r:"Juízes 8–9",t:"Gideão, Abimeleque"},{d:95,r:"Juízes 10–12",t:"Jefté"},{d:96,r:"Juízes 13–15",t:"Sansão"},{d:97,r:"Juízes 16–18",t:"Sansão, Mica, Dã"},{d:98,r:"Juízes 19–21",t:"Gibeá, guerra"},{d:99,r:"Rute 1–4",t:"Rute, Boaz, linhagem de Davi"},
+{d:100,r:"1 Samuel 1–3",t:"Ana, Samuel"},{d:101,r:"1 Samuel 4–7",t:"Arca, Samuel juiz"},{d:102,r:"1 Samuel 8–10",t:"Rei pedido, Saul"},{d:103,r:"1 Samuel 11–13",t:"Saul desobedece"},{d:104,r:"1 Samuel 14–15",t:"Jônatas, rejeição"},{d:105,r:"1 Samuel 16–17",t:"Unção de Davi, Golias"},{d:106,r:"Salmos 23; 8; 19",t:"Pastor, majestade, céus"},{d:107,r:"1 Samuel 18–19",t:"Jônatas, ciúme de Saul"},{d:108,r:"1 Samuel 20–21 · Salmos 34; 56",t:"Aliança, Nobe, fuga"},{d:109,r:"1 Samuel 22–23 · Salmos 52; 54; 142",t:"Adulão, Zife"},{d:110,r:"1 Samuel 24–25 · Salmos 57; 59",t:"En-Gedi, Abigail"},{d:111,r:"1 Samuel 26–28",t:"Saul poupado, En-Dor"},{d:112,r:"1 Samuel 29–31",t:"Ziclague, morte de Saul"},{d:113,r:"2 Samuel 1–3",t:"Lamento, Hebrom"},{d:114,r:"2 Samuel 4–6",t:"Jerusalém, arca"},{d:115,r:"Salmos 15; 24; 68; 132",t:"Entrada, procissão"},{d:116,r:"1 Crônicas 1–3",t:"Genealogias"},{d:117,r:"1 Crônicas 4–6",t:"Judá, Simeão, Levi"},{d:118,r:"1 Crônicas 7–9",t:"Tribos, Jerusalém"},{d:119,r:"1 Crônicas 10–12",t:"Saul, Davi, valentes"},{d:120,r:"1 Crônicas 13–16",t:"Arca, louvor"},{d:121,r:"Salmos 96; 105; 106",t:"Obras de Deus"},{d:122,r:"2 Samuel 7 · 1 Crônicas 17",t:"Aliança davídica"},{d:123,r:"Salmos 89; 2; 110",t:"Aliança, ungido"},{d:124,r:"2 Samuel 8–10 · 1 Crônicas 18–20",t:"Vitórias, Mefibosete"},{d:125,r:"Salmos 60; 20; 21",t:"Batalha, confiança"},{d:126,r:"2 Samuel 11–12 · Salmos 32; 51",t:"Bate-Seba, arrependimento"},{d:127,r:"2 Samuel 13–14",t:"Amnon, Absalão"},{d:128,r:"2 Samuel 15–16 · Salmos 3; 63",t:"Fuga de Absalão"},{d:129,r:"2 Samuel 17–18 · Salmo 55",t:"Morte de Absalão"},{d:130,r:"2 Samuel 19–20",t:"Restauração, Seba"},{d:131,r:"2 Samuel 21–22 · Salmo 18",t:"Livramento"},{d:132,r:"2 Samuel 23–24 · 1 Crônicas 21",t:"Valentes, censo"},{d:133,r:"1 Crônicas 22–24",t:"Templo, sacerdotes"},{d:134,r:"1 Crônicas 25–27",t:"Cantores, porteiros"},{d:135,r:"1 Crônicas 28–29",t:"Salomão, ofertas"},
+{d:136,r:"1 Reis 1–2 · 2 Crônicas 1",t:"Salomão rei"},{d:137,r:"1 Reis 3–4 · Salmo 72",t:"Sabedoria"},{d:138,r:"Provérbios 1–3",t:"Início da sabedoria"},{d:139,r:"Provérbios 4–6",t:"Instrução"},{d:140,r:"Provérbios 7–9",t:"Sabedoria personificada"},{d:141,r:"Provérbios 10–12",t:"Provérbios (I)"},{d:142,r:"Provérbios 13–15",t:"Provérbios (II)"},{d:143,r:"Provérbios 16–18",t:"Provérbios (III)"},{d:144,r:"Provérbios 19–21",t:"Provérbios (IV)"},{d:145,r:"Provérbios 22–24",t:"Palavras dos sábios"},{d:146,r:"Provérbios 25–27",t:"Ezequias (I)"},{d:147,r:"Provérbios 28–29",t:"Ezequias (II)"},{d:148,r:"Provérbios 30–31",t:"Agur, Lemuel, virtuosa"},{d:149,r:"Cantares 1–4",t:"Amor (I)"},{d:150,r:"Cantares 5–8",t:"Amor (II)"},{d:151,r:"Eclesiastes 1–4",t:"Vaidade, tempo"},{d:152,r:"Eclesiastes 5–8",t:"Votos, injustiça"},{d:153,r:"Eclesiastes 9–12",t:"\"Teme a Deus\""},{d:154,r:"1 Reis 5–7 · 2 Crônicas 2–4",t:"Templo construído"},{d:155,r:"1 Reis 8 · 2 Crônicas 5–7",t:"Dedicação"},{d:156,r:"Salmos 127; 136",t:"Edificar, misericórdia"},{d:157,r:"1 Reis 9–10 · 2 Crônicas 8–9",t:"Glória, Sabá"},{d:158,r:"1 Reis 11",t:"Queda de Salomão"},
+{d:159,r:"1 Reis 12–13 · 2 Crônicas 10–11",t:"Divisão do reino"},{d:160,r:"1 Reis 14 · 2 Crônicas 12",t:"Sisaque"},{d:161,r:"1 Reis 15 · 2 Crônicas 13–16",t:"Abias, Asa"},{d:162,r:"1 Reis 16",t:"Reis de Israel"},{d:163,r:"1 Reis 17–18",t:"Elias, Carmelo"},{d:164,r:"1 Reis 19",t:"Horebe, Eliseu"},{d:165,r:"1 Reis 20–22 · 2 Crônicas 17–19",t:"Acabe, Josafá"},{d:166,r:"2 Crônicas 20 · Obadias 1",t:"Josafá, Edom"},{d:167,r:"2 Reis 1–3",t:"Elias ao céu, Eliseu"},{d:168,r:"2 Reis 4–5",t:"Milagres, Naamã"},{d:169,r:"2 Reis 6–7",t:"Machado, cerco"},{d:170,r:"2 Reis 8 · 2 Crônicas 21",t:"Hazael, Jeorão"},{d:171,r:"Joel 1–3",t:"Gafanhotos, Dia do Senhor"},{d:172,r:"2 Reis 9–10",t:"Jeú"},{d:173,r:"2 Reis 11–12 · 2 Crônicas 22–24",t:"Atalia, Joás"},{d:174,r:"Jonas 1–4",t:"Nínive"},{d:175,r:"2 Reis 13–14 · 2 Crônicas 25",t:"Jeoás, Amazias"},{d:176,r:"Amós 1–4",t:"Juízos"},{d:177,r:"Amós 5–9",t:"Restauração"},{d:178,r:"Oséias 1–4",t:"Infidelidade"},{d:179,r:"Oséias 5–9",t:"Juízo"},{d:180,r:"Oséias 10–14",t:"Amor de Deus"},{d:181,r:"2 Reis 15 · 2 Crônicas 26–27",t:"Uzias, Jotão"},{d:182,r:"Isaías 1–4",t:"Acusação"},{d:183,r:"Isaías 5–6",t:"Vinha, chamado"},{d:184,r:"Isaías 7–9",t:"Emanuel, Menino"},{d:185,r:"Isaías 10–12",t:"Assíria, Jessé"},{d:186,r:"Isaías 13–16",t:"Babilônia, Moabe"},{d:187,r:"Isaías 17–20",t:"Damasco, Egito"},{d:188,r:"Isaías 21–23",t:"Deserto, Tiro"},{d:189,r:"Isaías 24–27",t:"Apocalipse de Isaías"},{d:190,r:"Isaías 28–30",t:"Ais, pedra angular"},{d:191,r:"Isaías 31–35",t:"Rei justo, remidos"},{d:192,r:"Miquéias 1–4",t:"Belém"},{d:193,r:"Miquéias 5–7",t:"\"Que pede o Senhor?\""},{d:194,r:"2 Reis 16–17 · 2 Crônicas 28",t:"Queda de Samaria"},
+{d:195,r:"2 Reis 18–19 · 2 Crônicas 29–30",t:"Ezequias, Senaqueribe"},{d:196,r:"2 Crônicas 31 · Isaías 36–37",t:"Reforma, livramento"},{d:197,r:"Isaías 38–39 · 2 Reis 20 · 2 Crônicas 32",t:"Doença, embaixada"},{d:198,r:"Salmos 46; 48; 76; 87",t:"Refúgio, Sião"},{d:199,r:"Salmos 120–124",t:"Romagem (I)"},{d:200,r:"Salmos 125–131; 133–134",t:"Romagem (II)"},{d:201,r:"2 Reis 21 · 2 Crônicas 33",t:"Manassés"},{d:202,r:"Naum 1–3",t:"Nínive destruída"},{d:203,r:"Sofonias 1–3",t:"Dia do Senhor"},{d:204,r:"2 Reis 22–23 · 2 Crônicas 34–35",t:"Josias"},{d:205,r:"Habacuque 1–3",t:"Fé"},{d:206,r:"Jeremias 1–3",t:"Chamado"},{d:207,r:"Jeremias 4–6",t:"Invasão"},{d:208,r:"Jeremias 7–9",t:"Templo"},{d:209,r:"Jeremias 10–12",t:"Ídolos"},{d:210,r:"Jeremias 13–15",t:"Seca"},{d:211,r:"Jeremias 16–18",t:"Oleiro"},{d:212,r:"Jeremias 19–21",t:"Vaso, tronco"},{d:213,r:"Jeremias 22–24",t:"Reis, figos"},{d:214,r:"Jeremias 25–26",t:"70 anos"},{d:215,r:"Jeremias 27–29",t:"Jugo, carta"},{d:216,r:"Jeremias 30–31",t:"Nova Aliança"},{d:217,r:"Jeremias 32–33",t:"Campo, promessas"},{d:218,r:"Jeremias 34–36",t:"Recabitas, rolo"},{d:219,r:"Jeremias 37–39",t:"Cisterna, queda"},{d:220,r:"Jeremias 40–42",t:"Gedalias, Egito"},{d:221,r:"Jeremias 43–45",t:"Egito, Baruque"},{d:222,r:"Jeremias 46–48",t:"Nações"},{d:223,r:"Jeremias 49–50",t:"Babilônia (I)"},{d:224,r:"Jeremias 51–52",t:"Babilônia (II), apêndice"},{d:225,r:"2 Reis 24–25 · 2 Crônicas 36",t:"Destruição 586 a.C."},{d:226,r:"Lamentações 1–2",t:"Luto"},{d:227,r:"Lamentações 3–5",t:"Misericórdias"},{d:228,r:"Salmos 74; 79; 88; 102; 137",t:"Lamentos, Babilônia"},
+{d:229,r:"Ezequiel 1–3",t:"Trono, chamado"},{d:230,r:"Ezequiel 4–6",t:"Sinais, montes"},{d:231,r:"Ezequiel 7–9",t:"Fim, idolatria"},{d:232,r:"Ezequiel 10–12",t:"Glória parte"},{d:233,r:"Ezequiel 13–15",t:"Falsos profetas"},{d:234,r:"Ezequiel 16–17",t:"Esposa infiel"},{d:235,r:"Ezequiel 18–19",t:"Responsabilidade"},{d:236,r:"Ezequiel 20–21",t:"Rebelião, espada"},{d:237,r:"Ezequiel 22–23",t:"Oolá, Oolibá"},{d:238,r:"Ezequiel 24–26",t:"Panela, Tiro"},{d:239,r:"Ezequiel 27–28",t:"Tiro, rei"},{d:240,r:"Ezequiel 29–31",t:"Egito (I)"},{d:241,r:"Ezequiel 32–33",t:"Egito (II), atalaia"},{d:242,r:"Ezequiel 34–36",t:"Pastores, restauração"},{d:243,r:"Ezequiel 37–39",t:"Ossos secos, Gogue"},{d:244,r:"Ezequiel 40–42",t:"Novo Templo (I)"},{d:245,r:"Ezequiel 43–45",t:"Novo Templo (II)"},{d:246,r:"Ezequiel 46–48",t:"Rio, terra"},{d:247,r:"Isaías 40–42",t:"Consolação, Servo"},{d:248,r:"Isaías 43–45",t:"Ciro, redenção"},{d:249,r:"Isaías 46–48",t:"Ídolos caem"},{d:250,r:"Isaías 49–51",t:"Servo, Sião"},{d:251,r:"Isaías 52–54",t:"Servo Sofredor"},{d:252,r:"Isaías 55–58",t:"Convite, jejum"},{d:253,r:"Isaías 59–62",t:"Redentor, glória"},{d:254,r:"Isaías 63–66",t:"Novos céus"},{d:255,r:"Daniel 1–3",t:"Exílio, fornalha"},{d:256,r:"Daniel 4–6",t:"Loucura, leões"},{d:257,r:"Daniel 7–9",t:"Bestas, 70 semanas"},{d:258,r:"Daniel 10–12",t:"Visão final"},
+{d:259,r:"Esdras 1–3",t:"Retorno, fundação"},{d:260,r:"Salmos 107; 126",t:"Ação de graças"},{d:261,r:"Esdras 4–6",t:"Oposição, Templo pronto"},{d:262,r:"Ageu 1–2",t:"Reconstruam!"},{d:263,r:"Zacarias 1–4",t:"Visões noturnas"},{d:264,r:"Zacarias 5–8",t:"Rolo, carros"},{d:265,r:"Zacarias 9–11",t:"Rei humilde"},{d:266,r:"Zacarias 12–14",t:"Traspassado"},{d:267,r:"Ester 1–4",t:"Ester, Hamã"},{d:268,r:"Ester 5–7",t:"Queda de Hamã"},{d:269,r:"Ester 8–10",t:"Purim"},{d:270,r:"Esdras 7–10",t:"Esdras, casamentos"},{d:271,r:"Neemias 1–3",t:"Muro (início)"},{d:272,r:"Neemias 4–6",t:"Muro concluído"},{d:273,r:"Neemias 7–8",t:"Lei lida"},{d:274,r:"Neemias 9–10",t:"Confissão, aliança"},{d:275,r:"Neemias 11–13",t:"Dedicação, reformas"},{d:276,r:"Malaquias 1–4",t:"Mensageiro virá"},
+{d:277,r:"Salmos 1–2; 4–7",t:"Justo, oração"},{d:278,r:"Salmos 9–14",t:"Louvor, néscio"},{d:279,r:"Salmos 16–17; 22; 25",t:"Confiança, desamparado"},{d:280,r:"Salmos 26–31; 33",t:"Clamor, alegria"},{d:281,r:"Salmos 35–41",t:"Inimigos, brevidade"},{d:282,r:"Salmos 42–50",t:"Corá, Asafe"},{d:283,r:"Salmos 53; 58; 61–67",t:"Justiça, nações"},{d:284,r:"Salmos 69–71; 73–75",t:"Sofredor, Asafe"},{d:285,r:"Salmos 77–78",t:"Lamento, redenção"},{d:286,r:"Salmos 80–86",t:"Restauração"},{d:287,r:"Salmos 91–95",t:"Altíssimo, reina"},{d:288,r:"Salmos 97–101; 103–104",t:"Reina, misericórdia"},{d:289,r:"Salmos 108–109; 111–118",t:"Hallel"},{d:290,r:"Salmo 119:1–88",t:"Palavra (I)"},{d:291,r:"Salmo 119:89–176",t:"Palavra (II)"},{d:292,r:"Salmos 135; 138–145",t:"Louvor, Sl 139"},{d:293,r:"Salmos 146–150",t:"Hallel final"},
+// NT
+{d:294,r:"Lucas 1",t:"Anunciação"},{d:295,r:"Lucas 2 · Mateus 1–2",t:"Nascimento, magos"},{d:296,r:"Mateus 3–4 · Marcos 1:1–13 · Lucas 3–4:13",t:"Batismo, tentação"},{d:297,r:"João 1–2",t:"Verbo, Caná"},{d:298,r:"João 3–4",t:"Nicodemos, samaritana"},{d:299,r:"Marcos 1:14–45 · Lucas 4:14–5:16",t:"Galileia, milagres"},{d:300,r:"Marcos 2–3 · Lucas 5:17–6:11",t:"Controvérsias"},{d:301,r:"Mateus 5–7",t:"Sermão do Monte"},{d:302,r:"Lucas 6:12–49 · Mateus 8",t:"Doze, planície, curas"},{d:303,r:"Mateus 9–10",t:"Curas, envio dos Doze"},{d:304,r:"Mateus 11–12",t:"\"Vinde a mim\", sábado"},{d:305,r:"Mateus 13 · Marcos 4:1–34",t:"Parábolas"},{d:306,r:"Marcos 4:35–5:43 · Lucas 7–8",t:"Tempestade, Jairo, viúva"},{d:307,r:"Marcos 6 · Mateus 14 · Lucas 9:1–17",t:"João Batista, 5 mil"},{d:308,r:"João 5–6",t:"Tanque, pão da vida"},{d:309,r:"Marcos 7–8 · Mateus 15–16",t:"Tradição, Pedro confessa"},{d:310,r:"Marcos 9 · Mateus 17 · Lucas 9:18–50",t:"Transfiguração"},{d:311,r:"João 7–8",t:"Tabernáculos, luz"},{d:312,r:"João 9–10",t:"Cego, Bom Pastor"},{d:313,r:"Lucas 10–11",t:"Samaritano, Marta"},{d:314,r:"Lucas 12–13",t:"Avareza, figueira"},{d:315,r:"Lucas 14–16",t:"Pródigo, Lázaro"},{d:316,r:"Lucas 17–18",t:"Leprosos, viúva"},{d:317,r:"Mateus 18–20 · Marcos 10",t:"Perdão, jovem rico"},{d:318,r:"João 11 · Lucas 19:1–27",t:"Lázaro, Zaqueu"},
+{d:319,r:"Mateus 21 · Marcos 11 · Lucas 19:28–48 · João 12",t:"Entrada triunfal"},{d:320,r:"Mateus 22 · Marcos 12 · Lucas 20",t:"César, mandamento"},{d:321,r:"Mateus 23",t:"Ais fariseus"},{d:322,r:"Mateus 24–25 · Marcos 13 · Lucas 21",t:"Oliveiras, fim"},{d:323,r:"João 13–14",t:"Lava-pés, caminho"},{d:324,r:"João 15–17",t:"Videira, oração"},{d:325,r:"Mateus 26 · Marcos 14 · Lucas 22",t:"Ceia, Getsêmani"},{d:326,r:"Mateus 27 · Marcos 15 · Lucas 23 · João 18–19",t:"Crucificação"},{d:327,r:"Mateus 28 · Marcos 16 · Lucas 24 · João 20–21",t:"Ressurreição"},
+{d:328,r:"Atos 1–2",t:"Pentecostes"},{d:329,r:"Atos 3–4",t:"Coxo, Sinédrio"},{d:330,r:"Atos 5–6",t:"Ananias, diáconos"},{d:331,r:"Atos 7–8",t:"Estêvão, Filipe"},{d:332,r:"Atos 9–10",t:"Saulo, Cornélio"},{d:333,r:"Atos 11–12",t:"Antioquia, Pedro"},{d:334,r:"Tiago 1–5",t:"Fé e obras"},{d:335,r:"Atos 13–14",t:"1ª viagem"},{d:336,r:"Gálatas 1–3",t:"Justificação"},{d:337,r:"Gálatas 4–6",t:"Liberdade, fruto"},{d:338,r:"Atos 15–16",t:"Concílio, Filipos"},{d:339,r:"Atos 17–18",t:"Atenas, Corinto"},{d:340,r:"1 Tessalonicenses 1–5",t:"Volta de Cristo"},{d:341,r:"2 Tessalonicenses 1–3",t:"Iniquidade"},{d:342,r:"1 Coríntios 1–4",t:"Divisões, cruz"},{d:343,r:"1 Coríntios 5–8",t:"Imoralidade"},{d:344,r:"1 Coríntios 9–11",t:"Apostolado, Ceia"},{d:345,r:"1 Coríntios 12–14",t:"Dons, amor"},{d:346,r:"1 Coríntios 15–16",t:"Ressurreição"},{d:347,r:"Atos 19–20",t:"Éfeso, Mileto"},{d:348,r:"2 Coríntios 1–5",t:"Consolação, barro"},{d:349,r:"2 Coríntios 6–9",t:"Templo, oferta"},{d:350,r:"2 Coríntios 10–13",t:"Espinho, graça"},{d:351,r:"Romanos 1–4",t:"Todos pecaram"},{d:352,r:"Romanos 5–8",t:"Nada nos separará"},{d:353,r:"Romanos 9–11",t:"Israel, oliveira"},{d:354,r:"Romanos 12–16",t:"Sacrifício vivo"},{d:355,r:"Atos 21–23",t:"Paulo preso"},{d:356,r:"Atos 24–26",t:"Félix, Agripa"},{d:357,r:"Atos 27–28",t:"Naufrágio, Roma"},{d:358,r:"Efésios 1–6",t:"Graça, armadura"},{d:359,r:"Filipenses 1–4 · Filemom 1",t:"Alegria, Onésimo"},{d:360,r:"Colossenses 1–4 · 1 Timóteo 1–3",t:"Supremacia, líderes"},{d:361,r:"1 Timóteo 4–6 · Tito 1–3 · 2 Timóteo 1–4",t:"Pastorais, bom combate"},{d:362,r:"Hebreus 1–7",t:"Superior, Melquisedeque"},{d:363,r:"Hebreus 8–13",t:"Nova aliança, fé"},{d:364,r:"1 Pedro 1–5 · 2 Pedro 1–3 · Judas 1",t:"Esperança, falsos mestres"},{d:365,r:"1 João 1–5 · 2 João 1 · 3 João 1",t:"Deus é amor"},
+{d:366,r:"Apocalipse 1–3",t:"Cristo, sete igrejas"},{d:367,r:"Apocalipse 4–8",t:"Trono, selos, trombetas"},{d:368,r:"Apocalipse 9–14",t:"Testemunhas, dragão, bestas"},{d:369,r:"Apocalipse 15–18",t:"Taças, Babilônia"},{d:370,r:"Apocalipse 19–22",t:"Volta, nova Jerusalém"}
+];
+
+const D365_SECTIONS=[
+{title:"Criação e Patriarcas",icon:"🌿",color:"#4a6741",accent:"#8fb383",from:1,to:17,test:"AT"},
+{title:"Jó",icon:"⚖️",color:"#6a5a3a",accent:"#b09860",from:18,to:30,test:"AT"},
+{title:"Êxodo e Lei",icon:"📜",color:"#8b5e3c",accent:"#d4a574",from:31,to:82,test:"AT"},
+{title:"Conquista e Juízes",icon:"⚔️",color:"#6b4c3b",accent:"#c4956a",from:83,to:99,test:"AT"},
+{title:"Samuel, Saul e Davi",icon:"👑",color:"#5c4a8a",accent:"#a48fd4",from:100,to:135,test:"AT"},
+{title:"Salomão",icon:"🏛️",color:"#8a7a2e",accent:"#d4c44a",from:136,to:158,test:"AT"},
+{title:"Reino Dividido",icon:"⚡",color:"#8a4a4a",accent:"#d48f8f",from:159,to:194,test:"AT"},
+{title:"Judá, Exílio e Profetas",icon:"🔗",color:"#3d5a80",accent:"#7da4c9",from:195,to:258,test:"AT"},
+{title:"Retorno e Restauração",icon:"🕊️",color:"#2a6041",accent:"#5eb37e",from:259,to:276,test:"AT"},
+{title:"Salmos Restantes",icon:"🎵",color:"#5a4a3a",accent:"#a89878",from:277,to:293,test:"AT"},
+{title:"Vida de Cristo",icon:"✝️",color:"#b8860b",accent:"#e8c84a",from:294,to:327,test:"NT"},
+{title:"Igreja e Epístolas",icon:"🔥",color:"#6a3d7d",accent:"#b88fd4",from:328,to:365,test:"NT"},
+{title:"Apocalipse",icon:"🌟",color:"#1a1a2e",accent:"#e0c97f",from:366,to:370,test:"NT"}
+];
+
+// ═══════════════════════════════════════
+// METADADOS DAS SEÇÕES (contexto + verso de conclusão)
+// ═══════════════════════════════════════
+const SEC_META = {
+// PROG sections
+1:{ctx:"Jó é posicionado aqui por se passar provavelmente na era patriarcal — antes da Lei, sem menção a Israel, sacerdócio ou Templo.",verse:"E porei inimizade entre ti e a mulher, e entre a tua semente e a sua semente; esta te ferirá a cabeça, e tu lhe ferirás o calcanhar.",ref:"Gênesis 3:15",note:"A primeira promessa de redenção da Bíblia — o Evangelho antes do Evangelho."},
+2:{ctx:"A Lei revelou o padrão de santidade de Deus — e a incapacidade humana de cumpri-lo. Cada sacrifício apontava para um sacrifício definitivo que viria.",verse:"Ouve, Israel, o Senhor nosso Deus é o único Senhor. Amarás, pois, o Senhor teu Deus de todo o teu coração, e de toda a tua alma, e de todas as tuas forças.",ref:"Deuteronômio 6:4–5",note:"O Shemá — o mandamento central de toda a fé bíblica."},
+3:{ctx:"Sem rei, cada um fazia o que era reto aos seus próprios olhos. Os ciclos de Juízes mostram que o povo precisava de um líder perfeito — que viria em Cristo.",verse:"Esforça-te e tem bom ânimo; não pasmes, nem te espantes; porque o Senhor teu Deus é contigo, por onde quer que andares.",ref:"Josué 1:9",note:"A promessa que sustentou Josué sustenta cada leitor hoje."},
+4:{ctx:"Davi é o rei segundo o coração de Deus — imperfeito, mas apontando para o Rei perfeito que viria de sua linhagem.",verse:"A tua casa e o teu reino serão firmados para sempre diante de ti; teu trono será firme para sempre.",ref:"2 Samuel 7:16",note:"A aliança davídica — cumprida em Jesus, o Filho de Davi."},
+5:{ctx:"Os Salmos são o hinário de Israel. Aqui estão agrupados os que não couberam em um contexto narrativo específico — mas todos expressam a relação do homem com Deus.",verse:"Sonda-me, ó Deus, e conhece o meu coração; prova-me, e conhece os meus pensamentos.",ref:"Salmo 139:23",note:"Deus nos conhece por completo — e ainda assim nos ama."},
+6:{ctx:"Salomão recebeu sabedoria incomparável, construiu o Templo — mas a desobediência trouxe a divisão do reino. O mais sábio dos homens provou que sabedoria sem obediência não basta.",verse:"De tudo o que se tem ouvido, o fim é: Teme a Deus, e guarda os seus mandamentos; porque isto é o dever de todo o homem.",ref:"Eclesiastes 12:13",note:"A conclusão de Salomão após uma vida inteira buscando sentido."},
+7:{ctx:"Os profetas surgem neste período para confrontar a idolatria. Cada profeta aponta para o juízo, mas também para a esperança messiânica.",verse:"Porque um menino nos nasceu, um filho se nos deu; e o principado está sobre os seus ombros; e o seu nome será: Maravilhoso Conselheiro, Deus Forte, Pai da Eternidade, Príncipe da Paz.",ref:"Isaías 9:6",note:"Escrito 700 anos antes de Cristo — uma descrição perfeita dEle."},
+8:{ctx:"O exílio não foi abandono — foi disciplina de um Pai que cumpre suas promessas. No meio da dor, Deus revela seus planos mais profundos.",verse:"Porei a minha lei no seu interior, e a escreverei no seu coração; e eu serei o seu Deus e eles serão o meu povo.",ref:"Jeremias 31:33",note:"A Nova Aliança prometida — cumprida em Cristo."},
+9:{ctx:"Deus cumpriu sua promessa: 70 anos de exílio, como Jeremias profetizou, e o retorno aconteceu. Ciro é chamado por nome em Isaías — 150 anos antes de nascer.",verse:"Eis que eu envio o meu mensageiro, que preparará o caminho diante de mim.",ref:"Malaquias 3:1",note:"As últimas palavras proféticas do AT — depois, 400 anos de silêncio até João Batista."},
+10:{ctx:"Estes Salmos completam o Saltério — 150 poemas que cobrem todo o espectro da experiência humana diante de Deus: louvor, lamento, confiança, arrependimento.",verse:"Lâmpada para os meus pés é a tua palavra, e luz para o meu caminho.",ref:"Salmo 119:105",note:"A Palavra de Deus ilumina cada passo."},
+11:{ctx:"Após 400 anos de silêncio profético, Deus não envia outro profeta — Ele vem pessoalmente. O Verbo se faz carne.",verse:"E o Verbo se fez carne, e habitou entre nós, e vimos a sua glória, como a glória do unigênito do Pai, cheio de graça e de verdade.",ref:"João 1:14",note:"Deus não ficou distante — Ele veio morar conosco."},
+12:{ctx:"Jesus ensina, cura e confronta. Suas parábolas revelam o Reino; seus milagres confirmam sua identidade. A pergunta central emerge: \"Quem dizeis vós que eu sou?\"",verse:"Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei.",ref:"Mateus 11:28",note:"O convite mais bonito já feito — e continua aberto."},
+13:{ctx:"Jesus se dirige resolutamente a Jerusalém, sabendo o que o espera. Cada parábola neste trecho tem urgência: o filho pródigo, o rico e Lázaro, as minas.",verse:"Eu sou a ressurreição e a vida; quem crê em mim, ainda que esteja morto, viverá.",ref:"João 11:25",note:"Não é uma promessa futura apenas — é uma realidade presente para quem crê."},
+14:{ctx:"A semana mais importante da história. Cada detalhe — da entrada em Jerusalém ao Getsêmani — cumpre profecias escritas séculos antes.",verse:"Está consumado.",ref:"João 19:30",note:"Não um grito de derrota, mas uma declaração de vitória. A obra da redenção foi completada."},
+15:{ctx:"O túmulo vazio é o fundamento de toda a fé cristã. Sem a ressurreição, como Paulo dirá, a fé seria vã — mas Ele vive.",verse:"Não está aqui, porque já ressuscitou, como tinha dito.",ref:"Mateus 28:6",note:"A pedra foi removida — não para Jesus sair, mas para o mundo ver que Ele já não estava lá."},
+16:{ctx:"O Espírito Santo capacita os discípulos a fazerem o que Jesus fez — e mais. A Igreja nasce não por organização humana, mas por poder divino.",verse:"Arrependei-vos, e cada um de vós seja batizado em nome de Jesus Cristo, para perdão dos pecados; e recebereis o dom do Espírito Santo.",ref:"Atos 2:38",note:"O chamado de Pedro no Pentecostes — o mesmo chamado continua hoje."},
+17:{ctx:"Paulo leva o Evangelho de Jerusalém até Roma. Cada epístola é escrita para resolver problemas reais de igrejas reais — e as respostas continuam relevantes.",verse:"Porque estou certo de que nem a morte, nem a vida... nos poderá separar do amor de Deus, que está em Cristo Jesus nosso Senhor.",ref:"Romanos 8:38–39",note:"Nada — absolutamente nada — pode separar você do amor de Deus."},
+18:{ctx:"Da prisão, Paulo escreve suas cartas mais profundas sobre a identidade em Cristo. Correntes não limitam o Evangelho.",verse:"Porque pela graça sois salvos, por meio da fé; e isto não vem de vós, é dom de Deus. Não vem das obras, para que ninguém se glorie.",ref:"Efésios 2:8–9",note:"Salvação é presente — não pagamento. Receba."},
+19:{ctx:"As últimas cartas de Paulo — instruções a pastores jovens. Ele sabe que seu tempo chegou, mas a fé deve ser passada adiante.",verse:"Combati o bom combate, acabei a carreira, guardei a fé.",ref:"2 Timóteo 4:7",note:"As últimas palavras de Paulo — um legado de fidelidade até o fim."},
+20:{ctx:"Estas cartas circularam entre todas as igrejas. Hebreus mostra Cristo como superior a tudo; Pedro encoraja no sofrimento; João revela o amor de Deus.",verse:"Ora, a fé é o firme fundamento das coisas que se esperam, e a prova das coisas que se não veem.",ref:"Hebreus 11:1",note:"A fé não é cegueira — é confiança fundamentada em quem Deus é."},
+21:{ctx:"O último livro da Bíblia não é sobre medo — é sobre esperança. Cristo vence. O mal é derrotado. Deus faz novas todas as coisas.",verse:"E Deus limpará de seus olhos toda a lágrima; e não haverá mais morte, nem pranto, nem clamor, nem dor; porque já as primeiras coisas são passadas.",ref:"Apocalipse 21:4",note:"A última promessa da Bíblia — e a mais bonita. A história termina em restauração."},
+};
+
+// Metadata for D365 sections (reuse PROG verses where applicable)
+const D365_META = {
+1:{ctx:"Jó é posicionado aqui por se passar provavelmente na era patriarcal.",verse:SEC_META[1].verse,ref:SEC_META[1].ref,note:SEC_META[1].note},
+18:{ctx:SEC_META[1].ctx,verse:SEC_META[1].verse,ref:SEC_META[1].ref,note:SEC_META[1].note},
+31:{ctx:SEC_META[2].ctx,verse:SEC_META[2].verse,ref:SEC_META[2].ref,note:SEC_META[2].note},
+83:{ctx:SEC_META[3].ctx,verse:SEC_META[3].verse,ref:SEC_META[3].ref,note:SEC_META[3].note},
+100:{ctx:SEC_META[4].ctx,verse:SEC_META[4].verse,ref:SEC_META[4].ref,note:SEC_META[4].note},
+136:{ctx:SEC_META[6].ctx,verse:SEC_META[6].verse,ref:SEC_META[6].ref,note:SEC_META[6].note},
+159:{ctx:SEC_META[7].ctx,verse:SEC_META[7].verse,ref:SEC_META[7].ref,note:SEC_META[7].note},
+195:{ctx:SEC_META[8].ctx,verse:SEC_META[8].verse,ref:SEC_META[8].ref,note:SEC_META[8].note},
+259:{ctx:SEC_META[9].ctx,verse:SEC_META[9].verse,ref:SEC_META[9].ref,note:SEC_META[9].note},
+277:{ctx:SEC_META[10].ctx,verse:SEC_META[10].verse,ref:SEC_META[10].ref,note:SEC_META[10].note},
+294:{ctx:SEC_META[11].ctx,verse:SEC_META[11].verse,ref:SEC_META[11].ref,note:SEC_META[11].note},
+328:{ctx:SEC_META[17].ctx,verse:SEC_META[17].verse,ref:SEC_META[17].ref,note:SEC_META[17].note},
+366:{ctx:SEC_META[21].ctx,verse:SEC_META[21].verse,ref:SEC_META[21].ref,note:SEC_META[21].note},
+};
+
+// ═══════════════════════════════════════
+// COMPARTILHAR
+// ═══════════════════════════════════════
+function shareWhatsApp(){
+  const url='https://lbmodonesi.github.io/biblia_cronologica';
+  const msg=encodeURIComponent(`📖 *Bíblia Cronológica* — Leia a Bíblia inteira na ordem dos acontecimentos.\n\n✅ Plano completo com todos os 66 livros\n📅 Modo progressivo ou plano diário\n💡 Curiosidades, profecias e evidências\n\n🔗 ${url}\n\n_Gratuito, sem cadastro, funciona no celular._`);
+  window.open('https://wa.me/?text='+msg,'_blank');
+}
+function copyLink(){
+  const url='https://lbmodonesi.github.io/biblia_cronologica';
+  navigator.clipboard.writeText(url).then(()=>{
+    const btn=document.querySelector('.share-btn.copy');btn.textContent='✅';setTimeout(()=>{btn.textContent='🔗'},2000);
+  }).catch(()=>{prompt('Copie o link:',url)});
+}
+function toggleShare(){
+  const opts=document.getElementById('shareOpts');
+  const btn=document.getElementById('shareToggle');
+  const open=opts.classList.toggle('show');
+  btn.classList.toggle('open',open);
+}
+
+// ═══════════════════════════════════════
+// EXPORTAR / IMPORTAR PROGRESSO
+// ═══════════════════════════════════════
+function exportProgress(){
+  const data={prog:ckProg,d365:ck365,start:startDate,v:'1'};
+  const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+  const box=document.getElementById('backupBox');
+  box.innerHTML=`<h3>📤 Exportar Progresso</h3><p style="font-size:14px;opacity:.7;margin-bottom:8px">Copie o código abaixo e guarde em lugar seguro. Para restaurar, use \"Importar\".</p><textarea id="exportCode" readonly>${encoded}</textarea><button onclick="copyExport()">Copiar código</button><button class="btn-secondary" onclick="closeBackup()">Fechar</button>`;
+  document.getElementById('backupModal').classList.add('show');
+}
+function copyExport(){
+  const ta=document.getElementById('exportCode');ta.select();ta.setSelectionRange(0,99999);
+  navigator.clipboard.writeText(ta.value).then(()=>{ta.style.borderColor='#2a6041';ta.style.background='rgba(42,96,65,.08)'}).catch(()=>{document.execCommand('copy')});
+}
+function showImport(){
+  const box=document.getElementById('backupBox');
+  box.innerHTML=`<h3>📥 Importar Progresso</h3><p style="font-size:14px;opacity:.7;margin-bottom:8px">Cole o código que você exportou anteriormente.</p><textarea id="importCode" placeholder="Cole o código aqui..."></textarea><button onclick="doImport()">Restaurar</button><button class="btn-secondary" onclick="closeBackup()">Cancelar</button>`;
+  document.getElementById('backupModal').classList.add('show');
+}
+function doImport(){
+  try{
+    const raw=document.getElementById('importCode').value.trim();
+    const data=JSON.parse(decodeURIComponent(escape(atob(raw))));
+    if(data.prog){ckProg=data.prog;svProg()}
+    if(data.d365){ck365=data.d365;sv365()}
+    if(data.start){startDate=data.start;try{localStorage.setItem('bc365Start',startDate)}catch(e){}}
+    closeBackup();render();
+    alert('Progresso restaurado com sucesso!');
+  }catch(e){alert('Código inválido. Verifique se copiou corretamente.')}
+}
+function closeBackup(){document.getElementById('backupModal').classList.remove('show')}
+
+// ═══════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════
+let cv='ARC',mode='prog',opProg=null,op365=null;
+let ckProg={},ck365={},startDate=null;
+try{ckProg=JSON.parse(localStorage.getItem('bcProgCk')||'{}')}catch(e){}
+try{ck365=JSON.parse(localStorage.getItem('bc365Ck')||'{}')}catch(e){}
+try{startDate=localStorage.getItem('bc365Start')}catch(e){}
+if(!startDate){startDate=new Date().toISOString().slice(0,10);try{localStorage.setItem('bc365Start',startDate)}catch(e){}}
+
+function svProg(){try{localStorage.setItem('bcProgCk',JSON.stringify(ckProg))}catch(e){}}
+function sv365(){try{localStorage.setItem('bc365Ck',JSON.stringify(ck365))}catch(e){}}
+
+function setV(v){cv=v;document.querySelectorAll('.tog button').forEach((b,i)=>{b.classList.toggle('on',(i===0&&v==='ARC')||(i===1&&v==='ARA'))});rVB();rFT()}
+function setMode(m){mode=m;document.querySelectorAll('.mode-tab').forEach((b,i)=>{b.classList.toggle('on',(i===0&&m==='prog')||(i===1&&m==='d365'))});document.getElementById('modeDesc').textContent=m==='prog'?'Leitura livre no seu ritmo — marque conforme avança':'Plano diário (~3–4 capítulos/dia) — 370 leituras';document.getElementById('todayBtn').className=m==='d365'?'':'hidden';render()}
+function rVB(){const v=VS[cv];document.getElementById('vb').innerHTML=`<strong>${v.f} (${cv})</strong><br><span class="p2">${v.p}</span><br><em>${v.n}</em>`}
+function rFT(){const v=VS[cv];document.getElementById('ft').innerHTML=`Roteiro cronológico completo — ${v.f} (${cv})<br>AT completo → NT completo, sem mistura de testamentos<br><br>Desenvolvido por <strong>Lucas Modonesi</strong> · <a href="https://instagram.com/lbmodonesi" target="_blank">@lbmodonesi</a> · com auxílio de Claude (Anthropic)`}
+
+function todayDay(){const s=new Date(startDate+'T00:00:00');const n=new Date();n.setHours(0,0,0,0);return Math.max(1,Math.min(Math.floor((n-s)/(864e5))+1,D365.length))}
+function goToday(){const td=todayDay();for(const s of D365_SECTIONS){if(td>=s.from&&td<=s.to){op365=s.from;render();setTimeout(()=>{const el=document.getElementById('d365-'+td);if(el)el.scrollIntoView({behavior:'smooth',block:'center'})},100);return}}}
+
+function togProg(id){opProg=opProg===id?null:id;render()}
+function tog365(f){op365=op365===f?null:f;render()}
+function chkProg(k){ckProg[k]=!ckProg[k];svProg();render()}
+function chk365(d){ck365[d]=!ck365[d];sv365();render()}
+function toggleAllProg(phId,markDone){
+  const ph=PROG.find(p=>p.id===phId);if(!ph)return;
+  ph.items.forEach((_,i)=>{const k=phId+'-'+i;if(markDone)ckProg[k]=true;else delete ckProg[k]});
+  svProg();render();
+}
+function toggleAll365(from,to,markDone){
+  for(let d=from;d<=to;d++){if(markDone)ck365[d]=true;else delete ck365[d]}
+  sv365();render();
+}
+function showReset(){
+  const modeLabel=mode==='prog'?'Progressivo':'Plano Diário';
+  const box=document.getElementById('backupBox');
+  box.innerHTML=`<h3>🗑️ Zerar Progresso</h3><p style="font-size:15px;margin:12px 0">Tem certeza que deseja zerar todo o progresso do modo <strong>${modeLabel}</strong>?</p><p style="font-size:13px;opacity:.6;margin-bottom:16px">Esta ação não pode ser desfeita. Considere exportar seu progresso antes.</p><button onclick="doReset()" style="background:#8a2a2a;border-color:#8a2a2a">Sim, zerar</button><button class="btn-secondary" onclick="closeBackup()">Cancelar</button>`;
+  document.getElementById('backupModal').classList.add('show');
+}
+function doReset(){
+  if(mode==='prog'){ckProg={};svProg()}else{ck365={};sv365();startDate=new Date().toISOString().slice(0,10);try{localStorage.setItem('bc365Start',startDate)}catch(e){}}
+  closeBackup();render();
+}
+
+function render(){
+const c=document.getElementById('main');c.innerHTML='';
+if(mode==='prog') renderProg(c); else render365(c);
+}
+
+function renderProg(c){
+let lastT='';
+let totalItems=0,doneItems=0;
+PROG.forEach(ph=>{totalItems+=ph.items.length;ph.items.forEach((_,i)=>{if(ckProg[ph.id+'-'+i])doneItems++})});
+updProgress(doneItems,totalItems);
+
+PROG.forEach(ph=>{
+  if(ph.testament!==lastT){lastT=ph.testament;const lb=document.createElement('div');lb.className='testament-label';lb.textContent=ph.testament==='AT'?'── Antigo Testamento ──':'── Novo Testamento ──';c.appendChild(lb)}
+  const isO=opProg===ph.id;
+  const pD=ph.items.filter((_,i)=>ckProg[ph.id+'-'+i]).length;
+  const allDone=pD===ph.items.length;
+  const meta=SEC_META[ph.id];
+  const div=document.createElement('div');div.className='sec'+(isO?' open':'');
+  let bl='';
+  // Context bar with note + select all
+  const ctxText=meta&&meta.ctx?`<span class="ctx-note-inline">💡 ${meta.ctx}</span>`:'';
+  const selLabel=allDone?'✅ Tudo lido':'☑️ Marcar tudo';
+  bl+=`<div class="ctx-bar">${ctxText}<button class="sel-all-btn" onclick="event.stopPropagation();toggleAllProg(${ph.id},${!allDone})">${selLabel}</button></div>`;
+  ph.items.forEach((b,i)=>{const k=ph.id+'-'+i;const dn=ckProg[k];bl+=`<div class="item${dn?' done':''}" style="--pc:${ph.color}" onclick="chkProg('${k}')"><div class="ichk">${dn?'✓':''}</div><div><div class="iref"><span class="inum">${i+1}</span>${b.r}</div><div class="itop">${b.t}</div></div></div>`});
+  // Completion banner
+  if(allDone&&meta) bl+=`<div class="completion"><div class="comp-icon">✅</div><div class="comp-title">Seção concluída!</div><div class="comp-verse">\"${meta.verse}\"</div><div class="comp-ref">— ${meta.ref}</div><div style="font-size:13px;opacity:.6;margin-top:8px;font-style:italic">${meta.note}</div></div>`;
+  div.innerHTML=`<button class="sbtn" style="${isO?`background:linear-gradient(135deg,${ph.color},${ph.color}dd);color:#f5f0e8;border:none;box-shadow:0 2px 12px rgba(0,0,0,.15)`:''}" onclick="togProg(${ph.id})"><span class="sicon">${ph.icon}</span><div class="sinfo"><div class="stitle">${allDone?'✅ ':''} ${ph.id}. ${ph.title}</div><div class="sper">${ph.period} · ${ph.items.length} leituras${pD>0?` (${pD}/${ph.items.length} ✓)`:''}</div></div><span class="sarr">▼</span></button><div class="ilist" style="border-top:3px solid ${ph.accent}">${bl}</div>`;
+  c.appendChild(div);
+})}
+
+function render365(c){
+let lastT='';const td=todayDay();
+let totalItems=D365.length,doneItems=Object.values(ck365).filter(Boolean).length;
+updProgress(doneItems,totalItems);
+
+D365_SECTIONS.forEach(sec=>{
+  if(sec.test!==lastT){lastT=sec.test;const lb=document.createElement('div');lb.className='testament-label';lb.textContent=sec.test==='AT'?'── Antigo Testamento ──':'── Novo Testamento ──';c.appendChild(lb)}
+  const isO=op365===sec.from;
+  const days=D365.filter(x=>x.d>=sec.from&&x.d<=sec.to);
+  const secDone=days.filter(x=>ck365[x.d]).length;
+  const allDone=secDone===days.length;
+  const meta=D365_META[sec.from];
+  const div=document.createElement('div');div.className='sec'+(isO?' open':'');
+  let bl='';
+  // Context bar with note + select all
+  const ctxText=meta&&meta.ctx?`<span class="ctx-note-inline">💡 ${meta.ctx}</span>`:'';
+  const selLabel=allDone?'✅ Tudo lido':'☑️ Marcar tudo';
+  bl+=`<div class="ctx-bar">${ctxText}<button class="sel-all-btn" onclick="event.stopPropagation();toggleAll365(${sec.from},${sec.to},${!allDone})">${selLabel}</button></div>`;
+  days.forEach(day=>{const dn=ck365[day.d];const isT=day.d===td;bl+=`<div class="item${dn?' done':''}" id="d365-${day.d}" style="--pc:${sec.color}${isT?';border-left:3px solid #b8860b':''}" onclick="chk365(${day.d})"><div class="ichk">${dn?'✓':''}</div><div><div class="iref"><span class="inum">${day.d}</span>${day.r}</div><div class="itop">${day.t}</div></div></div>`});
+  // Completion banner
+  if(allDone&&meta) bl+=`<div class="completion"><div class="comp-icon">✅</div><div class="comp-title">Seção concluída!</div><div class="comp-verse">\"${meta.verse}\"</div><div class="comp-ref">— ${meta.ref}</div><div style="font-size:13px;opacity:.6;margin-top:8px;font-style:italic">${meta.note}</div></div>`;
+  div.innerHTML=`<button class="sbtn" style="${isO?`background:linear-gradient(135deg,${sec.color},${sec.color}dd);color:#f5f0e8;border:none;box-shadow:0 2px 12px rgba(0,0,0,.15)`:''}" onclick="tog365(${sec.from})"><span class="sicon">${sec.icon}</span><div class="sinfo"><div class="stitle">${allDone?'✅ ':''}${sec.title}</div><div class="sper">Dias ${sec.from}–${sec.to} · ${days.length} leituras${secDone>0?` (${secDone}/${days.length} ✓)`:''}</div></div><span class="sarr">▼</span></button><div class="ilist" style="border-top:3px solid ${sec.accent}">${bl}</div>`;
+  c.appendChild(div);
+})}
+
+function updProgress(done,total){
+const pc=Math.round((done/total)*100);
+document.getElementById('pt').textContent=`${done}/${total} ${mode==='prog'?'leituras':'dias'} — ${pc}%`;
+document.getElementById('pf').style.width=pc+'%';
+}
+
+rVB();rFT();render();
+</script>
+</body>
+</html>
